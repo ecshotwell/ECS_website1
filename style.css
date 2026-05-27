@@ -1,11 +1,25 @@
 /* Style for Eric Shotwell's website */
+:root {
+    background-color: #4b2c2c;
+    color: white;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
     background-color: #4b2c2c;
 }
-p {
-    font-size: 18px;
-    line-height: 1.6;
+.header {
     color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.content {
+    color: grey;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.section { 
+    color: grey;
+    width: 50%;
+    margin-bottom: 30px;
 }
