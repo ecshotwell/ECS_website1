@@ -21,7 +21,6 @@ content {
     margin-bottom: 40px;
     background-color: orange;}
 section { 
-    max-width: 200px;
     color: black;
     background-color: orange;
     text-align: center;
@@ -29,7 +28,6 @@ section {
     margin-bottom: 40px;}
 nav {
     font-family: Arial, sans-serif;
-    margin: 20px;
     color: orange;
     background-color: orange;
     margin-bottom: 40px;
@@ -37,5 +35,6 @@ nav {
 footer {
     font-family: Arial, sans-serif;
     color: black;
-    background-color: orange;
+   background-color: rgb(212, 198, 198);
+    text-align: center;
     margin-bottom: 40px;}
