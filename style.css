@@ -1,7 +1,6 @@
 /* Style for Eric Shotwell's website */
 root {
-    background-color: rgb(238, 221, 221);
-    color: white;
+    background-color: rgb(12, 12, 12);
     margin-bottom: 40px;
     max-width: 1024px;
 }
