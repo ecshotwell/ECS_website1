@@ -4,40 +4,39 @@ root {
     margin-bottom: 40px;
     max-width: 1024px;
 }
+header {
+    background-color: orange;
+    color: black;
+    text-align: center;
+    margin-bottom: 40px;}
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    background-color: orange;
     color: black;
-        margin-bottom: 40px;
-}
-header {
-    color: black;
-    text-align: center;
-    margin-bottom: 40px;
-}
+        margin-bottom: 40px;}
 content {
    color: black;
-    max-width: 800px;
-    margin: 0 auto;
-    margin-bottom: 40px;
-}
+    max-width: 400px;
+    border-left-width: 50px auto;
+    border-right-width: 50px auto;
+    margin-bottom: 40px;}
+    background-color: orange;
 section { 
    color: black;
+   background-color: orange;
     width: 50%;
     text-align: center;
-    margin-bottom: 30px;
-}
+    margin-bottom: 30px;}
 nav {
     font-family: Arial, sans-serif;
     margin: 20px;
-   color: black;
+   background-color: orange;
     margin-bottom: 40px;
-    text-align: center;
-}
+    text-align: center;}
 footer {
     font-family: Arial, sans-serif;
     margin: 20px;
-   color: black;
-    background-color: black;
-    margin-bottom: 40px;
-    }
+   color: white;
+   background-color: orange;
+    margin-bottom: 40px;    }
