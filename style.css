@@ -1,14 +1,8 @@
 /* Style for Eric Shotwell's website */
 root {
-    background-color: rgb(12, 12, 12);
-    margin-bottom: 40px;
-    max-width: 1024px;
+    background-color: rgb(212, 198, 198);
+    max-width: 800px;
 }
-header {
-    background-color: orange;
-    color: black;
-    text-align: center;
-    margin-bottom: 40px;}
 body {
     font-family: Arial, sans-serif;
     max-width: 400px;
@@ -17,29 +11,32 @@ body {
     background-color: orange;
     color: black;
     margin-bottom: 40px;}
+header {
+    background-color: orange;
+    color: black;
+    text-align: center;
+    margin-bottom: 40px;}
 content {
-   color: black;
+    color: black;
     max-width: 400px;
     border-left-width: 50px auto;
     border-right-width: 50px auto;
     margin-bottom: 40px;
     background-color: orange;}
 section { 
-   color: black;
-   background-color: orange;
-    width: 50%;
-    text-align: center;
+    color: black;
+    background-color: orange;
+   text-align: center;
     margin-bottom: 30px;}
 nav {
     font-family: Arial, sans-serif;
     margin: 20px;
     color: black;
-   background-color: orange;
+    background-color: orange;
     margin-bottom: 40px;
     text-align: center;}
 footer {
     font-family: Arial, sans-serif;
-    margin: 20px;
-   color: black
-   background-color: orange;
-    margin-bottom: 40px;    }
+    color: black;
+    background-color: orange;
+    margin-bottom: 40px;}
