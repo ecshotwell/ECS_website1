@@ -4,33 +4,38 @@ root {
     color: white;
     margin-bottom: 40px;
 }
-nav 
-{
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: black;
-    margin-bottom: 40px;
-}
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
     background-color: black;
     margin-bottom: 40px;
 }
-.header {
+header {
     color: white;
     text-align: center;
     margin-bottom: 40px;
 }
-.content {
+content {
     color: grey;
     max-width: 800px;
     margin: 0 auto;
     margin-bottom: 40px;
 }
-.section.img { 
+section.img { 
     color: rgba(247, 238, 238, 0.158);
     width: 50%;
     text-align: center;
     margin-bottom: 30px;
 }
+nav {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: black;
+    margin-bottom: 40px;
+}
+footer {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: black;
+    margin-bottom: 40px;
+    }
