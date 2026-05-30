@@ -1,12 +1,21 @@
 /* Style for Eric Shotwell's website */
-:root {
+root {
     background-color: rgb(117, 108, 108);
     color: white;
+    margin-bottom: 40px;
+}
+nav 
+{
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: black;
+    margin-bottom: 40px;
 }
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
     background-color: black;
+    margin-bottom: 40px;
 }
 .header {
     color: white;
@@ -17,9 +26,11 @@ body {
     color: grey;
     max-width: 800px;
     margin: 0 auto;
+    margin-bottom: 40px;
 }
-.section { 
-    color: grey;
+.section.img { 
+    color: rgba(247, 238, 238, 0.158);
     width: 50%;
+    text-align: center;
     margin-bottom: 30px;
 }
