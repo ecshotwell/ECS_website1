@@ -5,13 +5,16 @@ root {
 }
 
 header {
-   /* Target the container holding both the title and the image */
   display: flex;
-  justify-content: space-between; /* Pushes text to left, image to right */
-  align-items: center;        /* Vertically centers them */
-  flex-wrap: wrap;            /* Ensures it looks good on mobile devices */
-  margin-all: 40px;              /* Adds space around the header */
-  gap: 20px;}
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  
+  /* --- New Spacing Properties --- */
+  margin: 20px 40px;  /* Adds 20px of space above/below, and 40px on the left/right sides */
+  padding: 10px 0;    /* Optional: adds a tiny bit of internal breathing room */
+}
 header img {
   max-width: 400px; /* Constrains the width to a manageable size */
   width: 100%;       /* Allows it to scale down nicely on mobile screens */
@@ -112,13 +115,16 @@ footer {
     /* This applies only to screens narrower than 600px */
 @media (max-width: 600px) {
   header {
-    flex-direction: column;   /* Stacks the title and image vertically */
-    text-align: center;       /* Centers the "Eric Shotwell" text */
+    flex-direction: column;
+    text-align: center;
     justify-content: center;
+    
+    /* Pulls the side margins in slightly for smaller mobile screens */
+    margin: 20px 15px; 
   }
 
   header img {
-    margin: 15px auto 0 auto; /* Centers the image horizontally */
+    margin: 15px auto 0 auto;
     display: block;
   }
 }
