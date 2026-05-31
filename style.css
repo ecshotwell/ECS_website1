@@ -66,7 +66,7 @@ body::before {
     
 .focus-box  {
   /* Box Dimensions */
-  max-width: 600px;       /* Keeps the box from getting too wide on large screens */
+  max-width: 800px;       /* Keeps the box from getting too wide on large screens */
   width: 100%;            /* Allows it to be responsive on smaller screens */
   min-height: 200px;      /* Ensures the box has a minimum height */
   
