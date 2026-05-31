@@ -48,6 +48,27 @@ body::before {
     opacity: 0.1; 
 }
 
+.ideas-box  {
+  /* Box Dimensions */
+  max-width: 800px;       /* Keeps the box from getting too wide on large screens */
+  width: 100%;            /* Allows it to be responsive on smaller screens */
+  min-height: 200px;      /* Ensures the box has a minimum height */
+  
+  /* Spacing & Alignment */
+  margin: 40px auto;      /* Center aligns the box horizontally on the page */
+  padding: 30px;          /* Creates space between the text and the box border */
+  
+  /* Appearance */
+  background-color: #ffffff; /* Gives the box a background color */
+  border: 1px solid #dddddd; /* Adds a subtle border outline */
+  border-radius: 8px;     /* Rounds the corners smoothly */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft drop-shadow */
+  
+  /* Content Properties */
+  box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
+}
+
+
 .vision-box  {
   /* Box Dimensions */
   max-width: 800px;       /* Keeps the box from getting too wide on large screens */
@@ -86,6 +107,27 @@ body::before {
   
   /* Content Properties */
   box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */}
+
+
+  .contact-box  {
+  /* Box Dimensions */
+  max-width: 800px;       /* Keeps the box from getting too wide on large screens */
+  width: 100%;            /* Allows it to be responsive on smaller screens */
+  min-height: 200px;      /* Ensures the box has a minimum height */
+  
+  /* Spacing & Alignment */
+  margin: 40px auto;      /* Center aligns the box horizontally on the page */
+  padding: 30px;          /* Creates space between the text and the box border */
+  
+  /* Appearance */
+  background-color: #ffffff; /* Gives the box a background color */
+  border: 1px solid #dddddd; /* Adds a subtle border outline */
+  border-radius: 8px;     /* Rounds the corners smoothly */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft drop-shadow */
+  
+  /* Content Properties */
+  box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
+}
 
 
 nav ul {
