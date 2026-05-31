@@ -130,6 +130,74 @@ body::before {
 }
 
 
+/* Form Layout */
+.contact-form {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Spaces out the input fields */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left; /* Keeps labels aligned left if the header is centered */
+}
+
+/* Input & Textarea Styling */
+.contact-form label {
+  font-weight: bold;
+  color: #333333; /* Dark gray for readability against the white background */
+  font-size: 0.9rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Prevents fields from stretching past the container edges */
+  font-family: inherit;
+}
+
+/* Focus state when user clicks into a field */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #555555; /* Darker border on focus */
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: #222222; /* Sleek black/dark gray button */
+  color: #ffffff;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: flex-start; /* Keeps the button from stretching full-width on desktop */
+}
+
+.submit-btn:hover {
+  background-color: #444444; /* Slight lightning effect on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .submit-btn {
+    width: 100%; /* Makes the button easy to tap on mobile screens */
+    align-self: stretch;
+  }
+}
+
+
+
 nav ul {
   
   display: flex;          /* Aligns items side-by-side */
