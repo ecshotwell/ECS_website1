@@ -6,7 +6,7 @@ root {
 body {
     font-family: Arial, sans-serif;
     margin: 50px auto;
-    background-color: green;
+    background-color: rgb(85, 28, 28);
     color: black;
     margin-bottom: 40px;}
 header {
@@ -21,7 +21,7 @@ content {
     max-width: 600px;
     margin : 50px auto;
     margin-bottom: 40px;
-    background-color: (85, 28, 28);}
+    background-color: rgb(85, 28, 28);}
 
 section { 
     color: white;
