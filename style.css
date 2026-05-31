@@ -26,7 +26,7 @@ body::before {
     background-repeat: no-repeat;
     background-attachment: fixed;
     /* Control the transparency here (0.0 = fully invisible, 1.0 = fully opaque) */
-    opacity: 0.50; 
+    opacity: 0.99; 
 }
 header {
     color: black;
