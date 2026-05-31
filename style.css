@@ -4,7 +4,7 @@ root {
     max-width: 800px;
 }
 body {
-     color: white;
+     color: black;
      position: relative;
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@ body::before {
     background-repeat: no-repeat;
     background-attachment: fixed;
     /* Control the transparency here (0.0 = fully invisible, 1.0 = fully opaque) */
-    opacity: 0.99; 
+    opacity: 0.1; 
 }
 header {
     
