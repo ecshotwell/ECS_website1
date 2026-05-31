@@ -7,7 +7,7 @@ root {
 body {
 
     /* Specify the path to your image */
-    background-image: url('MainSplash.jpg');
+    background-image: url('./images/MainSplash.jpg');
 
     /* Prevent the image from repeating like a grid */
     background-repeat: no-repeat;
@@ -23,7 +23,7 @@ body {
 
     font-family: Arial, sans-serif;
     margin: 50px auto;
-    background-color: rgb(85, 28, 28);
+    background-color: #251c1c2d;
     color: white;
     margin-bottom: 40px;}
 header {
