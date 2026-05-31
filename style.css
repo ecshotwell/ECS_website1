@@ -29,6 +29,9 @@ section {
     margin: 50px auto;
     margin-bottom: 40px;}
 nav ul {
+  list-style-type: none; /* Removes the bullets */
+  padding: 0;            /* Removes the default left padding */
+  margin: 0;             /* Removes the default top/bottom margins */
     font-family: Arial, sans-serif;
     color: white;
     background-color: rgb(85, 28, 28);
