@@ -12,7 +12,7 @@ header {
   flex-wrap: wrap;            /* Ensures it looks good on mobile devices */
   gap: 20px;}
 header img {
-  max-width: 250px; /* Constrains the width to a manageable size */
+  max-width: 400px; /* Constrains the width to a manageable size */
   width: 100%;       /* Allows it to scale down nicely on mobile screens */
   height: auto;      /* Maintains the original aspect ratio so it doesn't stretch */
   object-fit: contain; 
