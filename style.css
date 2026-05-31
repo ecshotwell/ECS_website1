@@ -1,13 +1,14 @@
 /* Style for Eric Shotwell's website */
 root {
     background-color: rgb(85, 28, 28);
+    color: white;
     max-width: 800px;
 }
 body {
     font-family: Arial, sans-serif;
     margin: 50px auto;
     background-color: rgb(85, 28, 28);
-    color: black;
+    color: white;
     margin-bottom: 40px;}
 header {
     background-color: rgb(85, 28, 28);
