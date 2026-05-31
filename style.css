@@ -50,13 +50,15 @@ section img {
         display: block;
 }
 nav ul {
+    
+    color: black;
     list-style-type: none;  /* Removes the bullets */
     padding: 0;             /* Removes default left padding */
     margin: 0;              /* Removes default margins */
 }
 
 nav ul li {
-    color: black;
+    
     margin-bottom: 40px;    /* Adds the 40px bottom spacing */
     text-align: center;
     font-family: Arial, sans-serif;
