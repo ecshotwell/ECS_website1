@@ -83,18 +83,15 @@ section img {
         display: block;
 }
 nav ul {
-    
-    list-style-type: none;  /* Removes the bullets */
-    padding: 0;             /* Removes default left padding */
-    margin: 0;              /* Removes default margins */
+  
+  display: flex;          /* Aligns items side-by-side */
+  justify-content: center; /* Centers the list on the page */
+  gap: 20px;              /* Adds space between each link */
+  list-style-type: none;  /* Removes the bullet points */
+  padding: 0;             /* Removes default list padding */
+  margin: 20px 0;         /* Adds breathing room above and below the menu */
 }
 
-nav ul li {
-    
-    margin-bottom: 40px;    /* Adds the 40px bottom spacing */
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
 
 nav ul li a {
     color: black;
