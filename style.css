@@ -1,7 +1,6 @@
 /* Style for Eric Shotwell's website */
 root {
-    background-color: rgb(85, 28, 28);
-    color: white;
+    color: black;
     max-width: 800px;
 }
 body {
@@ -9,7 +8,7 @@ body {
     margin: 0;
     padding: 0;
     /* Ensure text stays readable over the background */
-    color: #ffffff; 
+    color: black;
 }
 body::before {
     content: "";
@@ -30,7 +29,6 @@ body::before {
     opacity: 0.4; 
 }
 header {
-    background-color: rgb(85, 28, 28);
     color: white;
     margin: 50px auto;
     text-align: center;
@@ -40,9 +38,8 @@ content {
      text-align: center;
     max-width: 600px;
     margin : 50px auto;
-    margin-bottom: 40px;
-    background-color: rgb(85, 28, 28);}
-section { 
+    margin-bottom: 40px;}
+    section { 
     color: white;
     text-align: center;}
 section img {
@@ -63,12 +60,11 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;           /* Makes the link text white */
+    color: black;          /* Makes the link text white */
     text-decoration: none;  /* Removes the underline from links */
 }
 footer {
     font-family: Arial, sans-serif;
-    color: white;
-   background-color: rgb(85, 28, 28);
+    color: black;
     text-align: center;
     margin-bottom: 40px;}
