@@ -1,7 +1,7 @@
 /* Style for Eric Shotwell's website */
 root {
    
-    max-width: 800px;
+    max-width: 1024px;
 }
 
 header {
@@ -46,7 +46,7 @@ body::before {
 
 .vision-box  {
   /* Box Dimensions */
-  max-width: 600px;       /* Keeps the box from getting too wide on large screens */
+  max-width: 800px;       /* Keeps the box from getting too wide on large screens */
   width: 100%;            /* Allows it to be responsive on smaller screens */
   min-height: 200px;      /* Ensures the box has a minimum height */
   
@@ -66,7 +66,7 @@ body::before {
     
 .focus-box  {
   /* Box Dimensions */
-  max-width: 800px;       /* Keeps the box from getting too wide on large screens */
+  max-width: 600px;       /* Keeps the box from getting too wide on large screens */
   width: 100%;            /* Allows it to be responsive on smaller screens */
   min-height: 200px;      /* Ensures the box has a minimum height */
   
@@ -107,3 +107,17 @@ footer {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-bottom: 40px;}
+
+    /* This applies only to screens narrower than 600px */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;   /* Stacks the title and image vertically */
+    text-align: center;       /* Centers the "Eric Shotwell" text */
+    justify-content: center;
+  }
+
+  header img {
+    margin: 15px auto 0 auto; /* Centers the image horizontally */
+    display: block;
+  }
+}
