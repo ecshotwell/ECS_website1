@@ -3,6 +3,15 @@ root {
    
     max-width: 800px;
 }
+
+header {
+   /* Target the container holding both the title and the image */
+  display: flex;
+  justify-content: space-between; /* Pushes text to left, image to right */
+  align-items: center;        /* Vertically centers them */
+  flex-wrap: wrap;            /* Ensures it looks good on mobile devices */
+  gap: 20px;}
+
 body {
      color: black;
      position: relative;
@@ -29,11 +38,7 @@ body::before {
     /* Control the transparency here (0.0 = fully invisible, 1.0 = fully opaque) */
     opacity: 0.1; 
 }
-header {
-    
-    margin: 50px auto;
-    text-align: center;
-    margin-bottom: 40px;}
+
 .vision-box  {
   /* Box Dimensions */
   max-width: 600px;       /* Keeps the box from getting too wide on large screens */
