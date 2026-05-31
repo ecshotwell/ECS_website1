@@ -6,7 +6,7 @@ root {
 body {
     font-family: Arial, sans-serif;
     margin: 50px auto;
-    background-color: orange;
+    background-color: green;
     color: black;
     margin-bottom: 40px;}
 header {
@@ -23,9 +23,6 @@ content {
     margin-bottom: 40px;
     background-color: (85, 28, 28);}
 
-
-   
-
 section { 
     color: white;
     background-color: rgb(85, 28, 28);
@@ -35,13 +32,21 @@ section img {
     height: 225px;
     object-fit: cover; /* Prevents the image from stretching weirdly */
 }
+nav ul {
+    list-style-type: none;  /* Removes the bullets */
+    padding: 0;             /* Removes default left padding */
+    margin: 0;              /* Removes default margins */
+}
+
 nav ul li {
-    color: white;                  /* Changes both the text and the bullet to white */
-    list-style-type: none;         /* Removes the bullets */
-    padding: 0;                    /* Removes the default left padding */
-    margin: 0 0 40px 0;            /* Sets top/sides to 0, and bottom margin to 40px */
-    font-family: Arial, sans-serif;
+    margin-bottom: 40px;    /* Adds the 40px bottom spacing */
     text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+nav ul li a {
+    color: white;           /* Makes the link text white */
+    text-decoration: none;  /* Removes the underline from links */
 }
 footer {
     font-family: Arial, sans-serif;
