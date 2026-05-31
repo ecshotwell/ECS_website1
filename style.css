@@ -10,25 +10,26 @@ body {
     color: black;
     margin-bottom: 40px;}
 header {
-    background-color: black;
+    background-color: rgb(85, 28, 28);
     color: white;
     margin: 50px auto;
     text-align: center;
     margin-bottom: 40px;}
 content {
-    color: black;
+    color: white;
      text-align: center;
     max-width: 600px;
     margin : 50px auto;
     margin-bottom: 40px;
-    background-color: orange;}
+    background-color: (85, 28, 28);}
 section { 
-    color: black;
-    background-color: orange;
+    color: white;
+    background-color: rgb(85, 28, 28);
     text-align: center;
     margin: 50px auto;
     margin-bottom: 40px;}
-nav ul {
+*nav ul li {
+  color: white; /* Changes both the text and the bullet to blue */
     list-style-type: none; /* Removes the bullets */
      padding: 0;            /* Removes the default left padding */
      margin: 0;             /* Removes the default top/bottom margins */
