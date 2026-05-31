@@ -5,27 +5,30 @@ root {
     max-width: 800px;
 }
 body {
-
-    /* Specify the path to your image */
-    background-image: url('./images/MainSplash.jpg');
-
-    /* Prevent the image from repeating like a grid */
-    background-repeat: no-repeat;
-
-    /* Center the image on the screen */
-    background-position: center;
-
-    /* Ensure the image stretches to cover the entire screen */
+    position: relative;
+    margin: 0;
+    padding: 0;
+    /* Ensure text stays readable over the background */
+    color: #ffffff; 
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Places the image behind your text content */
+    
+    /* Your background image settings */
+    background-image: url('./images/MainSplash.jpg'); 
     background-size: cover;
-
-    /* Keep the background fixed in place while scrolling */
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-
-    font-family: Arial, sans-serif;
-    margin: 50px auto;
-    background-color: #251c1c2d;
-    color: white;
-    margin-bottom: 40px;}
+    /* Control the transparency here (0.0 = fully invisible, 1.0 = fully opaque) */
+    opacity: 0.4; 
+}
 header {
     background-color: rgb(85, 28, 28);
     color: white;
@@ -39,7 +42,6 @@ content {
     margin : 50px auto;
     margin-bottom: 40px;
     background-color: rgb(85, 28, 28);}
-
 section { 
     color: white;
     text-align: center;}
