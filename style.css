@@ -27,7 +27,7 @@ section {
     text-align: center;
     margin: 50px auto;
     margin-bottom: 40px;}
-nav {
+.nav.ul {
     font-family: Arial, sans-serif;
     color: white;
     background-color: rgb(85, 28, 28);
