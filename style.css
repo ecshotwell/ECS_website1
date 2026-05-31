@@ -5,7 +5,22 @@ root {
     max-width: 800px;
 }
 body {
-    background: url('MainSplash.jpg') no-repeat center center / cover fixed;
+
+    /* Specify the path to your image */
+    background-image: url('MainSplash.jpg');
+
+    /* Prevent the image from repeating like a grid */
+    background-repeat: no-repeat;
+
+    /* Center the image on the screen */
+    background-position: center;
+
+    /* Ensure the image stretches to cover the entire screen */
+    background-size: cover;
+
+    /* Keep the background fixed in place while scrolling */
+    background-attachment: fixed;
+
     font-family: Arial, sans-serif;
     margin: 50px auto;
     background-color: rgb(85, 28, 28);
