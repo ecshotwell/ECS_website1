@@ -26,21 +26,21 @@ body::before {
     background-repeat: no-repeat;
     background-attachment: fixed;
     /* Control the transparency here (0.0 = fully invisible, 1.0 = fully opaque) */
-    opacity: 0.4; 
+    opacity: 0.25; 
 }
 header {
-    color: white;
+    color: black;
     margin: 50px auto;
     text-align: center;
     margin-bottom: 40px;}
 content {
-    color: white;
-     text-align: center;
+    color: black;
+    text-align: center;
     max-width: 600px;
     margin : 50px auto;
     margin-bottom: 40px;}
-    section { 
-    color: white;
+section { 
+    color: black;
     text-align: center;}
 section img {
     width: 400px;
