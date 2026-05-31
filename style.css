@@ -54,7 +54,7 @@ header {
   box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
 }
     
-focus-box  {
+.focus-box  {
   /* Box Dimensions */
   max-width: 600px;       /* Keeps the box from getting too wide on large screens */
   width: 100%;            /* Allows it to be responsive on smaller screens */
