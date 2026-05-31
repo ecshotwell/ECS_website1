@@ -10,6 +10,7 @@ header {
   justify-content: space-between; /* Pushes text to left, image to right */
   align-items: center;        /* Vertically centers them */
   flex-wrap: wrap;            /* Ensures it looks good on mobile devices */
+  margin-all: 40px;              /* Adds space around the header */
   gap: 20px;}
 header img {
   max-width: 400px; /* Constrains the width to a manageable size */
