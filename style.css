@@ -20,7 +20,7 @@ body::before {
     z-index: -1; /* Places the image behind your text content */
     
     /* Your background image settings */
-    background-image: url('./images/MainSplash.jpg'); 
+    background-image: url('./imgfiles/MainSplash.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -45,7 +45,8 @@ section {
 section img {
     width: 400px;
     height: 225px;
-    object-fit: cover; /* Prevents the image from stretching weirdly */
+        margin: 20px auto;
+        display: block;
 }
 nav ul {
     list-style-type: none;  /* Removes the bullets */
