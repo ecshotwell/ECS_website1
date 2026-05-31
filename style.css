@@ -5,6 +5,7 @@ root {
     max-width: 800px;
 }
 body {
+    background: url('MainSplash.jpg') no-repeat center center / cover fixed;
     font-family: Arial, sans-serif;
     margin: 50px auto;
     background-color: rgb(85, 28, 28);
