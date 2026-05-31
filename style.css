@@ -11,7 +11,12 @@ header {
   align-items: center;        /* Vertically centers them */
   flex-wrap: wrap;            /* Ensures it looks good on mobile devices */
   gap: 20px;}
-
+header img {
+  max-width: 250px; /* Constrains the width to a manageable size */
+  width: 100%;       /* Allows it to scale down nicely on mobile screens */
+  height: auto;      /* Maintains the original aspect ratio so it doesn't stretch */
+  object-fit: contain; 
+}
 body {
      color: black;
      position: relative;
@@ -78,15 +83,7 @@ body::before {
   /* Content Properties */
   box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */}
 
-section { 
-   
-    text-align: center;}
-section img {
-    width: 400px;
-    height: 225px;
-        margin: 20px auto;
-        display: block;
-}
+
 nav ul {
   
   display: flex;          /* Aligns items side-by-side */
