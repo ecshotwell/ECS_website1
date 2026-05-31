@@ -22,21 +22,27 @@ content {
     margin : 50px auto;
     margin-bottom: 40px;
     background-color: (85, 28, 28);}
+
+
+   
+
 section { 
     color: white;
     background-color: rgb(85, 28, 28);
-    text-align: center;
-    margin: 50px auto;
-    margin-bottom: 40px;}
-*nav ul li {
-  color: white; /* Changes both the text and the bullet to blue */
-    list-style-type: none; /* Removes the bullets */
-     padding: 0;            /* Removes the default left padding */
-     margin: 0;             /* Removes the default top/bottom margins */
-    font-family: Arial, sans-serif;
-    background-color: rgb(85, 28, 28);
-    margin-bottom: 40px;
     text-align: center;}
+section img {
+    width: 400px;
+    height: 225px;
+    object-fit: cover; /* Prevents the image from stretching weirdly */
+}
+nav ul li {
+    color: white;                  /* Changes both the text and the bullet to white */
+    list-style-type: none;         /* Removes the bullets */
+    padding: 0;                    /* Removes the default left padding */
+    margin: 0 0 40px 0;            /* Sets top/sides to 0, and bottom margin to 40px */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 footer {
     font-family: Arial, sans-serif;
     color: white;
