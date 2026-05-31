@@ -1,6 +1,6 @@
 /* Style for Eric Shotwell's website */
 root {
-    color: black;
+    color: white;
     max-width: 800px;
 }
 body {
@@ -8,7 +8,7 @@ body {
     margin: 0;
     padding: 0;
     /* Ensure text stays readable over the background */
-    color: black;
+    
 }
 body::before {
     content: "";
@@ -29,18 +29,18 @@ body::before {
     opacity: 0.99; 
 }
 header {
-    color: black;
+    
     margin: 50px auto;
     text-align: center;
     margin-bottom: 40px;}
 content {
-    color: black;
+   
     text-align: center;
     max-width: 600px;
     margin : 50px auto;
     margin-bottom: 40px;}
 section { 
-    color: black;
+   
     text-align: center;}
 section img {
     width: 400px;
@@ -61,11 +61,9 @@ nav ul li {
 }
 
 nav ul li a {
-    color: black;          /* Makes the link text white */
     text-decoration: none;  /* Removes the underline from links */
 }
 footer {
     font-family: Arial, sans-serif;
-    color: black;
     text-align: center;
     margin-bottom: 40px;}
