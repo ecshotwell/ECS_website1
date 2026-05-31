@@ -5,7 +5,7 @@ root {
 }
 body {
     font-family: Arial, sans-serif;
-   margin: 50px auto;
+    margin: 50px auto;
     background-color: orange;
     color: black;
     margin-bottom: 40px;}
@@ -17,6 +17,7 @@ header {
     margin-bottom: 40px;}
 content {
     color: black;
+    max-width: 800px;
     margin : 50px auto;
     margin-bottom: 40px;
     background-color: orange;}
