@@ -203,6 +203,12 @@ body::before {
   box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
 }
 
+.content-container {
+  max-width: 800px; /* Adjust this to match your upper card's exact width */
+  margin: 0 auto;   /* Centers the content horizontally */
+  padding: 0 20px;  /* Prevents content from hitting the screen edges on mobile */
+}
+
 /* Form Layout */
 .contact-form {
   margin-top: 25px;
