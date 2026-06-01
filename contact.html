@@ -32,17 +32,26 @@
   
   <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
     <input type="hidden" name="access_key" value="0203d124-62ff-4b4a-a42c-f65c916ab424">
+    <form class="contact-form">
+  
+  <div class="form-group">
     <label for="name">Name*</label>
     <input type="text" id="name" name="name" placeholder="Your Name" required>
+  </div>
 
+  <div class="form-group">
     <label for="email">Email*</label>
     <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+  </div>
 
-    <label for="message">Project Details*</label>
-    <textarea id="message" name="message" placeholder="Describe the vision you have in mind..." required></textarea>
+  <div class="form-group">
+    <label for="details">Project Details*</label>
+    <textarea id="details" name="details" rows="4" placeholder="Describe the vision you have in mind..." required></textarea>
+  </div>
 
-    <button type="submit" id="submitBtn">Send Message</button>
-</form>
+  <button type="submit" id="submit-button">Send Message</button>
+
+</form></form>
 <div id="formResponse" class="hidden-message"></div>
 
 </main>
