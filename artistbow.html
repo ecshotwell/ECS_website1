@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Eric Shotwell, Artist Blacksmith</title>
+    <!-- Link to your existing style sheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Include PapaParse to easily read CSV files -->
+    <script src="https://cloudflare.com"></script>
+    <style>
+        /* Portfolio Grid and Layout Styling */
+        .portfolio-section { padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .filter-group { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; background: #f4f4f4; padding: 15px; border-radius: 5px; }
+        .filter-item { display: flex; flex-direction: column; min-width: 150px; }
+        .filter-item label { font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; }
+        .filter-item select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; background: white; }
+        
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+        .gallery-card { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .gallery-card:hover { transform: translateY(-3px); }
+        .gallery-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .gallery-info { padding: 15px; }
+        .gallery-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; }
+        .gallery-info p { margin: 4px 0; font-size: 0.85rem; color: #555; }
+        .gallery-info strong { color: #222; }
+        .no-results { grid-column: 1 / -1; text-align: center; padding: 40px; color: #777; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Eric Shotwell, Artist Blacksmith</h1>
+        <picture>
+            <img src="./imgfiles/rest1.jpg" alt="Restaurant Sign and Flowing Bracket from Budapest" title="Restaurant Sign and Flowing Bracket from Budapest">
+        </picture>
+    </header>
+
+    <main class="portfolio-section">
+        <h2>Artwork Portfolio</h2>
+        <p>Use the filters below to browse through my work by subject, medium, location, or category.</p>
+
+        <!-- Filters Section -->
+        <div class="filter-group">
+            <div class="filter-item">
+                <label for="filter-subject">Subject</label>
+                <select id="filter-subject" onchange="filterGallery()"><option value="all">All Subjects</option></select>
+            </div>
+            <div class="filter-item">
+                <label for="filter-medium">Medium</label>
+                <select id="filter-medium" onchange="filterGallery()"><option value="all">All Media</option></select>
+            </div>
+            <div class="filter-item">
+                <label for="filter-location">Location</label>
+                <select id="filter-location" onchange="filterGallery()"><option value="all">All Locations</option></select>
+            </div>
+            <div class="filter-item">
+                <label for="filter-category">Category</label>
+                <select id="filter-category" onchange="filterGallery()"><option value="all">All Categories</option></select>
+            </div>
+        </div>
+
+        <!-- Dynamic Gallery Grid -->
+        <div id="portfolio-grid" class="portfolio-grid">
+            <p>Loading gallery items...</p>
+        </div>
+    </main>
+
+    <footer>
+        <ul class="footer-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vision.html">Vision</a></li>
+            <li><a href="professionalfocus.html">Professional Focus</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <!-- Highlight the current page link -->
+            <li><a href="artistbow.html" style="text-decoration: underline; font-weight: bold;">Portfolio</a></li>
+        </ul>
+        <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let masterGalleryData = [];
+
+        // 1. Fetch and Parse the CSV file automatically
+        Papa.parse("images.csv", {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                masterGalleryData = results.data;
+                populateFilterDropdowns(masterGalleryData);
+                displayGallery(masterGalleryData);
+            },
+            error: function(err) {
+                document.getElementById('portfolio-grid').innerHTML = '<p class="no-results">Error loading portfolio data. Please ensure images.csv exists.</p>';
+                console.error(err);
+            }
+        });
+
+        // 2. Dynamically extract unique values from CSV to build dropdown filter options
+        function populateFilterDropdowns(data) {
+            const attributes = ['subject', 'medium', 'location', 'category'];
+            
+            attributes.forEach(attr => {
+                const selectElement = document.getElementById(`filter-${attr}`);
+                // Extract unique values, clear out empty items, and sort alphabetically
+                const uniqueValues = [...new Set(data.map(item => item[attr]?.trim()).filter(Boolean))].sort();
+                
+                uniqueValues.forEach(value => {
+                    const option = document.createElement('option');
+                    option.value = value;
+                    option.textContent = value;
+                    selectElement.appendChild(option);
+                });
+            });
+        }
+
+        // 3. Render gallery cards into the HTML grid
+        function displayGallery(items) {
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                grid.innerHTML = '<div class="no-results">No items match your chosen filter criteria.</div>';
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'gallery-card';
+                
+                // Construct path matching your structure. Updates file path inside ./imgfiles/
+                const imgPath = `./imgfiles/${item.filename.trim()}`;
+
+                card.innerHTML = `
+                    <img src="${imgPath}" alt="${item.subject || 'Blacksmith Artwork'}" loading="lazy">
+                    <div class="gallery-info">
+                        <h3>${item.subject || 'Untitled'}</h3>
+                        <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
+                        <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
+                        <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 4. Filter the gallery using all selected choices simultaneously
+        function filterGallery() {
+            const subjectFilter = document.getElementById('filter-subject').value;
+            const mediumFilter = document.getElementById('filter-medium').value;
+            const locationFilter = document.getElementById('filter-location').value;
+            const categoryFilter = document.getElementById('filter-category').value;
+
+            const filteredResults = masterGalleryData.filter(item => {
+                const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
+                const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
+                const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
+                const matchCategory = (categoryFilter === 'all' || item.category?.trim() === categoryFilter);
+
+                return matchSubject && matchMedium && matchLocation && matchCategory;
+            });
+
+            displayGallery(filteredResults);
+        }
+    </script>
+</body>
+</html>
