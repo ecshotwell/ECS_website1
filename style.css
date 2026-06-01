@@ -126,7 +126,7 @@ body::before {
   cursor: pointer;
   font-size: 20px;
   border-radius: 50%;
-  transition: background 0.3s;
+  transition: background-color 0.3s;
   z-index: 10;
 }
 #prevBtn { left: 15px; }
@@ -260,15 +260,11 @@ body::before {
 
 .submit-btn:hover {
   background-color: #444444; /* Slight lightning effect on hover */
-}
 
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
+  @media (-width: 600px) {
   .submit-btn {
     width: 100%; /* Makes the button easy to tap on mobile screens */
-    align-self: stretch;
-  }
-}
+    align-self: stretch; } }
 
 
 
@@ -296,8 +292,7 @@ footer {
     text-align: center;
     margin-bottom: 40px;}
 
-    /* This applies only to screens narrower than 600px */
-@media (max-width: 600px) {
+   @media (-width: 600px) {
   header {
     flex-direction: column;
     text-align: center;
@@ -310,5 +305,4 @@ footer {
   header img {
     margin: 15px auto 0 auto;
     display: block;
-  }
-}
+  }}}
