@@ -248,28 +248,54 @@ body::before {
   outline: none;
   border-color: #555555; /* Darker border on focus */
 }
-
-/* Submit Button */
-.submit-btn {
-  background-color: #222222; /* Sleek black/dark gray button */
-  color: #ffffff;
-  padding: 14px 20px;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  align-self: flex-start; /* Keeps the button from stretching full-width on desktop */
+/* Button Styling */
+#submitBtn {
+    background-color: #2c2c2c; /* Sleek dark gray/black matching ironwork themes */
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: 1px solid #2c2c2c;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; /* Makes it full width like your current layout, or change to auto */
 }
 
-.submit-btn:hover {
-  background-color: #444444; /* Slight lightning effect on hover */
+/* Hover and Active States */
+#submitBtn:hover {
+    background-color: #4a4a4a;
+    border-color: #4a4a4a;
+}
 
-  @media (-width: 600px) {
-  .submit-btn {
-    width: 100%; /* Makes the button easy to tap on mobile screens */
-    align-self: stretch; }}}
+#submitBtn:disabled {
+    background-color: #cccccc;
+    border-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Success/Error Message Box */
+#formResponse {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    display: none; /* Hidden by default */
+}
+
+#formResponse.success {
+    display: block;
+    background-color: #e6f4ea;
+    color: #137333;
+    border: 1px solid #c2e7cb;
+}
+
+#formResponse.error {
+    display: block;
+    background-color: #fce8e6;
+    color: #c5221f;
+    border: 1px solid #fad2cf;
+}
 
 
 /* 1. Reset the default browser list styles completely */
