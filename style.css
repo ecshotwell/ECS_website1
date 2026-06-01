@@ -267,27 +267,31 @@ body::before {
 
 
 
-nav ul {
-  
-  display: flex;          /* Aligns items side-by-side */
-  justify-content: center; /* Centers the list on the page */
-  gap: 20px;              /* Adds space between each link */
-  list-style-type: none;  /* Removes the bullet points */
-  padding: 0;             /* Removes default list padding */
-  margin: 20px 0;         /* Adds breathing room above and below the menu */
-}
-
-
-nav ul li a {
-    color: black;
-    text-decoration: none;  /* Removes the underline from links */
-}
-ul li a:hover {
-  color: #6caf14;
-  text-decoration: underline;
-}
 footer {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-bottom: 40px;}
+  width: 100%;
+  padding: 20px 0;
+  background-color: transparent; /* Or choose a background color that fits your design */
+  margin-top: 40px; /* Pushes the footer down from the content above */
 }
+
+.footer-nav {
+  display: flex;                  /* Aligns items in a row */
+  justify-content: center;        /* Centers the entire group of links */
+  gap: 40px;                      /* Adjusts the even spacing between each link */
+  list-style-type: none;          /* Removes the bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav li a {
+  color: #000000;                 /* Forces the text color to pure black */
+  text-decoration: none;          /* Removes the default underline (optional) */
+  font-family: Arial, sans-serif; /* Clean font choice */
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Subtle hover effect to keep it interactive for the viewer */
+.footer-nav li a:hover {
+  color: #555555;                 /* Turns a soft grey on hover */
+}}
