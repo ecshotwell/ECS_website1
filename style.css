@@ -203,7 +203,6 @@ body::before {
   box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
 }
 
-
 /* Form Layout */
 .contact-form {
   margin-top: 25px;
@@ -291,18 +290,4 @@ footer {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-bottom: 40px;}
-
-   @media (-width: 600px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    
-    /* Pulls the side margins in slightly for smaller mobile screens */
-    margin: 20px 15px; 
-  }
-
-  header img {
-    margin: 15px auto 0 auto;
-    display: block;
-  }}}
+}

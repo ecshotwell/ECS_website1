@@ -27,8 +27,11 @@
     <main class="vision-box">
            <h2>Inspiration from Eastern Europe</h2>
         <p>Blacksmiths produced intricate designs influenced by the region's rich cultural heritage. These pieces often feature bold geometric patterns and flowing lines that capture the essence of Eastern European craftsmanship.  From Austria to Hungary, the influence of this artistic tradition can be seen in the detailed work and innovative techniques that define the region's blacksmithing legacy.</p>
-
+    </main>
 <div class="carousel-container">
+  <button id="prevBtn">&lt;</button>
+  <button id="nextBtn">&gt;</button>
+
   <div class="carousel-slide">
     <img src="./imgfiles/eu-iron/danube3.jpg" alt="Iron Fence" data-title="Church Fence" data-desc="Half height fence on rock wall.">
     <img src="./imgfiles/eu-iron/danube5.jpg" alt="Iron and Wood Door" data-title="Early 20th Century Door" data-desc="Residential door with ironwork and wood panels.">
@@ -38,15 +41,14 @@
     <img src="./imgfiles/eu-iron/bud_iron2.jpg" alt="Art Nouveau Transom" data-title="Art Nouveau Transom" data-desc="Transom decorative ironwork.">
     </div>
 
-  <button id="prevBtn">&#10094;</button>
-  <button id="nextBtn">&#10095;</button>
-
   <div class="carousel-caption">
-    <h3 id="captionTitle">Artwork 1 Title</h3>
-    <p id="captionDesc">Artwork 1 Description</p>
+    <h3 id="captionTitle"><data-title></data-title></h3>
+    <p id="captionDesc"><data-desc></data-desc></p>
   </div>
-</div> </main>
- <nav>
+</div> 
+
+
+<nav>
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="vision.html">Vision</a></li>
@@ -57,5 +59,6 @@
 <footer>
     <p>&copy; 2026 Eric Shotwell. All rights reserved.</p>
 </footer>
+<script src="carousel1.js"></script>
 </body>
 </html>
