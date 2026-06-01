@@ -269,29 +269,43 @@ body::before {
 
 footer {
   width: 100%;
-  padding: 20px 0;
-  background-color: transparent; /* Or choose a background color that fits your design */
-  margin-top: 40px; /* Pushes the footer down from the content above */
+  padding: 30px 0;
+  background-color: transparent;
+  margin-top: 40px;
+  text-align: center; /* Centers the copyright text underneath */
 }
 
 .footer-nav {
-  display: flex;                  /* Aligns items in a row */
-  justify-content: center;        /* Centers the entire group of links */
-  gap: 40px;                      /* Adjusts the even spacing between each link */
-  list-style-type: none;          /* Removes the bullet points */
+  display: flex;                  
+  justify-content: center;        
+  gap: 40px;                      
+  list-style-type: none;          
   padding: 0;
   margin: 0;
+  flex-wrap: nowrap; /* CRITICAL: Prevents the links from dropping to a new line */
+}
+
+.footer-nav li {
+  display: inline-block; /* Secondary safeguard for older browser versions */
 }
 
 .footer-nav li a {
-  color: #000000;                 /* Forces the text color to pure black */
-  text-decoration: none;          /* Removes the default underline (optional) */
-  font-family: Arial, sans-serif; /* Clean font choice */
+  color: #000000;                 
+  text-decoration: none;          
+  font-family: Arial, sans-serif; 
   font-size: 1rem;
   transition: color 0.3s ease;
+  white-space: nowrap; /* Prevents long link names like "Professional Focus" from breaking into two lines */
 }
 
-/* Subtle hover effect to keep it interactive for the viewer */
 .footer-nav li a:hover {
-  color: #555555;                 /* Turns a soft grey on hover */
+  color: #555555;                 
+}
+
+/* Style for the copyright line underneath */
+.copyright {
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  color: #333333;
 }}
