@@ -103,7 +103,7 @@ body::before {
 }
 
 .lightbox-img-container { 
-    flex: 1.5; /* Changed from 1 to give the image more priority over the text */
+    flex: 3; /* Changed from 1 to give the image more priority over the text */
     min-width: 300px; 
     background: #111; 
     display: flex; 
