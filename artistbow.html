@@ -8,42 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <!-- Include PapaParse to easily read CSV files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-    <style>
-        /* Portfolio Grid and Layout Styling */
-        .portfolio-section { padding: 20px; max-width: 1200px; margin: 0 auto; }
-        .filter-group { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; background: #f4f4f4; padding: 15px; border-radius: 5px; }
-        .filter-item { display: flex; flex-direction: column; min-width: 150px; }
-        .filter-item label { font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; }
-        .filter-item select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; background: white; }
-        
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
-        .gallery-card { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; cursor: pointer; }
-        .gallery-card:hover { transform: translateY(-3px); }
-        .gallery-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
-        .gallery-info { padding: 15px; }
-        .gallery-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; }
-        .gallery-info p { margin: 4px 0; font-size: 0.85rem; color: #555; }
-        .gallery-info strong { color: #222; }
-        .no-results { grid-column: 1 / -1; text-align: center; padding: 40px; color: #777; font-style: italic; }
-
-        /* --- LIGHTBOX (POP-UP) STYLING --- */
-        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
-        .lightbox-content { background: #fff; max-width: 800px; width: 100%; max-height: 90vh; border-radius: 8px; overflow-y: auto; display: flex; flex-direction: column; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-        .lightbox-close { position: absolute; top: 15px; right: 20px; font-size: 35px; font-weight: bold; color: #fff; cursor: pointer; background: rgba(0,0,0,0.6); width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; line-height: 1; z-index: 1010; transition: background 0.2s; }
-        .lightbox-close:hover { background: #000; }
-        .lightbox-body { display: flex; flex-direction: row; flex-wrap: wrap; }
-        .lightbox-img-container { flex: 1; min-width: 300px; background: #111; display: flex; align-items: center; justify-content: center; }
-        .lightbox-body img { max-width: 100%; max-height: 70vh; object-fit: contain; display: block; }
-        .lightbox-details { flex: 1; min-width: 280px; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
-        .lightbox-details h2 { margin-top: 0; font-size: 1.6rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .lightbox-details p { font-size: 1rem; margin: 10px 0; color: #444; }
-
-        /* Responsive shift for small mobile screens */
-        @media (max-width: 650px) {
-            .lightbox-body { flex-direction: column; }
-            .lightbox-details { padding: 20px; }
-        }
-    </style>
 </head>
 <body>
 
