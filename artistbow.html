@@ -160,7 +160,8 @@
         items.forEach((item, index) => {
             const card = document.createElement('div');
             card.className = 'gallery-card';
-            const imgPath = `./imgfiles/${item.filename.trim()}`;
+            let filename = item.filename.trim();
+            const imgPath = filename.startsWith('imgfiles/') ? `./${filename}` : `./imgfiles/${filename}`;
             card.innerHTML = `
                 <img src="${imgPath}" alt="${item.subject || 'Blacksmith Artwork'}" loading="lazy">
                 <div class="gallery-info">

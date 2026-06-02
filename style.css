@@ -48,6 +48,20 @@ body::before {
     opacity: 0.1; 
 }
 
+.gallery-card { 
+    border: 1px solid #ddd; 
+    border-radius: 6px; 
+    overflow: hidden; 
+    background: #fff; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+    transition: transform 0.2s; 
+    cursor: pointer;
+    
+    /* Add these two lines to force layout calculation */
+    display: flex;
+    flex-direction: column;
+}
+
 .ideas-box  {
   /* Box Dimensions */
   max-width: 800px;       /* Keeps the box from getting too wide on large screens */
