@@ -161,7 +161,7 @@
             const card = document.createElement('div');
             card.className = 'gallery-card';
             let filename = item.filename.trim();
-            const imgPath = filename.startsWith('imgfiles/') ? `./${filename}` : `./imgfiles/${filename}`;
+            const imgPath = filename.startsWith('imgfiles/eu-iron/') ? `./${filename}` : `./imgfiles/eu-iron/${filename}`;
             card.innerHTML = `
                 <img src="${imgPath}" alt="${item.subject || 'Blacksmith Artwork'}" loading="lazy">
                 <div class="gallery-info">
@@ -199,7 +199,7 @@
     // Open Lightbox Pop-up
     function openLightbox(item) {
         // FIXED: Added missing backticks around template literal path
-        const imgPath = `./imgfiles/${item.filename.trim()}`;
+        const imgPath = `./imgfiles/eu-iron/${item.filename.trim()}`;
         
         document.getElementById('lightbox-img').src = imgPath;
         document.getElementById('lightbox-img').alt = item.subject || 'Blacksmith Artwork';
