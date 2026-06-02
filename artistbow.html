@@ -20,8 +20,6 @@
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
     .gallery-card { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; cursor: pointer; display: flex; flex-direction: column; }
     .gallery-card:hover { transform: translateY(-3px); }
-    
-    /* FIXED: This rule now uniquely targets ONLY the unselected grid images */
     .gallery-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
     
     .gallery-info { padding: 15px; }
@@ -39,7 +37,7 @@
         width: 100%; 
         max-height: 90vh; 
         border-radius: 8px; 
-        overflow-y: auto; 
+        overflow: hidden; /* Stops the popup wrapper from scrolling */
         display: flex; 
         flex-direction: column; 
         position: relative; 
@@ -52,6 +50,7 @@
     .lightbox-body { 
         display: flex; 
         flex-direction: column; 
+        min-height: 0; /* Allows the image wrapper to shrink to give text room */
     }
     
     .lightbox-img-container { 
@@ -61,12 +60,12 @@
         align-items: center; 
         justify-content: center; 
         padding: 10px 0; 
+        min-height: 0; 
     }
     
-    /* FIXED: This rule uniquely scales ONLY the image inside the pop-up container */
     #lightbox-img { 
         max-width: 100%; 
-        max-height: 75vh; 
+        max-height: 100%; /* Dynamically fills whatever space text doesn't steal */
         object-fit: contain; 
         display: block; 
         margin: 0 auto; 
@@ -75,6 +74,7 @@
     .lightbox-details { 
         padding: 25px 30px; 
         background: #fff; 
+        flex-shrink: 0; /* Ensures the text description never cuts off or squishes */
     }
     
     .lightbox-details h2 { 
