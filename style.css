@@ -84,7 +84,7 @@ body::before {
 
 .lightbox-content { 
     background: #fff; 
-    max-width: 1200px; /* Increased from 800px */
+    max-width: 900px; /* A clean width for a vertical layout */
     width: 100%; 
     max-height: 90vh; 
     border-radius: 8px; 
@@ -95,21 +95,47 @@ body::before {
     box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
 }
 
-.lightbox-body img { 
-    max-width: 100%; 
-    max-height: 80vh; /* Increased from 70vh */
-    object-fit: contain; 
-    display: block; 
+.lightbox-body { 
+    display: flex; 
+    flex-direction: column; /* Changed from row to column to put text underneath */
 }
 
 .lightbox-img-container { 
-    flex: 3; /* Changed from 1 to give the image more priority over the text */
-    min-width: 300px; 
+    width: 100%; 
     background: #111; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
+    padding: 10px 0; /* Adds a clean dark frame above/below the image */
 }
+
+.lightbox-body img { 
+    max-width: 100%; 
+    max-height: 75vh; /* Allows the image to take up most of the screen height */
+    object-fit: contain; 
+    display: block; 
+    margin: 0 auto;
+}
+
+.lightbox-details { 
+    padding: 25px 30px; 
+    background: #fff;
+}
+
+.lightbox-details h2 { 
+    margin-top: 0; 
+    font-size: 1.6rem; 
+    border-bottom: 2px solid #eee; 
+    padding-bottom: 8px; 
+    margin-bottom: 15px;
+}
+
+.lightbox-details p { 
+    font-size: 1rem; 
+    margin: 6px 0; 
+    color: #444; 
+}
+
 
 .vision-box  {
   /* Box Dimensions */
