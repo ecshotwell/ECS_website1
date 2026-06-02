@@ -17,7 +17,7 @@
         .filter-item select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; background: white; }
         
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
-        .gallery-card { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .gallery-card { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; cursor: pointer; }
         .gallery-card:hover { transform: translateY(-3px); }
         .gallery-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
         .gallery-info { padding: 15px; }
@@ -25,6 +25,24 @@
         .gallery-info p { margin: 4px 0; font-size: 0.85rem; color: #555; }
         .gallery-info strong { color: #222; }
         .no-results { grid-column: 1 / -1; text-align: center; padding: 40px; color: #777; font-style: italic; }
+
+        /* --- LIGHTBOX (POP-UP) STYLING --- */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
+        .lightbox-content { background: #fff; max-width: 800px; width: 100%; max-height: 90vh; border-radius: 8px; overflow-y: auto; display: flex; flex-direction: column; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .lightbox-close { position: absolute; top: 15px; right: 20px; font-size: 35px; font-weight: bold; color: #fff; cursor: pointer; background: rgba(0,0,0,0.6); width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; line-height: 1; z-index: 1010; transition: background 0.2s; }
+        .lightbox-close:hover { background: #000; }
+        .lightbox-body { display: flex; flex-direction: row; flex-wrap: wrap; }
+        .lightbox-img-container { flex: 1; min-width: 300px; background: #111; display: flex; align-items: center; justify-content: center; }
+        .lightbox-body img { max-width: 100%; max-height: 70vh; object-fit: contain; display: block; }
+        .lightbox-details { flex: 1; min-width: 280px; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+        .lightbox-details h2 { margin-top: 0; font-size: 1.6rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .lightbox-details p { font-size: 1rem; margin: 10px 0; color: #444; }
+
+        /* Responsive shift for small mobile screens */
+        @media (max-width: 650px) {
+            .lightbox-body { flex-direction: column; }
+            .lightbox-details { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -38,7 +56,7 @@
 
     <main class="portfolio-section">
         <h2>Artwork Portfolio</h2>
-        <p>Use the filters below to browse through my work by subject, medium, location, or category.</p>
+        <p>Use the filters below to browse through my work. Click any image to view it larger.</p>
 
         <!-- Filters Section -->
         <div class="filter-group">
@@ -66,103 +84,150 @@
         </div>
     </main>
 
+    <!-- --- LIGHTBOX POP-UP STRUCTURAL LAYOUT --- -->
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <div class="lightbox-body">
+                <div class="lightbox-img-container">
+                    <img id="lightbox-img" src="./imgfiles/" alt="missing image">
+                </div>
+                <div class="lightbox-details">
+                    <h2 id="lightbox-title"></h2>
+                    <p><strong>Medium:</strong> <span id="lightbox-medium"></span></p>
+                    <p><strong>Location:</strong> <span id="lightbox-location"></span></p>
+                    <p><strong>Category:</strong> <span id="lightbox-category"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <ul class="footer-nav">
             <li><a href="index.html">Home</a></li>
             <li><a href="vision.html">Vision</a></li>
             <li><a href="professionalfocus.html">Professional Focus</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <!-- Highlight the current page link -->
             <li><a href="artistbow.html" style="text-decoration: underline; font-weight: bold;">Portfolio</a></li>
         </ul>
         <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
     </footer>
-
-    <script>
-        let masterGalleryData = [];
-
-        // 1. Fetch and Parse the CSV file automatically
-        Papa.parse("images.csv", {
-            download: true,
-            header: true,
-            skipEmptyLines: true,
-            complete: function(results) {
-                masterGalleryData = results.data;
-                populateFilterDropdowns(masterGalleryData);
-                displayGallery(masterGalleryData);
-            },
-            error: function(err) {
-                document.getElementById('portfolio-grid').innerHTML = '<p class="no-results">Error loading portfolio data. Please ensure images.csv exists.</p>';
-                console.error(err);
-            }
-        });
-
-        // 2. Dynamically extract unique values from CSV to build dropdown filter options
-        function populateFilterDropdowns(data) {
-            const attributes = ['subject', 'medium', 'location', 'category'];
-            
-            attributes.forEach(attr => {
-                const selectElement = document.getElementById(`filter-${attr}`);
-                // Extract unique values, clear out empty items, and sort alphabetically
-                const uniqueValues = [...new Set(data.map(item => item[attr]?.trim()).filter(Boolean))].sort();
-                
-                uniqueValues.forEach(value => {
-                    const option = document.createElement('option');
-                    option.value = value;
-                    option.textContent = value;
-                    selectElement.appendChild(option);
-                });
-            });
-        }
-
-        // 3. Render gallery cards into the HTML grid
-        function displayGallery(items) {
-            const grid = document.getElementById('portfolio-grid');
-            grid.innerHTML = '';
-
-            if (items.length === 0) {
-                grid.innerHTML = '<div class="no-results">No items match your chosen filter criteria.</div>';
-                return;
-            }
-
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'gallery-card';
-                
-                // Construct path matching your structure. Updates file path inside ./imgfiles/
-                const imgPath = `./imgfiles/${item.filename.trim()}`;
-
-                card.innerHTML = `
-                    <img src="${imgPath}" alt="${item.subject || 'Blacksmith Artwork'}" loading="lazy">
-                    <div class="gallery-info">
-                        <h3>${item.subject || 'Untitled'}</h3>
-                        <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
-                        <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
-                        <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // 4. Filter the gallery using all selected choices simultaneously
-        function filterGallery() {
-            const subjectFilter = document.getElementById('filter-subject').value;
-            const mediumFilter = document.getElementById('filter-medium').value;
-            const locationFilter = document.getElementById('filter-location').value;
-            const categoryFilter = document.getElementById('filter-category').value;
-
-            const filteredResults = masterGalleryData.filter(item => {
-                const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
-                const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
-                const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
-                const matchCategory = (categoryFilter === 'all' || item.category?.trim() === categoryFilter);
-
-                return matchSubject && matchMedium && matchLocation && matchCategory;
-            });
-
-            displayGallery(filteredResults);
-        }
-    </script>
 </body>
+    <script>
+    let masterGalleryData = [];
+
+    // 1. Fetch and Parse CSV File
+    Papa.parse("images.csv", {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+            masterGalleryData = results.data;
+            populateFilterDropdowns(masterGalleryData);
+            displayGallery(masterGalleryData);
+        },
+        error: function(err) {
+            document.getElementById('portfolio-grid').innerHTML = '<p class="no-results">Error loading portfolio data. Please ensure images.csv exists.</p>';
+            console.error(err);
+        }
+    });
+
+    // 2. Dynamically extract unique values for dropdown filters
+    function populateFilterDropdowns(data) {
+        const attributes = ['subject', 'medium', 'location', 'category'];
+        attributes.forEach(attr => {
+            const selectElement = document.getElementById(`filter-${attr}`);
+            const uniqueValues = [...new Set(data.map(item => item[attr]?.trim()).filter(Boolean))].sort();
+            uniqueValues.forEach(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = value;
+                selectElement.appendChild(option);
+            });
+        });
+    }
+
+    // 3. Render gallery grid cards
+    function displayGallery(items) {
+        const grid = document.getElementById('portfolio-grid');
+        grid.innerHTML = '';
+        
+        if (items.length === 0) {
+            grid.innerHTML = '<div class="no-results">No items match your chosen filter criteria.</div>';
+            return;
+        }
+        
+        items.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'gallery-card';
+            const imgPath = `./imgfiles/${item.filename.trim()}`;
+            card.innerHTML = `
+                <img src="${imgPath}" alt="${item.subject || 'Blacksmith Artwork'}" loading="lazy">
+                <div class="gallery-info">
+                    <h3>${item.subject || 'Untitled'}</h3>
+                    <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
+                    <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
+                    <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
+                </div>
+            `;
+            // Add click event listener to trigger the lightbox pop-up
+            card.addEventListener('click', () => openLightbox(item));
+            grid.appendChild(card);
+        });
+    }
+
+    // 4. Filter gallery calculation
+    function filterGallery() {
+        const subjectFilter = document.getElementById('filter-subject').value;
+        const mediumFilter = document.getElementById('filter-medium').value;
+        const locationFilter = document.getElementById('filter-location').value;
+        const categoryFilter = document.getElementById('filter-category').value;
+        
+        const filteredResults = masterGalleryData.filter(item => {
+            const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
+            const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
+            const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
+            const matchCategory = (categoryFilter === 'all' || item.category?.trim() === categoryFilter);
+            return matchSubject && matchMedium && matchLocation && matchCategory;
+        });
+        displayGallery(filteredResults);
+    }
+
+    // --- LIGHTBOX INTERACTION FUNCTIONS ---
+
+    // Open Lightbox Pop-up
+    function openLightbox(item) {
+        // FIXED: Added missing backticks around template literal path
+        const imgPath = `./imgfiles/${item.filename.trim()}`;
+        
+        document.getElementById('lightbox-img').src = imgPath;
+        document.getElementById('lightbox-img').alt = item.subject || 'Blacksmith Artwork';
+        document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
+        document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
+        document.getElementById('lightbox-location').textContent = item.location || 'N/A';
+        document.getElementById('lightbox-category').textContent = item.category || 'N/A';
+        
+        document.getElementById('lightbox').style.display = 'flex';
+        // Stop page background scrolling while viewing lightbox
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close Lightbox Pop-up
+    function closeLightbox(event) {
+        // FIXED: Safely prevent click event bubbles from breaking code execution
+        if (event && event.stopPropagation) {
+            event.stopPropagation();
+        }
+        document.getElementById('lightbox').style.display = 'none';
+        // Restore normal background scrolling
+        document.body.style.overflow = 'auto';
+    }
+
+    // OPTIONAL BONUS: Close lightbox if the user hits the Escape key
+    window.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+</script>
 </html>
