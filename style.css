@@ -4,23 +4,40 @@ root {
     max-width: 1024px;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  
-  /* --- New Spacing Properties --- */
-  margin: 20px 40px;  /* Adds 20px of space above/below, and 40px on the left/right sides */
-  padding: 10px 0;    /* Optional: adds a tiny bit of internal breathing room */
+/* --- Hero Header Container --- */
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+    background-color: rgba(212, 230, 241, 0.75); /* Soft light blue, 25% transparent */
+    padding: 30px;
+    margin: 20px auto 40px auto; /* Centers the box perfectly on the page texture */
+    max-width: 1000px;           /* Limits the box width for a clean look */
+    width: 90%;                  /* Safety margin for smaller desktop viewports */
+    border-radius: 8px;          
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
 }
-header img {
-  max-width: 400px; /* Constrains the width to a manageable size */
+
+/* --- Constrain the Top Hero Image --- */
+.hero-container img {
+  max-width: 400px;  /* Constrains the width to a manageable size */
   width: 100%;       /* Allows it to scale down nicely on mobile screens */
-  height: auto;      /* Maintains the original aspect ratio so it doesn't stretch */
+  height: auto;      /* Maintains the original aspect ratio */
   object-fit: contain; 
+  border-radius: 4px; /* Optional: slightly softens the image corners inside the box */
 }
+
+/* Responsive tweak for mobile screens so they stack vertically */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
 body {
      color: black;
      position: relative;
