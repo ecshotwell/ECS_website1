@@ -7,13 +7,28 @@ const nextBtn = document.querySelector('#nextBtn');
 // 2. Initialize the index counter
 let counter = 0;
 
-// 3. Function to move the carousel
+// 3. Function to move the carousel and manage button visibility
 function updateCarousel() {
   // Get the precise width of one image dynamically
   const size = carouselImages[0].clientWidth; 
   
   // Shift the slide container to the left
   carouselSlide.style.transform = `translateX(${-size * counter}px)`;
+
+  // --- Hide/Show Navigation Buttons ---
+  // If on the first slide (index 0), hide the previous button
+  if (counter === 0) {
+    prevBtn.style.display = 'none';
+  } else {
+    prevBtn.style.display = 'block';
+  }
+
+  // If on the last slide, hide the next button
+  if (counter === carouselImages.length - 1) {
+    nextBtn.style.display = 'none';
+  } else {
+    nextBtn.style.display = 'block';
+  }
 }
 
 // 4. Next Button Click Event
@@ -71,3 +86,5 @@ prevBtn.addEventListener('click', () => {
     // ... your existing code that changes slides ...
     updateCaption();
 });
+// Run the function once initially to hide the left button on page load
+updateCarousel();
