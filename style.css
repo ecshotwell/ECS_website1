@@ -144,13 +144,15 @@ body::before {
 }
 
 /* --- 3. Reveal Only the Active Slide --- */
-/* Note: If your JS targets a different class name (like .active), update this class match */
+/* This handles it whether your JS targets the slide wrapper or the image itself */
+.carousel-slide.active img,
+.active img,
 .carousel-slide img.active, 
 .carousel-slide img[style*="display: block"] { 
     opacity: 1;
     visibility: visible;
 }
-/* --- 3. Clean Caption Formatting Below the Image --- */
+/* --- 4. Clean Caption Formatting Below the Image --- */
 .carousel-caption {
     text-align: center;
     padding: 20px;
