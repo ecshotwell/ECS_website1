@@ -177,7 +177,7 @@ body::before {
   position: absolute;
   top: 45%;
   transform: translateY(-50%);
-  background-color: rgba(136, 178, 202, 0.336);
+  background-color: rgba(136, 178, 202, 0.658);
   color: white;
   border: none;
   width: 45px;
