@@ -115,10 +115,11 @@ body::before {
     max-width: 600px;      /* Prevents the carousel from getting too wide */
     max-height: 700px;     /* Prevents vertical images from blowing up too tall */
     margin: 40px auto;     /* Centers the entire carousel on your home page */
-    overflow: hidden;
+    overflow: hidden;      /* Keeps the side images hidden until they slide in */
     background-color: #f9f9f9; 
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;           /* Ensures container claims its space */
 }
 
 /* --- 2. Create a Horizontal Sliding Track --- */
@@ -126,18 +127,17 @@ body::before {
     display: flex;         /* Lines all images up side-by-side horizontally */
     flex-wrap: nowrap;     /* Prevents images from wrapping to a new line */
     height: 550px;         /* Sets a fixed height for the image viewing area */
-    width: 100%;
+    width: 100%;           /* Takes up full 600px of parent */
     transition: transform 0.4s ease-in-out; /* Smooth sliding transition */
 }
 
 .carousel-slide img {
-    flex: 0 0 100%;        /* CRITICAL: Forces every image to be exactly 100% wide */
+    flex: 0 0 100%;        /* Forces every image to be exactly the width of the container */
     width: 100%;           
     height: 100%;
     object-fit: contain;   /* Keeps the entire photo visible without cropping */
     background-color: #f0f0f0; /* Fills empty side space if an image is narrow */
 }
-
 /* --- 3. Clean Caption Formatting Below the Image --- */
 /* (You can delete the old .active reveal rules, they are no longer needed!) */
 .carousel-caption {
