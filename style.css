@@ -38,6 +38,47 @@ root {
     }
 }
 
+/* --- Top Navigation Bar --- */
+.top-nav-bar {
+    display: flex;
+    justify-content: center;   /* Centers the links horizontally */
+    align-items: center;
+    gap: 30px;                 /* Generates uniform spacing between links */
+    
+    max-width: 1000px;         /* Perfectly matches the width of your Hero container */
+    width: 90%;
+    margin: -20px auto 40px auto; /* Pulls it slightly closer to the hero box above it */
+    padding: 12px 20px;
+    
+    background-color: #ffffff;  /* Solid white background inside the bar */
+    border: 2px solid #d4e6f1;  /* Very light blue outline border */
+    border-radius: 6px;        /* Softly rounded corners to match site design */
+    box-sizing: border-box;
+}
+
+/* --- Navigation Link Text Styling --- */
+.top-nav-bar a {
+    color: #111111;            /* Crisp, readable black text */
+    text-decoration: none;     /* Removes standard underlines */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Subtle hover effect for interactivity */
+.top-nav-bar a:hover {
+    color: #3498db;            /* Transitions text to a clean blue on hover */
+}
+
+/* Mobile responsive optimization */
+@media (max-width: 768px) {
+    .top-nav-bar {
+        flex-direction: column; /* Stacks links vertically on smaller phone screens */
+        gap: 15px;
+        text-align: center;
+    }
+}
+
 body {
      color: black;
      position: relative;
