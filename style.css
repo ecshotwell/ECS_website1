@@ -121,36 +121,34 @@ body::before {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* --- 2. Constrain and Stack the Slides --- */
+/* --- 2. Create a Horizontal Sliding Track --- */
 .carousel-slide {
-    position: relative;    /* Sets up the bounding box for absolute children */
+    display: flex;         /* Lines all images up side-by-side horizontally */
+    flex-wrap: nowrap;     /* Prevents images from wrapping to a new line */
     height: 550px;         /* Sets a fixed height for the image viewing area */
     width: 100%;
+    transition: transform 0.4s ease-in-out; /* Smooth sliding transition */
 }
 
 .carousel-slide img {
-    position: absolute;    /* Stacks all images perfectly on top of each other */
-    top: 0;
-    left: 0;
-    width: 100%;
+    flex: 0 0 100%;        /* CRITICAL: Forces every image to be exactly 100% wide */
+    width: 100%;           
     height: 100%;
-    object-fit: contain;   /* Keeps the entire photo visible without cropping it */
+    object-fit: contain;   /* Keeps the entire photo visible without cropping */
     background-color: #f0f0f0; /* Fills empty side space if an image is narrow */
-    
-    /* Hide them by default, fade them in when active */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease-in-out, visibility 0.4s;
 }
 
-/* --- 3. Reveal Only the Active Slide --- */
-/* This handles it whether your JS targets the slide wrapper or the image itself */
-.carousel-slide.active img,
-.active img,
-.carousel-slide img.active, 
-.carousel-slide img[style*="display: block"] { 
-    opacity: 1;
-    visibility: visible;
+/* --- 3. Clean Caption Formatting Below the Image --- */
+/* (You can delete the old .active reveal rules, they are no longer needed!) */
+.carousel-caption {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #eaeaea;
+    height: 110px;         /* Keeps space uniform for titles and descriptions */
+    box-sizing: border-box;
+    position: relative;    /* Ensures it sits cleanly below the sliding area */
+    z-index: 5;
 }
 /* --- 4. Clean Caption Formatting Below the Image --- */
 .carousel-caption {
