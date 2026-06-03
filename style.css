@@ -46,10 +46,11 @@ root {
     gap: 30px;                 /* Uniform spacing between links */
     
     max-width: 1000px;         /* Matches the exact maximum width of your Hero container */
-    width: 100%;               /* CHANGE: Spans the full width of the parent container layout */
     
-    /* --- The Connection Magic --- */
-    margin: -40px auto 40px auto; /* CHANGE: Pulls the bar up flush against the hero container */
+    /* --- The Absolute Alignment & Connection Magic --- */
+    width: calc(100% + 60px);  /* CHANGE: Adds the 30px left + 30px right padding back to stretch to the edges */
+    margin: -40px -30px 40px -30px; /* CHANGE: Uses negative left/right margins to perfectly align the outer borders */
+    
     position: relative;        /* Safety anchor for layout layering */
     z-index: 5;                /* Ensures the outline border renders cleanly on top */
     
