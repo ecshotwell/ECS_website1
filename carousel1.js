@@ -36,3 +36,38 @@ prevBtn.addEventListener('click', () => {
 
 // 6. Fix for window resizing (prevents the layout from breaking if the screen changes size)
 window.addEventListener('resize', updateCarousel);
+
+const images = document.querySelectorAll('.carousel-slide img');
+const captionTitle = document.getElementById('captionTitle');
+const captionDesc = document.getElementById('captionDesc');
+
+// Track your active image index (hook this up to your existing index variable)
+let currentIndex = 0; 
+
+function updateCaption() {
+    // 1. Get the currently active image
+    const currentImg = images[currentIndex];
+    
+    // 2. Extract the custom data attributes
+    const title = currentImg.getAttribute('data-title');
+    const desc = currentImg.getAttribute('data-desc');
+    
+    // 3. Inject them into the HTML text elements
+    captionTitle.textContent = title;
+    captionDesc.textContent = desc;
+}
+
+// --- INTEGRATION CHEATSHEET ---
+// Run this function once when the page loads initially:
+updateCaption();
+
+// Run this function every single time your nextBtn or prevBtn is clicked:
+nextBtn.addEventListener('click', () => {
+    // ... your existing code that changes slides ...
+    updateCaption(); 
+});
+
+prevBtn.addEventListener('click', () => {
+    // ... your existing code that changes slides ...
+    updateCaption();
+});
