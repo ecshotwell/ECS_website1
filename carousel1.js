@@ -71,40 +71,39 @@ function updateCaption() {
     captionTitle.textContent = title;
     captionDesc.textContent = desc;
 }
-// 4. Next Button Click Event
+// ==========================================
+// 4. Next Button Click Event (Unified)
+// ==========================================
 nextBtn.addEventListener('click', () => {
   // Stop if we are on the last image
   if (counter >= carouselImages.length - 1) return;
   
-  counter++;
-  currentIndex = counter; // FORCE the caption index to match the image counter
+  counter++;             /* Advance the image counter by 1 */
+  currentIndex = counter; /* Keep the caption index perfectly synced */
+  
   updateCarousel();
   updateCaption(); 
 });
 
-// 5. Prev Button Click Event
+// ==========================================
+// 5. Prev Button Click Event (Unified)
+// ==========================================
 prevBtn.addEventListener('click', () => {
   // Stop if we are on the first image
   if (counter <= 0) return;
   
-  counter--;
-  currentIndex = counter; // FORCE the caption index to match the image counter
+  counter--;             /* Decrease the image counter by 1 */
+  currentIndex = counter; /* Keep the caption index perfectly synced */
+  
   updateCarousel();
   updateCaption();
 });
-// --- INTEGRATION CHEATSHEET ---
-// Run this function once when the page loads initially:
-updateCaption();
 
-// Run this function every single time your nextBtn or prevBtn is clicked:
-nextBtn.addEventListener('click', () => {
-    // ... your existing code that changes slides ...
-    updateCaption(); 
-});
+// ==========================================
+// 6. Responsive Window Resizing & Initial Load
+// ==========================================
+window.addEventListener('resize', updateCarousel);
 
-prevBtn.addEventListener('click', () => {
-    // ... your existing code that changes slides ...
-    updateCaption();
-});
-// Run the function once initially to hide the left button on page load
+// Run these once when the page first loads to set the initial state
 updateCarousel();
+updateCaption();
