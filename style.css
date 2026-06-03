@@ -23,7 +23,7 @@ root {
 
 /* --- Constrain the Top Hero Image --- */
 .hero-container img {
-  max-width: 400px;  /* Constrains the width to a manageable size */
+  max-width: 200px;  /* Constrains the width to a manageable size */
   width: 100%;       /* Allows it to scale down nicely on mobile screens */
   height: auto;      /* Maintains the original aspect ratio */
   object-fit: contain; 
