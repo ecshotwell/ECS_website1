@@ -13,12 +13,17 @@ root {
     gap: 20px;
     
     background-color: rgba(212, 230, 241, 0.75); /* Soft light blue, 25% transparent */
-    padding: 30px;
+    
+    /* CHANGE: Bottom padding increased to 70px to elegantly clear room for the nav bar */
+    padding: 30px 30px 70px 30px; 
+    
     margin: 20px auto 40px auto; /* Centers the box perfectly on the page texture */
     max-width: 1000px;           /* Limits the box width for a clean look */
     width: 90%;                  /* Safety margin for smaller desktop viewports */
     border-radius: 8px;          
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    
+    position: relative;          /* CRITICAL: This acts as the anchor wall for the nav bar */
 }
 
 /* --- Constrain the Top Hero Image --- */
