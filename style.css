@@ -38,22 +38,33 @@ root {
     }
 }
 
-/* --- Top Navigation Bar --- */
+/* --- Top Navigation Bar (Connected to Hero) --- */
 .top-nav-bar {
     display: flex;
     justify-content: center;   /* Centers the links horizontally */
     align-items: center;
-    gap: 30px;                 /* Generates uniform spacing between links */
+    gap: 30px;                 /* Uniform spacing between links */
     
     max-width: 1000px;         /* Perfectly matches the width of your Hero container */
     width: 90%;
-    margin: -20px auto 40px auto; /* Pulls it slightly closer to the hero box above it */
-    padding: 12px 20px;
+    
+    /* --- The Connection Magic --- */
+    margin: 0 auto 40px auto;  /* Reset top margin to 0 */
+    position: relative;
+    top: -8px;                 /* Pulls the bar up perfectly flush against the hero container */
     
     background-color: #ffffff;  /* Solid white background inside the bar */
-    border: 2px solid #d4e6f1;  /* Very light blue outline border */
-    border-radius: 6px;        /* Softly rounded corners to match site design */
+    
+    /* --- Custom Border Frame Setup --- */
+    border-left: 2px solid #d4e6f1;   /* Light blue left side */
+    border-right: 2px solid #d4e6f1;  /* Light blue right side */
+    border-bottom: 2px solid #d4e6f1; /* Light blue bottom side */
+    border-top: none;                 /* REMOVES the top line so it merges into the hero */
+    
+    /* Smooth square top to sit flush, rounded bottom corners to finish the frame */
+    border-radius: 0 0 8px 8px;        
     box-sizing: border-box;
+    z-index: 5;                       /* Keeps it crisp over the background texture */
 }
 
 /* --- Navigation Link Text Styling --- */
