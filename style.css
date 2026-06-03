@@ -121,19 +121,35 @@ body::before {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* --- 2. Constrain the Images --- */
+/* --- 2. Constrain and Stack the Slides --- */
 .carousel-slide {
-    display: flex;
+    position: relative;    /* Sets up the bounding box for absolute children */
     height: 550px;         /* Sets a fixed height for the image viewing area */
+    width: 100%;
 }
 
 .carousel-slide img {
+    position: absolute;    /* Stacks all images perfectly on top of each other */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;   /* Keeps the entire photo visible without cropping it */
     background-color: #f0f0f0; /* Fills empty side space if an image is narrow */
+    
+    /* Hide them by default, fade them in when active */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s;
 }
 
+/* --- 3. Reveal Only the Active Slide --- */
+/* Note: If your JS targets a different class name (like .active), update this class match */
+.carousel-slide img.active, 
+.carousel-slide img[style*="display: block"] { 
+    opacity: 1;
+    visibility: visible;
+}
 /* --- 3. Clean Caption Formatting Below the Image --- */
 .carousel-caption {
     text-align: center;
