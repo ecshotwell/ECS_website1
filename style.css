@@ -45,13 +45,13 @@ root {
     align-items: center;
     gap: 30px;                 /* Uniform spacing between links */
     
-    max-width: 1000px;         /* Perfectly matches the width of your Hero container */
-    width: 90%;
+    max-width: 1000px;         /* Matches the exact maximum width of your Hero container */
+    width: 100%;               /* CHANGE: Spans the full width of the parent container layout */
     
     /* --- The Connection Magic --- */
-    margin: 0 auto 40px auto;  /* Reset top margin to 0 */
-    position: relative;
-    top: -8px;                 /* Pulls the bar up perfectly flush against the hero container */
+    margin: -40px auto 40px auto; /* CHANGE: Pulls the bar up flush against the hero container */
+    position: relative;        /* Safety anchor for layout layering */
+    z-index: 5;                /* Ensures the outline border renders cleanly on top */
     
     background-color: #ffffff;  /* Solid white background inside the bar */
     
@@ -59,12 +59,11 @@ root {
     border-left: 2px solid #d4e6f1;   /* Light blue left side */
     border-right: 2px solid #d4e6f1;  /* Light blue right side */
     border-bottom: 2px solid #d4e6f1; /* Light blue bottom side */
-    border-top: none;                 /* REMOVES the top line so it merges into the hero */
+    border-top: none;                 /* Removes the top line so it merges seamlessly */
     
-    /* Smooth square top to sit flush, rounded bottom corners to finish the frame */
+    /* Flattens the top to sit flush, leaves the bottom corners rounded to finish the frame */
     border-radius: 0 0 8px 8px;        
     box-sizing: border-box;
-    z-index: 5;                       /* Keeps it crisp over the background texture */
 }
 
 /* --- Navigation Link Text Styling --- */
