@@ -406,57 +406,12 @@ body::before {
     border: 1px solid #fad2cf;
 }
 
-
-/* 1. Reset the default browser list styles completely */
-footer ul, 
-footer li {
-  list-style: none !important;
-  list-style-type: none !important;
-  margin: 0;
-  padding: 0;
-  display: inline; /* Back-up fallback for old browsers */
-}
-
-/* 2. Container style */
+/* --- Footer Section Styling --- */
 footer {
-  width: 100%;
-  padding: 20px 0;
-  background-color: transparent;
-  margin-top: 40px;
-  text-align: center;
-}
-
-/* 3. Force the horizontal line layout */
-.footer-nav {
-  display: flex !important;                  
-  justify-content: center;        
-  gap: 20px;                      
-  padding: 0;
-  margin: 0 auto 15px auto;
-  flex-direction: row; /* Explicitly commands a horizontal row */
-  flex-wrap: nowrap;   /* Absolutely blocks wrapping to a new line */
-}
-
-/* 4. Link appearance */
-.footer-nav li a {
-  color: #000000 !important; /* Overrides any global link colors */
-  text-decoration: none;          
-  font-family: Arial, sans-serif; 
-  font-size: 1rem;
-  white-space: nowrap; /* Forces "Professional Focus" to stay on one line */
-  transition: color 0.3s ease;
-}
-
-/* 5. Interactive Hover */
-.footer-nav li a:hover {
-  color: #555555 !important;                 
-}
-
-/* 6. Copyright formatting below */
-.copyright {
-  margin-top: 15px;
-  font-family: Arial, sans-serif;
-  font-size: 0.85rem;
-  color: #333333;
-  display: block;
+    text-align: center;
+    padding: 30px 20px;       /* Gives clean breathing room above and below your copyright */
+    color: #555555;           /* Soft, legible grey for the copyright text */
+    font-size: 0.9rem;        /* Keeps the text neat and secondary */
+    width: 100%;
+    box-sizing: border-box;
 }
