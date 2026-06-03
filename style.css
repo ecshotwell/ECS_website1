@@ -38,23 +38,33 @@ root {
     }
 }
 
-/* --- Hero Header Container --- */
-.hero-container {
+/* --- Top Navigation Bar (Connected to Hero) --- */
+.top-nav-bar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;   
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;                 
     
-    background-color: rgba(212, 230, 241, 0.75); 
-    padding: 30px 30px 60px 30px; /* INCREASED bottom padding to 60px to make room for the nav bar */
-    margin: 20px auto 40px auto; 
-    max-width: 1000px;           
-    width: 90%;                  
-    border-radius: 8px;          
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    /* --- The Seamless Connection Fix --- */
+    position: absolute;        /* Pins the bar relative to the hero container */
+    bottom: 0;                 /* Places it perfectly at the very bottom edge */
+    left: 0;                   /* Aligns flawlessly with the left border */
+    width: 100%;               /* Spans 100% of the absolute outer border edge */
+    margin: 0;                 /* Clears out the old problematic shifting margins */
     
-    position: relative;           /* CRITICAL: This anchors the navigation bar to this box */
+    background-color: #ffffff;  
+    height: 45px;              /* Sets a clean, uniform height */
+    
+    /* --- Custom Border Frame Setup --- */
+    border-left: 2px solid #d4e6f1;   
+    border-right: 2px solid #d4e6f1;  
+    border-bottom: 2px solid #d4e6f1; 
+    border-top: none;                 
+    
+    /* Rounded bottom corners match the 8px curve of your hero container perfectly */
+    border-radius: 0 0 8px 8px;        
+    box-sizing: border-box;
+    z-index: 5;                
 }
 
 /* --- Navigation Link Text Styling --- */
