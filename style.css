@@ -109,53 +109,59 @@ body::before {
     margin: 0 auto;
     overflow: hidden;
 }
+/* --- 1. Limit the Overall Carousel Size --- */
+.carousel-container {
+    position: relative;
+    max-width: 600px;      /* Prevents the carousel from getting too wide */
+    max-height: 700px;     /* Prevents vertical images from blowing up too tall */
+    margin: 40px auto;     /* Centers the entire carousel on your home page */
+    overflow: hidden;
+    background-color: #f9f9f9; 
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
 
-/* --- Slide Setup --- */
+/* --- 2. Constrain the Images --- */
 .carousel-slide {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    height: 550px;         /* Sets a fixed height for the image viewing area */
 }
 
 .carousel-slide img {
     width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;   /* Keeps the entire photo visible without cropping it */
+    background-color: #f0f0f0; /* Fills empty side space if an image is narrow */
 }
 
-/* --- Caption Layout Styling --- */
+/* --- 3. Clean Caption Formatting Below the Image --- */
 .carousel-caption {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.95); /* Light background to match your site */
-    padding: 15px 20px;
-    margin-top: 10px;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #eaeaea;
+    height: 110px;         /* Keeps space uniform for titles and descriptions */
+    box-sizing: border-box;
 }
 
-/* Title Text Style */
 #captionTitle {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    color: #2b2b2b; /* Dark neutral tone */
-    margin: 0 0 5px 0;
-    min-height: 1.8rem; /* Prevents layout layout shifting if empty */
+    color: #222222;
+    margin: 0 0 6px 0;
 }
 
-/* Description Text Style */
 #captionDesc {
-    font-size: 1rem;
-    color: #666666; /* Softer text color for the description */
+    font-size: 0.95rem;
+    color: #555555;
     margin: 0;
-    min-height: 1.2rem;
 }
-
 /* Navigation Arrow Overlays */
 #prevBtn, #nextBtn {
   position: absolute;
   top: 45%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
   color: white;
   border: none;
   width: 45px;
@@ -170,7 +176,7 @@ body::before {
 #nextBtn { right: 15px; }
 
 #prevBtn:hover, #nextBtn:hover {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
   color: #111;
 }
 
