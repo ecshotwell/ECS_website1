@@ -71,7 +71,27 @@ function updateCaption() {
     captionTitle.textContent = title;
     captionDesc.textContent = desc;
 }
+// 4. Next Button Click Event
+nextBtn.addEventListener('click', () => {
+  // Stop if we are on the last image
+  if (counter >= carouselImages.length - 1) return;
+  
+  counter++;
+  currentIndex = counter; // FORCE the caption index to match the image counter
+  updateCarousel();
+  updateCaption(); 
+});
 
+// 5. Prev Button Click Event
+prevBtn.addEventListener('click', () => {
+  // Stop if we are on the first image
+  if (counter <= 0) return;
+  
+  counter--;
+  currentIndex = counter; // FORCE the caption index to match the image counter
+  updateCarousel();
+  updateCaption();
+});
 // --- INTEGRATION CHEATSHEET ---
 // Run this function once when the page loads initially:
 updateCaption();
