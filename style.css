@@ -101,29 +101,53 @@ body::before {
   /* Content Properties */
   box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
 }
-    
+ 
+/* --- Carousel Container Styling --- */
 .carousel-container {
-  width: 85%;
-  max-width: 800px;
-  margin: auto;
-  overflow: hidden;
-  position: relative;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  background-color: #1a1a1a; /* Dark background elegant for art */
+    position: relative;
+    max-width: 800px; /* Adjust based on your preferred image width */
+    margin: 0 auto;
+    overflow: hidden;
 }
 
+/* --- Slide Setup --- */
 .carousel-slide {
-  display: flex;
-  width: 100%;
-  transition: transform 0.5s ease-in-out;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-slide img {
-  width: 100%;
-  height: 500px; /* Fixed height keeps the portfolio uniform */
-  object-fit: contain; /* Prevents cropping your art pieces */
-  flex-shrink: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* --- Caption Layout Styling --- */
+.carousel-caption {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.95); /* Light background to match your site */
+    padding: 15px 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Title Text Style */
+#captionTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2b2b2b; /* Dark neutral tone */
+    margin: 0 0 5px 0;
+    min-height: 1.8rem; /* Prevents layout layout shifting if empty */
+}
+
+/* Description Text Style */
+#captionDesc {
+    font-size: 1rem;
+    color: #666666; /* Softer text color for the description */
+    margin: 0;
+    min-height: 1.2rem;
 }
 
 /* Navigation Arrow Overlays */
@@ -150,30 +174,6 @@ body::before {
   color: #111;
 }
 
-/* Caption Container Styling */
-.carousel-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-  color: white;
-  padding: 20px 40px;
-  text-align: center;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-
-.carousel-caption h3 {
-  margin: 0 0 5px 0;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-}
-
-.carousel-caption p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #ccc;
-}
 
 
 .focus-box  {
