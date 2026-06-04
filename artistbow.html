@@ -221,36 +221,30 @@ function populateFilterDropdowns(data) {
     });
 }
 
-    // 3. Render gallery grid cards
-    function displayGallery(items) {
-        const grid = document.getElementById('portfolio-grid');
-        grid.innerHTML = '';
-        
-        if (items.length === 0) {
-            grid.innerHTML = '<div class="no-results">No items match your chosen filter criteria.</div>';
-            return;
-        }
-        
-        items.forEach((item, index) => {
-            const card = document.createElement('div');
-            card.className = 'gallery-card';
-            let filename = item.filename.trim();
-            const imgPath = filename.startsWith('imgfiles/ecs-art/') ? `./${filename}` : `./imgfiles/ecs-art/${filename}`;
-            card.innerHTML = `
-                <img src="${imgPath}" alt="${item.subject || 'Blacksmith Artwork'}" loading="lazy">
-                <div class="gallery-info">
-                    <h3>${item.subject || 'Untitled'}</h3>
-                    <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
-                    <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
-                    <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
-                    <p><strong>Artist:</strong> ${item.artist || 'N/A'}</p>
-                </div>
-            `;
-            // Add click event listener to trigger the lightbox pop-up
-            card.addEventListener('click', () => openLightbox(item));
-            grid.appendChild(card);
-        });
-    }
+   // 3. Render gallery grid cards
+items.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'gallery-card';
+    let filename = item.filename.trim();
+    
+    // SAFE PATH RESOLUTION: If the CSV row already specifies the folder, use it. 
+    // Otherwise, default fallback to the eu-iron directory.
+    let imgPath = filename.startsWith('imgfiles/') ? `./${filename}` : `./imgfiles/eu-iron/${filename}`;
+
+    card.innerHTML = `
+        <img src="${imgPath}" alt="${item.subject || 'Artwork'}" loading="lazy">
+        <div class="gallery-info">
+            <h3>${item.subject || 'Untitled'}</h3>
+            <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
+            <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
+            <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
+        </div>
+    `;
+    
+    // Pass the exact imgPath variable directly to the lightbox function
+    card.addEventListener('click', () => openLightbox(item, imgPath));
+    grid.appendChild(card);
+});
 
     // 4. Filter gallery calculation
 function filterGallery() {
@@ -275,22 +269,22 @@ displayGallery(filteredResults);
     // --- LIGHTBOX INTERACTION FUNCTIONS ---
 
     // Open Lightbox Pop-up
-    function openLightbox(item) {
-        // FIXED: Added missing backticks around template literal path
-       const imgPath = `./imgfiles/ecs-art/${item.filename.trim()}`;
-        
-        document.getElementById('lightbox-img').src = imgPath;
-        document.getElementById('lightbox-img').alt = item.subject || 'Blacksmith Artwork';
-        document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
-        document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
-        document.getElementById('lightbox-location').textContent = item.location || 'N/A';
-        document.getElementById('lightbox-category').textContent = item.category || 'N/A';
-        document.getElementById('lightbox-artist').textContent = item.artist || 'N/A';
-        
-        document.getElementById('lightbox').style.display = 'flex';
-        // Stop page background scrolling while viewing lightbox
-        document.body.style.overflow = 'hidden';
-    }
+   // Update the openLightbox signature to accept the calculated path
+function openLightbox(item, calculatedPath) {
+    // If calculatedPath wasn't passed, fall back gracefully
+    const imgPath = calculatedPath || (item.filename.trim().startsWith('imgfiles/') ? `./${item.filename.trim()}` : `./imgfiles/eu-iron/${item.filename.trim()}`);
+    
+    document.getElementById('lightbox-img').src = imgPath;
+    document.getElementById('lightbox-img').alt = item.subject || 'Artwork';
+    document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
+    document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
+    document.getElementById('lightbox-location').textContent = item.location || 'N/A';
+    document.getElementById('lightbox-category').textContent = item.category || 'N/A';
+    document.getElementById('lightbox-artist').textContent = item.artist || 'N/A';
+    
+    document.getElementById('lightbox').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
 
     // Close Lightbox Pop-up
     function closeLightbox(event) {
