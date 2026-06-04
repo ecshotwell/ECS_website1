@@ -291,22 +291,31 @@ body::before {
   /* Content Properties */
   box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */}
 
-  /* Indent the titles inside the focus box */
+ /* 1. Main Section Heading (Sweat and Fire) */
+.focus-box h2 {
+    padding-left: 10px;    /* Slight nudge for the main section title */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #333333;
+}
+
+/* 2. Sub-Section Headings (Steel and Stone, Ceramic Work) */
 .focus-box h3 {
-    padding-left: 20px;
-    margin-top: 25px;      /* Gives a breathing room above each section */
-    margin-bottom: 10px;   /* Sets a clean gap between the title and text */
-    font-size: 1.6rem;     /* Sizes the titles beautifully */
-    color: #333333;        /* Keeps the text sharp and readable */
-
-
-/* Indent the paragraphs inside the focus box */
-.focus-box p {
-    padding-left: 20px;
-    line-height: 1.6;      /* Ensures comfortable vertical reading spacing */
-    margin-bottom: 20px;   /* Creates uniform separation between sections */
+    padding-left: 25px;    /* Indented further inside the H2 boundary */
+    margin-top: 30px;      /* Gives breathing room above each sub-section */
+    margin-bottom: 10px;   /* Clean gap between the sub-title and its paragraph */
+    font-size: 1.4rem;     /* Slightly smaller than H2 for a clean hierarchy */
     color: #444444;
-}}
+}
+
+/* 3. Body Paragraphs under the H3 headings */
+.focus-box p {
+    padding-left: 45px;    /* Indented the furthest to sit beautifully under the H3s */
+    line-height: 1.6;      /* Comfortable vertical reading spacing */
+    margin-bottom: 20px;   /* Creates uniform separation between sections */
+    color: #555555;
+}
 
   .contact-box  {
   /* Box Dimensions */
