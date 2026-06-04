@@ -2,6 +2,7 @@
 root {
    
     max-width: 1024px;
+    
 }
 
 /* --- Hero Header Container --- */
@@ -250,44 +251,50 @@ body::before {
   color: #111;
 }
 
-/* 1. Reset/Protect default paragraph styling and font across both sections */
-.focus-box p, 
-.vision-box p,
-main p {
-    font-family: inherit;      
-    padding-left: 0;           /* Keeps the first paragraph flush left */
+/* --- 1. The Container Card Appearance (Applies to both Focus & Vision) --- */
+main.focus-box {
+    max-width: 600px;         /* Keeps the box cleanly sized on desktop screens */
+    width: 100%;              /* Fully responsive on mobile */
+    min-height: 200px;        
+    margin: 40px auto;        /* Centers the card horizontally */
+    padding: 35px;            /* Creates breathing room around the interior edges */
+    background-color: #ffffff !important; /* Forces the solid white background card to appear */
+    border: 1px solid #dddddd; /* Clean, clear boundary line */
+    border-radius: 8px;       /* Beautifully rounds the corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Soft drop shadow */
+    box-sizing: border-box;   
+    display: block;           /* Ensures it acts as a distinct structural block */
+}
+
+/* --- 2. Clean Text Flow & Font Protection --- */
+main.focus-box p {
+    font-family: inherit;      /* Guarantees no accidental font family shifts */
+    padding-left: 0;           /* Default: first paragraph under the main title stays flush left */
     line-height: 1.6;          
     margin-bottom: 20px;       
     color: #444444;
 }
 
-/* 2. Main Title Layout (Social Advocacy / Sweat and Fire) */
-.focus-box h2,
-.vision-box h2,
-main > h2 {
-    padding-left: 0;           /* Keeps main section titles flush left */
+/* --- 3. Main Title Layout (Flush Left) --- */
+main.focus-box h2 {
+    padding-left: 0;           
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 1.8rem;
     color: #333333;
 }
 
-/* 3. Sub-Section Headings Layout (Countering Injustice, Steel and Stone, etc.) */
-.focus-box h3,
-.vision-box h3,
-main h3 {
-    padding-left: 20px;        /* Indents the H3 titles slightly to the right */
+/* --- 4. Sub-Section Headings & Paragraph Indentation --- */
+/* This targets any h2 or p element that comes AFTER the first main h2 title */
+main.focus-box h2 ~ h2 {
+    padding-left: 20px;        /* Pushes "Steel and Stone", "Ceramic Work", etc. right by 20px */
     margin-top: 35px;          
     margin-bottom: 12px;       
-    font-size: 1.4rem;
-    color: #333333;
+    font-size: 1.4rem;         /* Slightly smaller scale for hierarchy */
 }
 
-/* 4. MATCHING INDENTATION: Pushes paragraphs right below an H3 over to match the 20px mark */
-.focus-box h3 + p,
-.vision-box h3 + p,
-main h3 + p {
-    padding-left: 20px;        /* Matches the 20px indentation of your H3 headings exactly */
+main.focus-box h2 ~ h2 + p {
+    padding-left: 20px;        /* Snaps the corresponding text perfectly underneath them */
 }
 
   .contact-box  {
