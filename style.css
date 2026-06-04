@@ -294,9 +294,9 @@ body::before {
  /* 1. Reset/Protect default paragraph styling and font */
 .focus-box p {
     font-family: inherit;      /* Forces text to use your site's clean default font */
-    padding-left: 0;           /* Keeps all body paragraphs flush left (NO indentation) */
-    line-height: 1.6;          /* Clean line height for readability */
-    margin-bottom: 20px;       /* Adds nice vertical gaps between text blocks */
+    padding-left: 0;           /* Default: Keeps the first paragraph under H2 flush left */
+    line-height: 1.6;          
+    margin-bottom: 20px;       
     color: #444444;
 }
 
@@ -311,11 +311,16 @@ body::before {
 
 /* 3. Sub-Section Headings Layout (Steel and Stone & Ceramic Work) */
 .focus-box h3 {
-    padding-left: 20px;        /* Indents ONLY the H3 titles slightly to the right */
-    margin-top: 35px;          /* Adds breathing room above each subsection */
-    margin-bottom: 12px;       /* Clean gap directly under the subtitle */
+    padding-left: 20px;        /* Indents the H3 titles slightly to the right */
+    margin-top: 35px;          
+    margin-bottom: 12px;       
     font-size: 1.4rem;
     color: #333333;
+}
+
+/* 4. MATCHING INDENTATION: Pushes paragraphs right below an H3 over to match the 20px mark */
+.focus-box h3 + p {
+    padding-left: 20px;        /* Matches the 20px indentation of your H3 headings exactly */
 }
   .contact-box  {
   /* Box Dimensions */
