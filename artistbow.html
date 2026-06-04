@@ -29,67 +29,83 @@
     .no-results { grid-column: 1 / -1; text-align: center; padding: 40px; color: #777; font-style: italic; }
 
     /* --- LIGHTBOX (POP-UP) STYLING --- */
-    .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
-    
-    .lightbox-content { 
-        background: #fff; 
-        max-width: 900px; 
-        width: 100%; 
-        max-height: 90vh; 
-        border-radius: 8px; 
-        overflow: hidden; /* Stops the popup wrapper from scrolling */
-        display: flex; 
-        flex-direction: column; 
-        position: relative; 
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+    /* Ensure the popup container covers the screen and centers content */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: none; /* Controlled by JS flex toggle */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Restrict the maximum size of the popup window card */
+.lightbox-content {
+    background: #fff;
+    max-width: 85%;
+    max-height: 90vh; /* Keeps the entire popup card within 90% of screen height */
+    width: auto;
+    overflow: hidden; /* Prevents image/text bleed-through */
+    border-radius: 4px;
+}
+
+/* Set up the split or stacked body layout */
+.lightbox-body {
+    display: flex;
+    flex-direction: column; /* Stacks image over text on mobile screens */
+    max-height: 90vh;
+}
+
+/* Desktop layout adjustment: Side-by-side if screens are wide */
+@media (min-width: 768px) {
+    .lightbox-body {
+        flex-direction: row; 
     }
-    
-    .lightbox-close { position: absolute; top: 15px; right: 20px; font-size: 35px; font-weight: bold; color: #fff; cursor: pointer; background: rgba(0,0,0,0.6); width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; line-height: 1; z-index: 1010; transition: background 0.2s; }
-    .lightbox-close:hover { background: #000; }
-    
-    .lightbox-body { 
-        display: flex; 
-        flex-direction: column; 
-        min-height: 0; /* Allows the image wrapper to shrink to give text room */
-    }
-    
-    .lightbox-img-container { 
-        width: 100%; 
-        background: #111; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        padding: 10px 0; 
-        min-height: 0; 
-    }
-    
-    #lightbox-img { 
-        max-width: 100%; 
-        max-height: 100%; /* Dynamically fills whatever space text doesn't steal */
-        object-fit: contain; 
-        display: block; 
-        margin: 0 auto; 
-    }
-    
-    .lightbox-details { 
-        padding: 25px 30px; 
-        background: #fff; 
-        flex-shrink: 0; /* Ensures the text description never cuts off or squishes */
-    }
-    
-    .lightbox-details h2 { 
-        margin-top: 0; 
-        font-size: 1.6rem; 
-        border-bottom: 2px solid #eee; 
-        padding-bottom: 8px; 
-        margin-bottom: 15px; 
-    }
-    
-    .lightbox-details p { 
-        font-size: 1rem; 
-        margin: 6px 0; 
-        color: #444; 
-    }
+}
+
+/* Wrap the image tightly and force it to shrink instead of exploding outward */
+.lightbox-img-container {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111; /* Dark backdrop behind the artwork bounds */
+    overflow: hidden;
+}
+
+/* Force the image to scale strictly inside the viewport allotment */
+#lightbox-img { 
+    max-width: 100%; 
+    max-height: 65vh; /* Hard ceiling: guarantees room remains for text/titles */
+    object-fit: contain; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+/* Keep your description panel steady */
+.lightbox-details { 
+    padding: 25px 30px; 
+    background: #fff; 
+    flex-shrink: 0; 
+}
+
+.lightbox-details h2 { 
+    margin-top: 0; 
+    font-size: 1.6rem; 
+    border-bottom: 2px solid #eee; 
+    padding-bottom: 8px; 
+    margin-bottom: 15px; 
+}
+
+.lightbox-details p { 
+    font-size: 1rem; 
+    margin: 6px 0; 
+    color: #444; 
+}
 </style>
 </head>
 <body>
