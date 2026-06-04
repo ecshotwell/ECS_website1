@@ -129,6 +129,10 @@
                 <label for="filter-category">Category</label>
                 <select id="filter-category" onchange="filterGallery()"><option value="all">All Categories</option></select>
             </div>
+            <div class="filter-item">
+                <label for="filter-category">Artist</label>
+                <select id="filter-artist" onchange="filterGallery()"><option value="all">All Categories</option></select>
+            </div>
         </div>
 
         <!-- Dynamic Gallery Grid -->
@@ -143,26 +147,20 @@
         <div class="lightbox-content" onclick="event.stopPropagation()">
             <div class="lightbox-body">
                 <div class="lightbox-img-container">
-                    <img id="lightbox-img" src="./imgfiles/" alt="missing image">
+                    <img id="lightbox-img" src="./imgfiles/ecs-art/" alt="missing image">
                 </div>
                 <div class="lightbox-details">
                     <h2 id="lightbox-title"></h2>
                     <p><strong>Medium:</strong> <span id="lightbox-medium"></span></p>
                     <p><strong>Location:</strong> <span id="lightbox-location"></span></p>
                     <p><strong>Category:</strong> <span id="lightbox-category"></span></p>
+                    <p><strong>Artist:</strong> <span id="lightbox-artist"></span></p>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <ul class="footer-nav">
-            <li><a href="index.html">Home</a></li>
-    <li><a href="artistbow.html">Body of Work</a></li>
-    <li><a href="vision.html">Vision</a></li>
-    <li><a href="professionalfocus.html">Professional Focus</a></li>
-    <li><a href="contact.html">Contact</a></li>
-        </ul>
         <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
     </footer>
 </body>
