@@ -130,7 +130,7 @@
                 <select id="filter-category" onchange="filterGallery()"><option value="all">All Categories</option></select>
             </div>
             <div class="filter-item">
-                <label for="filter-category">Artist</label>
+                <label for="filter-artist">Artist</label>
                 <select id="filter-artist" onchange="filterGallery()"><option value="all">All Categories</option></select>
             </div>
         </div>
@@ -184,19 +184,26 @@
     });
 
     // 2. Dynamically extract unique values for dropdown filters
-    function populateFilterDropdowns(data) {
-        const attributes = ['subject', 'medium', 'location', 'category', 'artist'];
-        attributes.forEach(attr => {
-            const selectElement = document.getElementById(`filter-${attr}`);
-            const uniqueValues = [...new Set(data.map(item => item[attr]?.trim()).filter(Boolean))].sort();
-            uniqueValues.forEach(value => {
-                const option = document.createElement('option');
-                option.value = value;
-                option.textContent = value;
-                selectElement.appendChild(option);
-            });
+function populateFilterDropdowns(data) {
+    const attributes = ['subject', 'medium', 'location', 'category', 'artist'];
+    attributes.forEach(attr => {
+        const selectElement = document.getElementById(`filter-${attr}`);
+        
+        // FIX: Match lowercase attribute OR capitalized fallback item mapping (e.g., item['artist'] || item['Artist'])
+        const capitalizedAttr = attr.charAt(0).toUpperCase() + attr.slice(1);
+        const uniqueValues = [...new Set(data.map(item => {
+            const val = item[attr] || item[capitalizedAttr];
+            return val ? val.trim() : null;
+        }).filter(Boolean))].sort();
+        
+        uniqueValues.forEach(value => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            selectElement.appendChild(option);
         });
-    }
+    });
+}
 
     // 3. Render gallery grid cards
     function displayGallery(items) {
@@ -229,24 +236,25 @@
     }
 
     // 4. Filter gallery calculation
-    function filterGallery() {
-        const subjectFilter = document.getElementById('filter-subject').value;
-        const mediumFilter = document.getElementById('filter-medium').value;
-        const locationFilter = document.getElementById('filter-location').value;
-        const categoryFilter = document.getElementById('filter-category').value;
-        const artistFilter = document.getElementById('filter-artist').value;
+function filterGallery() {
+    const subjectFilter = document.getElementById('filter-subject').value;
+    const mediumFilter = document.getElementById('filter-medium').value;
+    const locationFilter = document.getElementById('filter-location').value;
+    const categoryFilter = document.getElementById('filter-category').value;
+    const artistFilter = document.getElementById('filter-artist').value;
+    
+    const filteredResults = masterGalleryData.filter(item => {
+        // Fallbacks added to catch both 'artist' and 'Artist' data records
+        const matchSubject = (subjectFilter === 'all' || (item.subject || item.Subject)?.trim() === subjectFilter);
+        const matchMedium = (mediumFilter === 'all' || (item.medium || item.Medium)?.trim() === mediumFilter);
+        const matchLocation = (locationFilter === 'all' || (item.location || item.Location)?.trim() === locationFilter);
+        const matchCategory = (categoryFilter === 'all' || (item.category || item.Category)?.trim() === categoryFilter);
+        const matchArtist = (artistFilter === 'all' || (item.artist || item.Artist)?.trim() === artistFilter);
         
-        const filteredResults = masterGalleryData.filter(item => {
-            const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
-            const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
-            const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
-            const matchCategory = (categoryFilter === 'all' || item.category?.trim() === categoryFilter);
-            const matchArtist = (artistFilter === 'all' || item.artist?.trim() === artistFilter);
-            return matchSubject && matchMedium && matchLocation && matchCategory && matchArtist;
-        });
-        displayGallery(filteredResults);
-    }
-
+        return matchSubject && matchMedium && matchLocation && matchCategory && matchArtist;
+    });
+displayGallery(filteredResults);
+}
     // --- LIGHTBOX INTERACTION FUNCTIONS ---
 
     // Open Lightbox Pop-up
