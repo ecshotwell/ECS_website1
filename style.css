@@ -251,25 +251,25 @@ body::before {
   color: #111;
 }
 
-/* --- 1. The Container Card Appearance (Applies to both Focus & Vision) --- */
+/* --- 1. The Container Card Appearance --- */
 main.focus-box {
-    max-width: 600px;         /* Keeps the box cleanly sized on desktop screens */
-    width: 100%;              /* Fully responsive on mobile */
+    max-width: 600px;         
+    width: 100%;              
     min-height: 200px;        
-    margin: 40px auto;        /* Centers the card horizontally */
-    padding: 35px;            /* Creates breathing room around the interior edges */
-    background-color: #ffffff !important; /* Forces the solid white background card to appear */
-    border: 1px solid #dddddd; /* Clean, clear boundary line */
-    border-radius: 8px;       /* Beautifully rounds the corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Soft drop shadow */
+    margin: 40px auto;        /* Centers the card layout cleanly */
+    padding: 35px;            
+    background-color: #ffffff !important; /* Forces the background card to show */
+    border: 1px solid #dddddd; 
+    border-radius: 8px;       
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
     box-sizing: border-box;   
-    display: block;           /* Ensures it acts as a distinct structural block */
+    display: block;
 }
 
 /* --- 2. Clean Text Flow & Font Protection --- */
 main.focus-box p {
-    font-family: inherit;      /* Guarantees no accidental font family shifts */
-    padding-left: 0;           /* Default: first paragraph under the main title stays flush left */
+    font-family: inherit;      
+    padding-left: 0;           /* Main paragraph under Sweat and Fire stays flush left */
     line-height: 1.6;          
     margin-bottom: 20px;       
     color: #444444;
@@ -284,17 +284,18 @@ main.focus-box h2 {
     color: #333333;
 }
 
-/* --- 4. Sub-Section Headings & Paragraph Indentation --- */
-/* This targets any h2 or p element that comes AFTER the first main h2 title */
-main.focus-box h2 ~ h2 {
-    padding-left: 20px;        /* Pushes "Steel and Stone", "Ceramic Work", etc. right by 20px */
+/* --- 4. Sub-Section Headings Indentation --- */
+main.focus-box h3 {
+    padding-left: 20px;        /* Indents "Steel and Stone" & "Ceramic Work" cleanly */
     margin-top: 35px;          
     margin-bottom: 12px;       
-    font-size: 1.4rem;         /* Slightly smaller scale for hierarchy */
+    font-size: 1.4rem;         
+    color: #333333;
 }
 
-main.focus-box h2 ~ h2 + p {
-    padding-left: 20px;        /* Snaps the corresponding text perfectly underneath them */
+/* --- 5. Sub-Section Text Matching Alignment --- */
+main.focus-box h3 + p {
+    padding-left: 20px;        /* Snaps the corresponding text perfectly underneath the H3 text! */
 }
 
   .contact-box  {
