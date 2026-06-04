@@ -219,7 +219,7 @@ function populateFilterDropdowns(data) {
             const card = document.createElement('div');
             card.className = 'gallery-card';
             let filename = item.filename.trim();
-            const imgPath = filename.startsWith('imgfiles/ecs-art/') ? `./${filename}` : `./imgfiles/eu-iron/${filename}`;
+            const imgPath = filename.startsWith('imgfiles/ecs-art/') ? `./${filename}` : `./imgfiles/ecs-art/${filename}`;
             card.innerHTML = `
                 <img src="${imgPath}" alt="${item.subject || 'Blacksmith Artwork'}" loading="lazy">
                 <div class="gallery-info">
@@ -261,7 +261,7 @@ displayGallery(filteredResults);
     // Open Lightbox Pop-up
     function openLightbox(item) {
         // FIXED: Added missing backticks around template literal path
-        const imgPath = `./imgfiles/eu-iron/${item.filename.trim()}`;
+       const imgPath = `./imgfiles/ecs-art/${item.filename.trim()}`;
         
         document.getElementById('lightbox-img').src = imgPath;
         document.getElementById('lightbox-img').alt = item.subject || 'Blacksmith Artwork';
