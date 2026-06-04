@@ -199,105 +199,114 @@
         }
     });
 
-    // 2. Dynamically extract unique values for dropdown filters
-function populateFilterDropdowns(data) {
-    const attributes = ['subject', 'medium', 'location', 'category', 'artist'];
-    attributes.forEach(attr => {
-        const selectElement = document.getElementById(`filter-${attr}`);
-        
-        // FIX: Match lowercase attribute OR capitalized fallback item mapping (e.g., item['artist'] || item['Artist'])
-        const capitalizedAttr = attr.charAt(0).toUpperCase() + attr.slice(1);
-        const uniqueValues = [...new Set(data.map(item => {
-            const val = item[attr] || item[capitalizedAttr];
-            return val ? val.trim() : null;
-        }).filter(Boolean))].sort();
-        
-        uniqueValues.forEach(value => {
-            const option = document.createElement('option');
-            option.value = value;
-            option.textContent = value;
-            selectElement.appendChild(option);
+    // 2. Dynamically extract unique values for dropdown filters (Matches lowercase CSV headers)
+    function populateFilterDropdowns(data) {
+        const attributes = ['subject', 'medium', 'location', 'category', 'artist'];
+        attributes.forEach(attr => {
+            const selectElement = document.getElementById(`filter-${attr}`);
+            
+            // Extract unique values matching exact lowercase CSV headers safely
+            const uniqueValues = [...new Set(data.map(item => {
+                const val = item[attr];
+                return val ? val.trim() : null;
+            }).filter(Boolean))].sort();
+            
+            // Clear any existing dynamic options except the first "All" option
+            while (selectElement.options.length > 1) {
+                selectElement.remove(1);
+            }
+
+            uniqueValues.forEach(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = value;
+                selectElement.appendChild(option);
+            });
         });
-    });
-}
+    }
 
-   // 3. Render gallery grid cards
-items.forEach((item, index) => {
-    const card = document.createElement('div');
-    card.className = 'gallery-card';
-    let filename = item.filename.trim();
-    
-    // SAFE PATH RESOLUTION: If the CSV row already specifies the folder, use it. 
-    // Otherwise, default fallback to the eu-iron directory.
-    let imgPath = filename.startsWith('imgfiles/') ? `./${filename}` : `./imgfiles/eu-iron/${filename}`;
-
-    card.innerHTML = `
-        <img src="${imgPath}" alt="${item.subject || 'Artwork'}" loading="lazy">
-        <div class="gallery-info">
-            <h3>${item.subject || 'Untitled'}</h3>
-            <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
-            <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
-            <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
-        </div>
-    `;
-    
-    // Pass the exact imgPath variable directly to the lightbox function
-    card.addEventListener('click', () => openLightbox(item, imgPath));
-    grid.appendChild(card);
-});
-
-    // 4. Filter gallery calculation
-function filterGallery() {
-    const subjectFilter = document.getElementById('filter-subject').value;
-    const mediumFilter = document.getElementById('filter-medium').value;
-    const locationFilter = document.getElementById('filter-location').value;
-    const categoryFilter = document.getElementById('filter-category').value;
-    const artistFilter = document.getElementById('filter-artist').value;
-    
-    const filteredResults = masterGalleryData.filter(item => {
-        // Fallbacks added to catch both 'artist' and 'Artist' data records
-        const matchSubject = (subjectFilter === 'all' || (item.subject || item.Subject)?.trim() === subjectFilter);
-        const matchMedium = (mediumFilter === 'all' || (item.medium || item.Medium)?.trim() === mediumFilter);
-        const matchLocation = (locationFilter === 'all' || (item.location || item.Location)?.trim() === locationFilter);
-        const matchCategory = (categoryFilter === 'all' || (item.category || item.Category)?.trim() === categoryFilter);
-        const matchArtist = (artistFilter === 'all' || (item.artist || item.Artist)?.trim() === artistFilter);
+    // 3. Render gallery grid cards
+    function displayGallery(items) {
+        const grid = document.getElementById('portfolio-grid');
+        grid.innerHTML = '';
         
-        return matchSubject && matchMedium && matchLocation && matchCategory && matchArtist;
-    });
-displayGallery(filteredResults);
-}
+        if (items.length === 0) {
+            grid.innerHTML = '<div class="no-results">No items match your chosen filter criteria.</div>';
+            return;
+        }
+        
+        items.forEach((item, index) => {
+            // Guard clause to prevent script crash if a row structure is corrupt
+            if (!item.filename) return;
+
+            const card = document.createElement('div');
+            card.className = 'gallery-card';
+            
+            let cleanFilename = item.filename.trim();
+            // Since your CSV explicitly includes "imgfiles/ecs-art/", we just append standard relative prefix "./"
+            let imgPath = cleanFilename.startsWith('imgfiles/') ? `./${cleanFilename}` : `./imgfiles/ecs-art/${cleanFilename}`;
+
+            card.innerHTML = `
+                <img src="${imgPath}" alt="${item.subject || 'Artwork'}" loading="lazy">
+                <div class="gallery-info">
+                    <h3>${item.subject || 'Untitled'}</h3>
+                    <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
+                    <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
+                    <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
+                </div>
+            `;
+            
+            // Pass the verified explicit path straight to the lightbox
+            card.addEventListener('click', () => openLightbox(item, imgPath));
+            grid.appendChild(card);
+        });
+    }
+
+    // 4. Filter gallery calculation (Strict lowercase column matches)
+    function filterGallery() {
+        const subjectFilter = document.getElementById('filter-subject').value;
+        const mediumFilter = document.getElementById('filter-medium').value;
+        const locationFilter = document.getElementById('filter-location').value;
+        const categoryFilter = document.getElementById('filter-category').value;
+        const artistFilter = document.getElementById('filter-artist').value;
+        
+        const filteredResults = masterGalleryData.filter(item => {
+            const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
+            const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
+            const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
+            const matchCategory = (categoryFilter === 'all' || item.category?.trim() === categoryFilter);
+            const matchArtist = (artistFilter === 'all' || item.artist?.trim() === artistFilter);
+            return matchSubject && matchMedium && matchLocation && matchCategory && matchArtist;
+        });
+        displayGallery(filteredResults);
+    }
+
     // --- LIGHTBOX INTERACTION FUNCTIONS ---
 
-    // Open Lightbox Pop-up
-   // Update the openLightbox signature to accept the calculated path
-function openLightbox(item, calculatedPath) {
-    // If calculatedPath wasn't passed, fall back gracefully
-    const imgPath = calculatedPath || (item.filename.trim().startsWith('imgfiles/') ? `./${item.filename.trim()}` : `./imgfiles/eu-iron/${item.filename.trim()}`);
-    
-    document.getElementById('lightbox-img').src = imgPath;
-    document.getElementById('lightbox-img').alt = item.subject || 'Artwork';
-    document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
-    document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
-    document.getElementById('lightbox-location').textContent = item.location || 'N/A';
-    document.getElementById('lightbox-category').textContent = item.category || 'N/A';
-    document.getElementById('lightbox-artist').textContent = item.artist || 'N/A';
-    
-    document.getElementById('lightbox').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
+    function openLightbox(item, calculatedPath) {
+        // Uses the direct path generated by the card loop
+        const imgPath = calculatedPath || `./${item.filename.trim()}`;
+        
+        document.getElementById('lightbox-img').src = imgPath;
+        document.getElementById('lightbox-img').alt = item.subject || 'Artwork';
+        document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
+        document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
+        document.getElementById('lightbox-location').textContent = item.location || 'N/A';
+        document.getElementById('lightbox-category').textContent = item.category || 'N/A';
+        document.getElementById('lightbox-artist').textContent = item.artist || 'N/A';
+        
+        document.getElementById('lightbox').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 
-    // Close Lightbox Pop-up
     function closeLightbox(event) {
-        // FIXED: Safely prevent click event bubbles from breaking code execution
         if (event && event.stopPropagation) {
             event.stopPropagation();
         }
         document.getElementById('lightbox').style.display = 'none';
-        // Restore normal background scrolling
         document.body.style.overflow = 'auto';
     }
 
-    // OPTIONAL BONUS: Close lightbox if the user hits the Escape key
     window.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             closeLightbox();
