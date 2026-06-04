@@ -155,26 +155,6 @@ body::before {
   /* Content Properties */
   box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
 }
-
-.vision-box  {
-  /* Box Dimensions */
-  max-width: 800px;       /* Keeps the box from getting too wide on large screens */
-  width: 100%;            /* Allows it to be responsive on smaller screens */
-  min-height: 200px;      /* Ensures the box has a minimum height */
-  
-  /* Spacing & Alignment */
-  margin: 40px auto;      /* Center aligns the box horizontally on the page */
-  padding: 30px;          /* Creates space between the text and the box border */
-  
-  /* Appearance */
-  background-color: #ffffff; /* Gives the box a background color */
-  border: 1px solid #dddddd; /* Adds a subtle border outline */
-  border-radius: 8px;     /* Rounds the corners smoothly */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft drop-shadow */
-  
-  /* Content Properties */
-  box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
-}
  
 /* --- Carousel Container Styling --- */
 .carousel-container {
@@ -270,47 +250,32 @@ body::before {
   color: #111;
 }
 
-
-
-.focus-box  {
-  /* Box Dimensions */
-  max-width: 600px;       /* Keeps the box from getting too wide on large screens */
-  width: 100%;            /* Allows it to be responsive on smaller screens */
-  min-height: 200px;      /* Ensures the box has a minimum height */
-  
-  /* Spacing & Alignment */
-  margin: 40px auto;      /* Center aligns the box horizontally on the page */
-  padding: 30px;          /* Creates space between the text and the box border */
-  
-  /* Appearance */
-  background-color: #ffffff; /* Gives the box a background color */
-  border: 1px solid #dddddd; /* Adds a subtle border outline */
-  border-radius: 8px;     /* Rounds the corners smoothly */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft drop-shadow */
-  
-  /* Content Properties */
-  box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */}
-
- /* 1. Reset/Protect default paragraph styling and font */
-.focus-box p {
-    font-family: inherit;      /* Forces text to use your site's clean default font */
-    padding-left: 0;           /* Default: Keeps the first paragraph under H2 flush left */
+/* 1. Reset/Protect default paragraph styling and font across both sections */
+.focus-box p, 
+.vision-box p,
+main p {
+    font-family: inherit;      
+    padding-left: 0;           /* Keeps the first paragraph flush left */
     line-height: 1.6;          
     margin-bottom: 20px;       
     color: #444444;
 }
 
-/* 2. Main Title Layout (Sweat and Fire) */
-.focus-box h2 {
-    padding-left: 0;           /* Keeps the main section title flush left */
+/* 2. Main Title Layout (Social Advocacy / Sweat and Fire) */
+.focus-box h2,
+.vision-box h2,
+main > h2 {
+    padding-left: 0;           /* Keeps main section titles flush left */
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 1.8rem;
     color: #333333;
 }
 
-/* 3. Sub-Section Headings Layout (Steel and Stone & Ceramic Work) */
-.focus-box h3 {
+/* 3. Sub-Section Headings Layout (Countering Injustice, Steel and Stone, etc.) */
+.focus-box h3,
+.vision-box h3,
+main h3 {
     padding-left: 20px;        /* Indents the H3 titles slightly to the right */
     margin-top: 35px;          
     margin-bottom: 12px;       
@@ -319,9 +284,12 @@ body::before {
 }
 
 /* 4. MATCHING INDENTATION: Pushes paragraphs right below an H3 over to match the 20px mark */
-.focus-box h3 + p {
+.focus-box h3 + p,
+.vision-box h3 + p,
+main h3 + p {
     padding-left: 20px;        /* Matches the 20px indentation of your H3 headings exactly */
 }
+
   .contact-box  {
   /* Box Dimensions */
   max-width: 800px;       /* Keeps the box from getting too wide on large screens */
