@@ -219,7 +219,7 @@ function populateFilterDropdowns(data) {
             const card = document.createElement('div');
             card.className = 'gallery-card';
             let filename = item.filename.trim();
-            const imgPath = filename.startsWith('imgfiles/eu-iron/') ? `./${filename}` : `./imgfiles/eu-iron/${filename}`;
+            const imgPath = filename.startsWith('imgfiles/ecs-art/') ? `./${filename}` : `./imgfiles/eu-iron/${filename}`;
             card.innerHTML = `
                 <img src="${imgPath}" alt="${item.subject || 'Blacksmith Artwork'}" loading="lazy">
                 <div class="gallery-info">
@@ -227,6 +227,7 @@ function populateFilterDropdowns(data) {
                     <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
                     <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
                     <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
+                    <p><strong>Artist:</strong> ${item.artist || 'N/A'}</p>
                 </div>
             `;
             // Add click event listener to trigger the lightbox pop-up
