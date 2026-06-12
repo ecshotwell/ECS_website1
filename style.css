@@ -187,26 +187,27 @@ body::before {
     z-index: 5;
 }
 /* --- 4. Clean Caption Formatting Below the Image --- */
-.carousel-caption {
-    text-align: center;
-    padding: 20px;
-    background-color: #ffffff;
-    border-top: 1px solid #eaeaea;
-    height: 110px;         /* Keeps space uniform for titles and descriptions */
-    box-sizing: border-box;
+/* Container styling for the caption area */
+.carousel-caption-box {
+  background-color: #ffffff;
+  padding: 20px 15px;
+  text-align: center;
+  border-top: 1px solid #f0f0f0; /* A clean line directly underneath the images */
+  margin-top: 0; /* Keeps it flush against the bottom of the active image */
 }
 
 #captionTitle {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #222222;
-    margin: 0 0 6px 0;
+  font-size: 1.3rem;
+  color: #2c3e50; /* Deep slate color matching your site's headers */
+  margin: 0 0 6px 0;
+  font-weight: 600;
 }
 
 #captionDesc {
-    font-size: 0.95rem;
-    color: #555555;
-    margin: 0;
+  font-size: 1rem;
+  color: #555555;
+  margin: 0;
+  line-height: 1.4;
 }
 /* Navigation Arrow Overlays */
 #prevBtn, #nextBtn {
