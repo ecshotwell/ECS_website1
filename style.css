@@ -310,8 +310,53 @@ main.focus-box h3 {
 main.focus-box h3 + p {
     padding-left: 20px;        /* Snaps the corresponding text perfectly underneath the H3 text! */
 }
+/* Blog Section Styling */
+.blog-section {
+  margin-top: 40px;
+  text-align: left; /* Aligns with your existing text blocks */
+}
 
-  .contact-box  {
+/* Subdued divider to separate the static vision text from the dynamic blog updates */
+.section-divider {
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+  margin-bottom: 40px;
+}
+
+.blog-main-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.blog-post {
+  margin-bottom: 40px;
+}
+
+.blog-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.blog-date {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+/* Matches your existing readable paragraph layout */
+.blog-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+}
+
+.contact-box  {
   /* Box Dimensions */
   max-width: 800px;       /* Keeps the box from getting too wide on large screens */
   width: 100%;            /* Allows it to be responsive on smaller screens */
