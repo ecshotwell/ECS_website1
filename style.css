@@ -136,39 +136,7 @@ body::before {
     opacity: 0.1; 
 }
 
-.gallery-card { 
-    border: 1px solid #ddd; 
-    border-radius: 6px; 
-    overflow: hidden; 
-    background: #fff; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-    transition: transform 0.2s; 
-    cursor: pointer;
-    
-    /* Add these two lines to force layout calculation */
-    display: flex;
-    flex-direction: column;
-}
 
-.ideas-box  {
-  /* Box Dimensions */
-  max-width: 800px;       /* Keeps the box from getting too wide on large screens */
-  width: 100%;            /* Allows it to be responsive on smaller screens */
-  min-height: 200px;      /* Ensures the box has a minimum height */
-  
-  /* Spacing & Alignment */
-  margin: 40px auto;      /* Center aligns the box horizontally on the page */
-  padding: 30px;          /* Creates space between the text and the box border */
-  
-  /* Appearance */
-  background-color: #ffffff; /* Gives the box a background color */
-  border: 1px solid #dddddd; /* Adds a subtle border outline */
-  border-radius: 8px;     /* Rounds the corners smoothly */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft drop-shadow */
-  
-  /* Content Properties */
-  box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
-}
  
 /* --- Carousel Container Styling --- */
 .carousel-container {
@@ -317,12 +285,6 @@ main.focus-box h3 + p {
 }
 
 /* Subdued divider to separate the static vision text from the dynamic blog updates */
-.section-divider {
-  border: 0;
-  height: 1px;
-  background: #e0e0e0;
-  margin-bottom: 40px;
-}
 
 .blog-main-title {
   font-size: 1.8rem;
@@ -356,25 +318,12 @@ main.focus-box h3 + p {
   margin-bottom: 20px;
 }
 
-.contact-box  {
-  /* Box Dimensions */
-  max-width: 800px;       /* Keeps the box from getting too wide on large screens */
-  width: 100%;            /* Allows it to be responsive on smaller screens */
-  min-height: 200px;      /* Ensures the box has a minimum height */
-  
-  /* Spacing & Alignment */
-  margin: 40px auto;      /* Center aligns the box horizontally on the page */
-  padding: 30px;          /* Creates space between the text and the box border */
-  
-  /* Appearance */
-  background-color: #ffffff; /* Gives the box a background color */
-  border: 1px solid #dddddd; /* Adds a subtle border outline */
-  border-radius: 8px;     /* Rounds the corners smoothly */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft drop-shadow */
-  
-  /* Content Properties */
-  box-sizing: border-box; /* Ensures padding doesn't accidentally increase width */
+/* Creates the physical window for the background image to show through */
+.blog-card {
+  margin-top: 50px; /* Adjust this value up or down to make the gap wider or narrower */
+  margin-bottom: 50px; /* Adds space above the footer */
 }
+
 
 .content-container {
   max-width: 800px; /* Adjust this to match your upper card's exact width */
