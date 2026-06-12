@@ -45,7 +45,7 @@ root {
 }
 
 /* --- Top Navigation Bar (Connected to Hero) --- */
-.top-nav-bar {
+.navigation-toolbar {
     display: flex;
     justify-content: center;   
     align-items: center;
@@ -74,7 +74,7 @@ root {
 }
 
 /* --- Navigation Link Text Styling --- */
-.top-nav-bar a {
+.navigation-toolbar a {
     color: #111111;            /* Crisp, readable black text */
     text-decoration: none;     /* Removes standard underlines */
     font-size: 1rem;
@@ -83,16 +83,24 @@ root {
 }
 
 /* Subtle hover effect for interactivity */
-.top-nav-bar a:hover {
+.navigation-toolbar a:hover {
     color: #3498db;            /* Transitions text to a clean blue on hover */
+}
+
+/* Optional active state style for the script to hook into */
+.navigation-toolbar a.active {
+    color: #3498db;
+    font-weight: 700;
 }
 
 /* Mobile responsive optimization */
 @media (max-width: 768px) {
-    .top-nav-bar {
+    .navigation-toolbar {
         flex-direction: column; /* Stacks links vertically on smaller phone screens */
         gap: 15px;
         text-align: center;
+        height: auto;           /* Allows container to expand vertically on mobile */
+        padding: 10px 0;
     }
 }
 
