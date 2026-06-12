@@ -96,11 +96,16 @@ root {
 /* Mobile responsive optimization */
 @media (max-width: 768px) {
     .navigation-toolbar {
-        flex-direction: column; /* Stacks links vertically on smaller phone screens */
-        gap: 15px;
-        text-align: center;
-        height: auto;           /* Allows container to expand vertically on mobile */
-        padding: 10px 0;
+        /* Instead of stacking vertically, keep them in a row but let them wrap if needed */
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 12px 18px;     /* Tighter spacing for mobile screens (vertical horizontal) */
+        height: auto;       /* Lets it adapt cleanly */
+        padding: 8px 4px;   /* Shrinks the overall footprint */
+    }
+
+    .navigation-toolbar a {
+        font-size: 0.9rem;  /* Slightly smaller text so everything fits beautifully */
     }
 }
 
