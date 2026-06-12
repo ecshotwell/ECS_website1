@@ -323,13 +323,13 @@ main.focus-box h3 + p {
   margin-top: 50px; /* Adjust this value up or down to make the gap wider or narrower */
   margin-bottom: 50px; /* Adds space above the footer */
 }
-
-.blog-image-half {
-  width: 100%;
-  max-width: 500px; /* Adjust this pixel value to equal roughly half your desktop page width */
+/* Target the image inside your blog post container */
+.blog-section img, 
+.responsive-blog-img {
+  max-width: 100%;
   height: auto;
   display: block;
-  margin: 0 auto;
+  margin: 1.5rem 0; /* Adds spacing above and below the image, keeping side margins aligned with text */
 }
 
 .content-container {
