@@ -146,16 +146,20 @@ body::before {
     overflow: hidden;
 }
 /* --- 1. Limit the Overall Carousel Size --- */
-.carousel-container {
-    position: relative;
-    max-width: 600px;      /* Prevents the carousel from getting too wide */
-    max-height: 700px;     /* Prevents vertical images from blowing up too tall */
-    margin: 40px auto;     /* Centers the entire carousel on your home page */
-    overflow: hidden;      /* Keeps the side images hidden until they slide in */
-    background-color: #f9f9f9; 
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;           /* Ensures container claims its space */
+/* Target the main outer container of your image carousel */
+.carousel-container, .image-section {
+  max-width: 800px;  /* Match this to the exact max-width of your text section */
+  width: 90%;        /* Keeps it responsive on smaller screens */
+  margin: 2rem auto; /* The 'auto' left/right centers it and aligns it perfectly with the text */
+  padding: 0;        /* Ensures no extra internal shifting */
+}
+
+/* Ensure the image inside fills that container beautifully */
+.carousel-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px; /* Optional: adds a slight cleanup to the corners if desired */
 }
 
 /* --- 2. Create a Horizontal Sliding Track --- */
@@ -176,16 +180,6 @@ body::before {
 }
 /* --- 3. Clean Caption Formatting Below the Image --- */
 /* (You can delete the old .active reveal rules, they are no longer needed!) */
-.carousel-caption {
-    text-align: center;
-    padding: 20px;
-    background-color: #ffffff;
-    border-top: 1px solid #eaeaea;
-    height: 110px;         /* Keeps space uniform for titles and descriptions */
-    box-sizing: border-box;
-    position: relative;    /* Ensures it sits cleanly below the sliding area */
-    z-index: 5;
-}
 /* --- 4. Clean Caption Formatting Below the Image --- */
 /* Container styling for the caption area */
 .carousel-caption-box {
