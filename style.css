@@ -324,6 +324,13 @@ main.focus-box h3 + p {
   margin-bottom: 50px; /* Adds space above the footer */
 }
 
+.blog-image-half {
+  width: 100%;
+  max-width: 500px; /* Adjust this pixel value to equal roughly half your desktop page width */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 
 .content-container {
   max-width: 800px; /* Adjust this to match your upper card's exact width */
