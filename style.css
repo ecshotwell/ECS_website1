@@ -27,23 +27,43 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    
     background-color: var(--light-blue-bg); 
-    
-    /* Bottom padding elegantly clears room for the nav bar */
     padding: 30px 30px 70px 30px; 
-    
-    /* Perfect horizontal centering on your page background */
     margin: 20px auto 40px auto; 
-    
-    /* FIX: Increased from 1000px to match the precise width of your portfolio content below */
     max-width: 1200px;           
-    width: 90%;                  /* Provides an even margin frame on smaller desktop screens */
-    
+    width: 90%;                  
     border-radius: 8px;          
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
     
-    position: relative;          /* CRITICAL: This acts as the anchor wall for the nav bar */
+    /* FIX: Changed vertical offset to 0 and blur to a tight, soft halo so it cannot bleed down past the nav bar */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.04); 
+    
+    position: relative;          
+}
+
+/* --- Top Navigation Bar (Connected to Hero) --- */
+.navigation-toolbar {
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+    gap: 30px;                 
+    position: absolute;        
+    bottom: -1px;              
+    left: 0;                   
+    width: 100%;               
+    margin: 0;                 
+    background-color: #ffffff;  
+    height: 45px;              
+    
+    border-left: 2px solid var(--border-blue);   
+    border-right: 2px solid var(--border-blue);  
+    border-bottom: 2px solid var(--border-blue); 
+    border-top: none;                 
+    border-radius: 0 0 8px 8px;        
+    box-sizing: border-box;
+    z-index: 5;                
+
+    /* FIX: Moves the bottom anchor shadow here, casting a clean, dark depth shadow under the white toolbar */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
 }
 
 /* Responsive tweak for mobile screens so they stack vertically */
@@ -55,36 +75,6 @@
         padding: 20px 20px 70px 20px;
     }
 }
-
-/* --- Top Navigation Bar (Connected to Hero) --- */
-.navigation-toolbar {
-    display: flex;
-    justify-content: center;   
-    align-items: center;
-    gap: 30px;                 
-    
-    /* --- The Seamless Connection Fix --- */
-    position: absolute;        /* Pins the bar relative to the hero container */
-    bottom: -1px;                 /* Places it perfectly at the very bottom edge */
-    left: 0;                   /* Aligns flawlessly with the left border */
-    width: 100%;               /* Spans 100% of the absolute outer border edge */
-    margin: 0;                 /* Clears out the old problematic shifting margins */
-    
-    background-color: #ffffff;  
-    height: 45px;              /* Sets a clean, uniform height */
-    
-    /* --- Custom Border Frame Setup --- */
-    border-left: 2px solid var(--border-blue);   
-    border-right: 2px solid var(--border-blue);  
-    border-bottom: 2px solid var(--border-blue); 
-    border-top: none;                 
-    
-    /* Rounded bottom corners match the 8px curve of your hero container perfectly */
-    border-radius: 0 0 8px 8px;        
-    box-sizing: border-box;
-    z-index: 5;                
-}
-
 /* --- Navigation Link Text Styling --- */
 .navigation-toolbar a {
     color: #111111;            /* Crisp, readable black text */
