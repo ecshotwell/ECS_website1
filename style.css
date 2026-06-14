@@ -439,6 +439,19 @@ main.focus-box h3 + p {
     padding: 0;
 }
 
+/* --- Mobile Viewport Anti-Clipping Fix --- */
+@media (max-width: 768px) {
+    .portfolio-grid .card img,
+    .gallery-container .card img,
+    .portfolio-grid img { /* Targets the images inside your gallery grid cards */
+        height: auto !important;       /* Overrides any rigid pixel heights on mobile */
+        max-height: 400px !important;  /* Keeps tall images from swallowing the whole screen */
+        object-fit: contain !important; /* Forces the entire image to stay visible inside the card boundaries */
+        background-color: #1a1a1a;     /* Fills any side gaps cleanly if the photo is narrow */
+        display: block;
+    }
+}
+
 /* --- Footer Section Styling --- */
 footer {
     text-align: center;
