@@ -1,19 +1,24 @@
 /* Style for Eric Shotwell's website */
-root {
-   
-    max-width: 1024px;
-    
+
+/* Global Layout Variables & Reset */
+:root {
+    /* Perfect place to store your brand colors for easy updating! */
+    --brand-blue: #3498db;
+    --light-blue-bg: rgba(212, 230, 241, 0.75);
+    --border-blue: #d4e6f1;
+    --charcoal: #2c3e50;
+    --dark-gray: #333333;
 }
 
 /* --- Hero Header Container --- */
 
-/* --- Constrain the Top Hero Image --- */
+/* Constrain the Top Hero Image */
 .hero-container img {
-  max-width: 200px;  /* Constrains the width to a manageable size */
-  width: 100%;       /* Allows it to scale down nicely on mobile screens */
-  height: auto;      /* Maintains the original aspect ratio */
-  object-fit: contain; 
-  border-radius: 4px; /* Optional: slightly softens the image corners inside the box */
+    max-width: 200px;  /* Constrains the width to a manageable size */
+    width: 100%;       /* Allows it to scale down nicely on mobile screens */
+    height: auto;      /* Maintains the original aspect ratio */
+    object-fit: contain; 
+    border-radius: 4px; /* Slightly softens the image corners inside the box */
 }
 
 .hero-container {
@@ -23,9 +28,9 @@ root {
     flex-wrap: wrap;
     gap: 20px;
     
-    background-color: rgba(212, 230, 241, 0.75); /* Soft light blue, 25% transparent */
+    background-color: var(--light-blue-bg); 
     
-    /* CHANGE: Bottom padding increased to 70px to elegantly clear room for the nav bar */
+    /* Bottom padding increased to 70px to elegantly clear room for the nav bar */
     padding: 30px 30px 70px 30px; 
     
     margin: 20px auto 40px auto; /* Centers the box perfectly on the page texture */
@@ -36,7 +41,6 @@ root {
     
     position: relative;          /* CRITICAL: This acts as the anchor wall for the nav bar */
 }
-
 
 /* Responsive tweak for mobile screens so they stack vertically */
 @media (max-width: 768px) {
@@ -64,9 +68,9 @@ root {
     height: 45px;              /* Sets a clean, uniform height */
     
     /* --- Custom Border Frame Setup --- */
-    border-left: 2px solid #d4e6f1;   
-    border-right: 2px solid #d4e6f1;  
-    border-bottom: 2px solid #d4e6f1; 
+    border-left: 2px solid var(--border-blue);   
+    border-right: 2px solid var(--border-blue);  
+    border-bottom: 2px solid var(--border-blue); 
     border-top: none;                 
     
     /* Rounded bottom corners match the 8px curve of your hero container perfectly */
@@ -74,8 +78,6 @@ root {
     box-sizing: border-box;
     z-index: 5;                
 }
-
-/* --- Top Navigation Bar (Connected to Hero) --- */
 
 /* --- Navigation Link Text Styling --- */
 .navigation-toolbar a {
@@ -88,12 +90,12 @@ root {
 
 /* Subtle hover effect for interactivity */
 .navigation-toolbar a:hover {
-    color: #3498db;            /* Transitions text to a clean blue on hover */
+    color: var(--brand-blue);  /* Transitions text to a clean blue on hover */
 }
 
 /* Optional active state style for the script to hook into */
 .navigation-toolbar a.active {
-    color: #3498db;
+    color: var(--brand-blue);
     font-weight: 700;
 }
 
@@ -103,7 +105,7 @@ root {
         /* Instead of stacking vertically, keep them in a row but let them wrap if needed */
         flex-wrap: wrap; 
         justify-content: center;
-        gap: 12px 18px;     /* Tighter spacing for mobile screens (vertical horizontal) */
+        gap: 12px 18px;     /* Tighter spacing for mobile screens */
         height: auto;       /* Lets it adapt cleanly */
         padding: 8px 4px;   /* Shrinks the overall footprint */
     }
@@ -113,14 +115,17 @@ root {
     }
 }
 
+/* --- Body & Main Structural Styles --- */
 body {
-     color: black;
-     position: relative;
+    color: #111111;
+    position: relative;
     margin: 0;
     padding: 0;
-    /* Ensure text stays readable over the background */
-    
+    max-width: 1024px;      /* Safely structuralizes the 1024px limit here */
+    margin-left: auto;
+    margin-right: auto;
 }
+
 body::before {
     content: "";
     position: fixed;
@@ -130,37 +135,38 @@ body::before {
     height: 100%;
     z-index: -1; /* Places the image behind your text content */
     
-    /* Your background image settings */
+    /* Background image settings */
     background-image: url('./imgfiles/MainSplash.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /* Control the transparency here (0.0 = fully invisible, 1.0 = fully opaque) */
-    opacity: 0.1; 
+    opacity: 0.1; /* Control the transparency here */
 }
-
-
  
 /* --- Carousel Container Styling --- */
-/* --- 1. Limit the Overall Carousel Size --- */
-/* Target the main outer container of your image carousel */
 .carousel-container, .image-section {
-  max-width: 800px;  /* Match this to the exact max-width of your text section */
-  width: 90%;        /* Keeps it responsive on smaller screens */
-  margin: 2rem auto; /* The 'auto' left/right centers it and aligns it perfectly with the text */
-  padding: 0;        /* Ensures no extra internal shifting */
+    max-width: 800px;  /* Match this to the exact max-width of your text section */
+    width: 90%;        /* Keeps it responsive on smaller screens */
+    margin: 2rem auto; /* Centers it and aligns it perfectly with the text */
+    padding: 0;        
+    position: relative; /* Anchor for the positioning arrows */
 }
 
 /* Ensure the image inside fills that container beautifully */
 .carousel-container img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 4px; /* Optional: adds a slight cleanup to the corners if desired */
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px; 
 }
 
-/* --- 2. Create a Horizontal Sliding Track --- */
+/* Horizontal Sliding Track Parent (Add this wrapper in your HTML if using sliding JS) */
+.carousel-slide {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
 
 .carousel-slide img {
     flex: 0 0 100%;        /* Forces every image to be exactly the width of the container */
@@ -169,56 +175,54 @@ body::before {
     object-fit: contain;   /* Keeps the entire photo visible without cropping */
     background-color: #f0f0f0; /* Fills empty side space if an image is narrow */
 }
-/* --- 3. Clean Caption Formatting Below the Image --- */
-/* (You can delete the old .active reveal rules, they are no longer needed!) */
-/* --- 4. Clean Caption Formatting Below the Image --- */
-/* Container styling for the caption area */
 
+/* Clean Caption Formatting Below the Image */
 #captionTitle {
-  font-size: 1.3rem;
-  color: #2c3e50; /* Deep slate color matching your site's headers */
-  margin: 0 0 6px 0;
-  font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--charcoal); 
+    margin: 0 0 6px 0;
+    font-weight: 600;
 }
 
 #captionDesc {
-  font-size: 1rem;
-  color: #555555;
-  margin: 0;
-  line-height: 1.4;
+    font-size: 1rem;
+    color: #555555;
+    margin: 0;
+    line-height: 1.4;
 }
+
 /* Navigation Arrow Overlays */
 #prevBtn, #nextBtn {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  background-color: rgba(136, 178, 202, 0.658);
-  color: white;
-  border: none;
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 50%;
-  transition: background-color 0.3s;
-  z-index: 10;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background-color: rgba(136, 178, 202, 0.658);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    z-index: 10;
 }
 #prevBtn { left: 15px; }
 #nextBtn { right: 15px; }
 
 #prevBtn:hover, #nextBtn:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #111;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #111;
 }
 
-/* --- 1. The Container Card Appearance --- */
+/* --- Main Content Focus Box --- */
 main.focus-box {
     max-width: 600px;         
     width: 100%;              
     min-height: 200px;        
     margin: 40px auto;        /* Centers the card layout cleanly */
     padding: 35px;            
-    background-color: #ffffff !important; /* Forces the background card to show */
+    background-color: #ffffff !important; 
     border: 1px solid #dddddd; 
     border-radius: 8px;       
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
@@ -226,94 +230,76 @@ main.focus-box {
     display: block;
 }
 
-/* --- 2. Clean Text Flow & Font Protection --- */
 main.focus-box p {
     font-family: inherit;      
-    padding-left: 0;           /* Main paragraph under Sweat and Fire stays flush left */
+    padding-left: 0;           
     line-height: 1.6;          
     margin-bottom: 20px;       
     color: #444444;
 }
 
-/* --- 3. Main Title Layout (Flush Left) --- */
 main.focus-box h2 {
     padding-left: 0;           
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 1.8rem;
-    color: #333333;
+    color: var(--dark-gray);
 }
 
-/* --- 4. Sub-Section Headings Indentation --- */
 main.focus-box h3 {
-    padding-left: 20px;        /* Indents "Steel and Stone" & "Ceramic Work" cleanly */
+    padding-left: 20px;        /* Indents sub-headers cleanly */
     margin-top: 35px;          
     margin-bottom: 12px;       
     font-size: 1.4rem;         
-    color: #333333;
+    color: var(--dark-gray);
 }
 
-/* --- 5. Sub-Section Text Matching Alignment --- */
 main.focus-box h3 + p {
-    padding-left: 20px;        /* Snaps the corresponding text perfectly underneath the H3 text! */
+    padding-left: 20px;        /* Snaps text perfectly underneath the H3 */
 }
-/* Blog Section Styling */
 
-/* Subdued divider to separate the static vision text from the dynamic blog updates */
-
-
-
-
-
-/* Matches your existing readable paragraph layout */
+/* --- Blog Section Styling --- */
 .blog-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #4a4a4a;
-  margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 20px;
 }
 
-/* Creates the physical window for the background image to show through */
-/* Target the image inside your blog post container */
 .blog-section img, 
 .responsive-blog-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 1.5rem 0; /* Adds spacing above and below the image, keeping side margins aligned with text */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem 0; 
 }
 
-
-/* Form Layout */
-
-
-/* Input & Textarea Styling */
+/* --- Contact Form Layout --- */
 .contact-form label {
-  font-weight: bold;
-  color: #333333; /* Dark gray for readability against the white background */
-  font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--dark-gray); 
+    font-size: 0.9rem;
 }
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box; /* Prevents fields from stretching past the container edges */
-  font-family: inherit;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; 
+    font-family: inherit;
 }
 
-/* Focus state when user clicks into a field */
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: none;
-  border-color: #555555; /* Darker border on focus */
+    outline: none;
+    border-color: #555555; 
 }
-/* Button Styling */
+
 #submitBtn {
-    background-color: #2c2c2c; /* Sleek dark gray/black matching ironwork themes */
+    background-color: #2c2c2c; 
     color: #ffffff;
     font-size: 1rem;
     font-weight: 600;
@@ -322,10 +308,9 @@ main.focus-box h3 + p {
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 100%; /* Makes it full width like your current layout, or change to auto */
+    width: 100%; 
 }
 
-/* Hover and Active States */
 #submitBtn:hover {
     background-color: #4a4a4a;
     border-color: #4a4a4a;
@@ -337,13 +322,12 @@ main.focus-box h3 + p {
     cursor: not-allowed;
 }
 
-/* Success/Error Message Box */
 #formResponse {
     margin-top: 15px;
     padding: 15px;
     border-radius: 4px;
     font-size: 0.95rem;
-    display: none; /* Hidden by default */
+    display: none; 
 }
 
 #formResponse.success {
@@ -363,9 +347,9 @@ main.focus-box h3 + p {
 /* --- Footer Section Styling --- */
 footer {
     text-align: center;
-    padding: 30px 20px;       /* Gives clean breathing room above and below your copyright */
-    color: #555555;           /* Soft, legible grey for the copyright text */
-    font-size: 0.9rem;        /* Keeps the text neat and secondary */
+    padding: 30px 20px;       
+    color: #555555;           
+    font-size: 0.9rem;        
     width: 100%;
     box-sizing: border-box;
 }
