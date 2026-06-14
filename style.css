@@ -143,8 +143,7 @@ body::before {
     background-attachment: fixed;
     opacity: 0.1; /* Control the transparency here */
 }
- 
-/* --- 1. Fixed Carousel Container --- */
+/* --- 1. Main Carousel Container --- */
 .carousel-container, .image-section {
     max-width: 800px;  
     width: 90%;        
@@ -156,50 +155,50 @@ body::before {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     overflow: hidden;   
     
-    /* Force layout to flow naturally so the container hugs the image and text tightly */
     display: flex;
     flex-direction: column;
 }
 
-/* --- 2. Tightened Image Track --- */
+/* --- 2. The Slider Track Fix (Prevents missing slides) --- */
 .carousel-slide {
     display: flex;
-    overflow: hidden;
+    flex-direction: row; /* Forces all images to sit in a single, continuous horizontal line */
     width: 100%;
-    margin-bottom: 0; /* Removes the old pushing margin completely */
+    margin-bottom: 0; 
+    transition: transform 0.4s ease-in-out; /* Smooth sliding transition if your JS updates transform */
 }
 
+/* --- 3. Image Sizing & Anti-Clipping --- */
 .carousel-slide img {
-    flex: 0 0 100%;        
+    flex: 0 0 100%;        /* Keeps each image exactly equal to the container's width */
     width: 100%;           
-    height: auto;          /* Crucial: lets the height collapse down dynamically to the image size */
-    object-fit: cover;     /* Clean edge-to-edge crop, or use 'contain' if you want full frame */
+    
+    /* FIX: Caps the maximum height so vertical images don't stretch too tall */
+    max-height: 550px;     
+    
+    /* FIX: Restores full visibility. No more clipping on the left or right sides */
+    object-fit: contain;   
+    
+    /* Dark charcoal background fills any empty side space for narrow images cleanly */
+    background-color: #1a1a1a; 
     display: block;
 }
 
-/* --- 3. Clean, Centered Connected Caption Box --- */
-.carousel-caption-box, 
-.carousel-container figcaption, /* Covers fallback semantic tags if used */
-#captionTitle, 
-#captionDesc {
-    text-align: center;    /* Standardizes center alignment across the board */
-}
-
+/* --- 4. Centered Connected Caption Box --- */
 .carousel-caption-box {
     width: 100%;
-    padding: 20px 15px;    /* Even breathing room right under the image */
+    padding: 20px 15px;    
     background-color: #ffffff;
     border-top: 1px solid #eeeeee; 
     box-sizing: border-box;
+    text-align: center;
 }
 
-/* Centered Text Elements */
 #captionTitle {
     font-size: 1.3rem;
     color: var(--charcoal, #2c3e50); 
     margin: 0 auto 6px auto;
     font-weight: 600;
-    display: block;
 }
 
 #captionDesc {
@@ -207,16 +206,14 @@ body::before {
     color: #555555;
     margin: 0 auto;
     line-height: 1.4;
-    display: block;
 }
 
-/* --- 4. Repositioned Navigation Arrows --- */
-/* Adjusts the arrows to stay vertically centered over the actual image area */
+/* --- 5. Centered Navigation Arrows --- */
 #prevBtn, #nextBtn {
     position: absolute;
-    top: 40%; /* Slightly raised to align with the visual center of the photo */
+    top: 42%; /* Positions buttons over the visual center of the image area */
     transform: translateY(-50%);
-    background-color: rgba(136, 178, 202, 0.658);
+    background-color: rgba(136, 178, 202, 0.75);
     color: white;
     border: none;
     width: 45px;
@@ -230,6 +227,10 @@ body::before {
 #prevBtn { left: 15px; }
 #nextBtn { right: 15px; }
 
+#prevBtn:hover, #nextBtn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #111;
+}
 /* --- Main Content Focus Box --- */
 main.focus-box {
     max-width: 600px;         
