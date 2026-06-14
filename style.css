@@ -135,7 +135,10 @@ body::before {
     width: 100vw;
     height: 100vh;
     /* Replace with your actual background image path */
-    background-image: url('./imgfiles/wavewashed4.jpg');
+   /* This leaves the image as is background-image: url('./imgfiles/wavewashed4.jpg');*/
+
+/* This adds an 80% opaque dark slate tint over your image */
+    background-image: linear-gradient(rgba(30, 35, 45, 0.8), rgba(30, 35, 45, 0.8)), url('./imgfiles/wavewashed4.jpg');    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
