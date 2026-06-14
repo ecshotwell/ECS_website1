@@ -10,6 +10,13 @@
     --dark-gray: #333333;
 }
 
+/* Apply this to a container wrapper in your HTML to keep everything perfectly aligned */
+.page-wrapper {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
 /* --- Hero Header Container --- */
 
 /* Constrain the Top Hero Image */
@@ -30,12 +37,16 @@
     
     background-color: var(--light-blue-bg); 
     
-    /* Bottom padding increased to 70px to elegantly clear room for the nav bar */
+    /* Bottom padding elegantly clears room for the nav bar */
     padding: 30px 30px 70px 30px; 
     
-    margin: 20px auto 40px auto; /* Centers the box perfectly on the page texture */
-    max-width: 1000px;           /* Limits the box width for a clean look */
-    width: 90%;                  /* Safety margin for smaller desktop viewports */
+    /* Perfect horizontal centering on your page background */
+    margin: 20px auto 40px auto; 
+    
+    /* FIX: Increased from 1000px to match the precise width of your portfolio content below */
+    max-width: 1200px;           
+    width: 90%;                  /* Provides an even margin frame on smaller desktop screens */
+    
     border-radius: 8px;          
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
     
@@ -47,6 +58,8 @@
     .hero-container {
         flex-direction: column;
         text-align: center;
+        width: 95%;              /* Gives you slightly more breathing room on mobile viewports */
+        padding: 20px 20px 70px 20px;
     }
 }
 
