@@ -6,26 +6,6 @@ root {
 }
 
 /* --- Hero Header Container --- */
-.hero-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    
-    background-color: rgba(212, 230, 241, 0.75); /* Soft light blue, 25% transparent */
-    
-    /* CHANGE: Bottom padding increased to 70px to elegantly clear room for the nav bar */
-    padding: 30px 30px 70px 30px; 
-    
-    margin: 20px auto 40px auto; /* Centers the box perfectly on the page texture */
-    max-width: 1000px;           /* Limits the box width for a clean look */
-    width: 90%;                  /* Safety margin for smaller desktop viewports */
-    border-radius: 8px;          
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
-    
-    position: relative;          /* CRITICAL: This acts as the anchor wall for the nav bar */
-}
 
 /* --- Constrain the Top Hero Image --- */
 .hero-container img {
@@ -36,42 +16,13 @@ root {
   border-radius: 4px; /* Optional: slightly softens the image corners inside the box */
 }
 
+
+
 /* Responsive tweak for mobile screens so they stack vertically */
 @media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column;
-        text-align: center;
-    }
 }
 
 /* --- Top Navigation Bar (Connected to Hero) --- */
-.navigation-toolbar {
-    display: flex;
-    justify-content: center;   
-    align-items: center;
-    gap: 30px;                 
-    
-    /* --- The Seamless Connection Fix --- */
-    position: absolute;        /* Pins the bar relative to the hero container */
-    bottom: 0;                 /* Places it perfectly at the very bottom edge */
-    left: 0;                   /* Aligns flawlessly with the left border */
-    width: 100%;               /* Spans 100% of the absolute outer border edge */
-    margin: 0;                 /* Clears out the old problematic shifting margins */
-    
-    background-color: #ffffff;  
-    height: 45px;              /* Sets a clean, uniform height */
-    
-    /* --- Custom Border Frame Setup --- */
-    border-left: 2px solid #d4e6f1;   
-    border-right: 2px solid #d4e6f1;  
-    border-bottom: 2px solid #d4e6f1; 
-    border-top: none;                 
-    
-    /* Rounded bottom corners match the 8px curve of your hero container perfectly */
-    border-radius: 0 0 8px 8px;        
-    box-sizing: border-box;
-    z-index: 5;                
-}
 
 /* --- Navigation Link Text Styling --- */
 .navigation-toolbar a {
@@ -139,12 +90,6 @@ body::before {
 
  
 /* --- Carousel Container Styling --- */
-.carousel-container {
-    position: relative;
-    max-width: 800px; /* Adjust based on your preferred image width */
-    margin: 0 auto;
-    overflow: hidden;
-}
 /* --- 1. Limit the Overall Carousel Size --- */
 /* Target the main outer container of your image carousel */
 .carousel-container, .image-section {
@@ -163,13 +108,6 @@ body::before {
 }
 
 /* --- 2. Create a Horizontal Sliding Track --- */
-.carousel-slide {
-    display: flex;         /* Lines all images up side-by-side horizontally */
-    flex-wrap: nowrap;     /* Prevents images from wrapping to a new line */
-    height: 550px;         /* Sets a fixed height for the image viewing area */
-    width: 100%;           /* Takes up full 600px of parent */
-    transition: transform 0.4s ease-in-out; /* Smooth sliding transition */
-}
 
 .carousel-slide img {
     flex: 0 0 100%;        /* Forces every image to be exactly the width of the container */
@@ -182,13 +120,6 @@ body::before {
 /* (You can delete the old .active reveal rules, they are no longer needed!) */
 /* --- 4. Clean Caption Formatting Below the Image --- */
 /* Container styling for the caption area */
-.carousel-caption-box {
-  background-color: #ffffff;
-  padding: 20px 15px;
-  text-align: center;
-  border-top: 1px solid #f0f0f0; /* A clean line directly underneath the images */
-  margin-top: 0; /* Keeps it flush against the bottom of the active image */
-}
 
 #captionTitle {
   font-size: 1.3rem;
@@ -274,36 +205,12 @@ main.focus-box h3 + p {
     padding-left: 20px;        /* Snaps the corresponding text perfectly underneath the H3 text! */
 }
 /* Blog Section Styling */
-.blog-section {
-  margin-top: 40px;
-  text-align: left; /* Aligns with your existing text blocks */
-}
 
 /* Subdued divider to separate the static vision text from the dynamic blog updates */
 
-.blog-main-title {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 30px;
-  text-align: left;
-}
 
-.blog-post {
-  margin-bottom: 40px;
-}
 
-.blog-title {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  margin-bottom: 15px;
-}
 
-.blog-date {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  margin-bottom: 20px;
-  font-style: italic;
-}
 
 /* Matches your existing readable paragraph layout */
 .blog-content p {
@@ -314,10 +221,6 @@ main.focus-box h3 + p {
 }
 
 /* Creates the physical window for the background image to show through */
-.blog-card {
-  margin-top: 50px; /* Adjust this value up or down to make the gap wider or narrower */
-  margin-bottom: 50px; /* Adds space above the footer */
-}
 /* Target the image inside your blog post container */
 .blog-section img, 
 .responsive-blog-img {
@@ -327,26 +230,9 @@ main.focus-box h3 + p {
   margin: 1.5rem 0; /* Adds spacing above and below the image, keeping side margins aligned with text */
 }
 
-.content-container {
-  max-width: 800px; /* Adjust this to match your upper card's exact width */
-  margin: 0 auto;   /* Centers the content horizontally */
-  padding: 0 20px;  /* Prevents content from hitting the screen edges on mobile */
-}
 
 /* Form Layout */
-.contact-form {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Spaces out the input fields */
-}
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left; /* Keeps labels aligned left if the header is centered */
-}
 
 /* Input & Textarea Styling */
 .contact-form label {
