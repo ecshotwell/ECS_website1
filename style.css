@@ -405,28 +405,37 @@ main.focus-box h3 + p {
     max-width: 800px;         
 }
 
-/* --- Gallery Grid & Filter Alignment Controls --- */
+/* --- Gallery Layout Controls --- */
 
-/* 1. Pulls the filter card container inward to match the page grid layout */
-.gallery-section .filter-group {
-    max-width: 1200px;  /* Matches your hero container perfectly */
-    width: 90%;         /* Keeps the exact same margin frame as the header */
-    margin: 20px auto;  /* Centers the filter container cleanly on the page */
-    
-    /* Optional: Ensure it displays beautifully as a row background card */
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 15px 20px;
+/* 1. Set the uniform container boundaries */
+.gallery-section .page-wrapper,
+.gallery-section .filter-group,
+.gallery-section .portfolio-grid {
+    max-width: 1100px; /* Sweeter middle ground: not too wide, not too narrow */
+    width: 90%;        /* Keeps perfect fluid alignment on smaller screens */
+    margin-left: auto; /* Centers all three blocks perfectly on the page background */
+    margin-right: auto;
     box-sizing: border-box;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* 2. Pulls the dynamic artwork image rows inward to line up with the top card edges */
+/* 2. Style the text section padding */
+.gallery-section .page-wrapper {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* 3. Style the filter card container */
+.gallery-section .filter-group {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 25px 20px; /* Clean breathing room around your dropdown selectors */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+
+/* 4. Ensure the dynamic portfolio grid behaves cleanly */
 .gallery-section .portfolio-grid {
-    max-width: 1200px;  /* Locks the image columns to the exact same ceiling */
-    width: 90%;         /* Keeps responsive scaling perfectly synchronized */
-    margin: 30px auto;  /* Centers the rows and leaves clean breathing room below the filters */
-    box-sizing: border-box;
+    margin-bottom: 60px;
 }
 
 /* --- Footer Section Styling --- */
