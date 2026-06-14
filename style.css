@@ -286,6 +286,19 @@ main.focus-box h3 + p {
     color: #4a4a4a;
     margin-bottom: 20px;
 }
+/* Styling the "Full article" links */
+.blog-link {
+    color: #4A6B82; /* Replace with your preferred hex code from above */
+    text-decoration: none; /* Removes the default underline if desired */
+    font-weight: 500; /* Makes the text slightly sharper and easier to read */
+    transition: color 0.2s ease; /* Smooth color transition on hover */
+}
+
+/* Hover state for better user interaction */
+.blog-link :hover {
+    color: #1C4E80; /* A slightly darker shade when the user hovers over it */
+    text-decoration: underline; /* Adds the underline back on hover for clarity */
+}
 
 .blog-section img, 
 .responsive-blog-img {
