@@ -364,71 +364,58 @@ main.focus-box h3 + p {
     color: #c5221f;
     border: 1px solid #fad2cf;
 }
-/* --- Gallery Header Typography Fix --- */
+/* --- Integrated Gallery Header & Filter Card --- */
 
-/* --- Gallery Page Specific Typography --- */
-
-/* Only targets H2 headings that are inside a gallery container or section */
-.gallery-section h2,
-.page-wrapper h2 {
-    color: #ffffff !important; /* Forces the title to crisp white strictly on the gallery page */
-    margin-top: 30px;
-    margin-bottom: 10px;
-    font-size: 1.8rem;
-    font-weight: 600;
-}
-
-/* Only targets the paragraph directly following that specific gallery H2 */
-.gallery-section h2 + p,
-.page-wrapper h2 + p {
-    color: #cbd5e1 !important; /* Soft slate silver restricted to the gallery page description */
-    font-size: 1.05rem;
-    line-height: 1.5;
-    margin-bottom: 25px;
-    max-width: 800px;         
-}
-
-/* --- Gallery Layout Controls --- */
-
-/* 1. Set the uniform container boundaries & strip out conflicting top rules */
-.gallery-section .page-wrapper,
+/* 1. Base Container Framework for Card and Grid */
 .gallery-section .filter-group,
 .gallery-section .portfolio-grid {
-    max-width: 1100px !important; /* Forces all elements to share this exact max visual span */
-    width: 90% !important;        /* Synchronizes the fluid gutters on the left and right */
-    margin-left: auto !important;  /* Locks horizontal centering across all screen sizes */
+    max-width: 1100px !important; 
+    width: 90% !important;        
+    margin-left: auto !important;  
     margin-right: auto !important;
     box-sizing: border-box;
 }
 
-/* 2. Style the text section padding */
-.gallery-section .page-wrapper {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    padding: 0;
-}
-
-/* 3. Style the filter card container */
+/* 2. Styled Filter Card Container Layout */
 .gallery-section .filter-group {
-    display: flex;                /* Flexes your filter items into a uniform row layout */
-    flex-wrap: wrap;              /* Allows items to stack beautifully on mobile viewports */
+    display: flex;                
+    flex-wrap: wrap;              /* Allows full text lines to block, and inputs to scale down smoothly */
     gap: 15px 20px;
     background-color: #ffffff;
     border-radius: 8px;
-    padding: 25px 20px;           /* Clean breathing room around your dropdown selectors */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 30px 25px;           /* Gives comfortable whitespace buffer margins around everything */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    margin-top: 40px;             
     margin-bottom: 40px;
 }
 
-/* 4. Ensure the dynamic portfolio grid behaves cleanly & aligns items */
+/* 3. Typography inside the white integrated filter card */
+.gallery-section .filter-group h2 {
+    color: #111111 !important;    /* Solid crisp black */
+    margin-top: 0;                /* Flushes content evenly against the container frame */
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    width: 100%;                  /* Forces heading to stretch across its own full line */
+}
+
+.gallery-section .filter-group .filter-intro {
+    color: #333333 !important;    /* Highly legible charcoal black */
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 25px;          /* Generous separation above the dropdown dropdown labels */
+    width: 100%;                  /* Forces text block to wrap down completely cleanly */
+}
+
+/* 4. Ensure the dynamic portfolio grid behaves cleanly */
 .gallery-section .portfolio-grid {
-    display: grid;                /* Triggers a modern layout engine */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Automatically columns */
-    gap: 30px;                    /* Creates generous breathing space between artwork cards */
+    display: grid;                
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 30px;                    
     margin-bottom: 60px;
     padding: 0;
 }
-
 /* --- Mobile Viewport Anti-Clipping Fix --- */
 @media (max-width: 768px) {
     .portfolio-grid .card img,

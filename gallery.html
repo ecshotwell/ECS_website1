@@ -128,41 +128,37 @@
 
     <main class="gallery-section">
         
-    <div class="page-wrapper">
-    <h2>Artwork Portfolio</h2>
-        <p>The following is a selection of my recent work. You can select a filter to narrow down the displayed items. Click any image to see more details.</p>
-
-    </div>
+    <div class="filter-group">
         
-        <!-- Filters Section -->
-        <div class="filter-group">
-            <div class="filter-item">
-                <label for="filter-subject">Subject</label>
-                <select id="filter-subject" onchange="filterGallery()"><option value="all">All Subjects</option></select>
-            </div>
-            <div class="filter-item">
-                <label for="filter-medium">Medium</label>
-                <select id="filter-medium" onchange="filterGallery()"><option value="all">All Media</option></select>
-            </div>
-            <div class="filter-item">
-                <label for="filter-location">Location</label>
-                <select id="filter-location" onchange="filterGallery()"><option value="all">All Locations</option></select>
-            </div>
-            <div class="filter-item">
-                <label for="filter-category">Category</label>
-                <select id="filter-category" onchange="filterGallery()"><option value="all">All Categories</option></select>
-            </div>
-            <div class="filter-item">
-                <label for="filter-artist">Artist</label>
-                <select id="filter-artist" onchange="filterGallery()"><option value="all">All Artists</option></select>
-            </div>
-        </div>
+        <h2>Artwork Portfolio</h2>
+        <p class="filter-intro">The following is a selection of my recent work. You can select a filter to narrow down the displayed items. Click any image to see more details.</p>
 
-        <!-- Dynamic Gallery Grid -->
-        <div id="portfolio-grid" class="portfolio-grid">
-            <p>Loading gallery items...</p>
+        <div class="filter-item">
+            <label for="filter-subject">Subject</label>
+            <select id="filter-subject" onchange="filterGallery()"><option value="all">All Subjects</option></select>
         </div>
-    </main>
+        <div class="filter-item">
+            <label for="filter-medium">Medium</label>
+            <select id="filter-medium" onchange="filterGallery()"><option value="all">All Media</option></select>
+        </div>
+        <div class="filter-item">
+            <label for="filter-location">Location</label>
+            <select id="filter-location" onchange="filterGallery()"><option value="all">All Locations</option></select>
+        </div>
+        <div class="filter-item">
+            <label for="filter-category">Category</label>
+            <select id="filter-category" onchange="filterGallery()"><option value="all">All Categories</option></select>
+        </div>
+        <div class="filter-item">
+            <label for="filter-artist">Artist</label>
+            <select id="filter-artist" onchange="filterGallery()"><option value="all">All Artists</option></select>
+        </div>
+    </div>
+
+    <div id="portfolio-grid" class="portfolio-grid">
+        <p>Loading gallery items...</p>
+    </div>
+</main>
 
     <!-- --- LIGHTBOX POP-UP STRUCTURAL LAYOUT --- -->
     <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
