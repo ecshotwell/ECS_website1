@@ -130,13 +130,17 @@
 
 /* --- Body & Main Structural Styles --- */
 
-    body {
+body {
     color: #111111;
     position: relative;
-    margin: 0 auto; /* Centers the body layout */
+    margin: 0 auto;       /* Centers the entire webpage container */
     padding: 0;
-    max-width: 1024px;
-    min-height: 100vh; /* Ensures the background covers the full screen height */
+    
+    /* FIX: Increased from 1024px to match your 1200px layout width */
+    max-width: 1200px;    
+    
+    width: 95%;           /* Gives a clean safety margin/gutter frame on desktop screens */
+    min-height: 100vh;    /* Ensures the background covers the full screen height */
 }
 
 /* This creates a full-screen, blurred background behind your content */
@@ -379,22 +383,26 @@ main.focus-box h3 + p {
 }
 /* --- Gallery Header Typography Fix --- */
 
-/* Targets the main "Artwork Portfolio" H2 heading directly */
-h2 {
-    color: #ffffff !important; /* Forces the title to crisp white against the dark background */
+/* --- Gallery Page Specific Typography --- */
+
+/* Only targets H2 headings that are inside a gallery container or section */
+.gallery-section h2,
+.page-wrapper h2 {
+    color: #ffffff !important; /* Forces the title to crisp white strictly on the gallery page */
     margin-top: 30px;
     margin-bottom: 10px;
     font-size: 1.8rem;
     font-weight: 600;
 }
 
-/* Targets the filter explanation paragraph right below the heading */
-h2 + p {
-    color: #cbd5e1 !important; /* Soft slate silver that is highly legible */
+/* Only targets the paragraph directly following that specific gallery H2 */
+.gallery-section h2 + p,
+.page-wrapper h2 + p {
+    color: #cbd5e1 !important; /* Soft slate silver restricted to the gallery page description */
     font-size: 1.05rem;
     line-height: 1.5;
     margin-bottom: 25px;
-    max-width: 800px;         /* Keeps the text line-length comfortable to read */
+    max-width: 800px;         
 }
 
 /* --- Footer Section Styling --- */
