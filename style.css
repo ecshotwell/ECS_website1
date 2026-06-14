@@ -10,13 +10,6 @@
     --dark-gray: #333333;
 }
 
-/* Apply this to a container wrapper in your HTML to keep everything perfectly aligned */
-.page-wrapper {
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto;
-}
-
 /* --- Hero Header Container --- */
 
 /* Constrain the Top Hero Image */
@@ -407,14 +400,14 @@ main.focus-box h3 + p {
 
 /* --- Gallery Layout Controls --- */
 
-/* 1. Set the uniform container boundaries */
+/* 1. Set the uniform container boundaries & strip out conflicting top rules */
 .gallery-section .page-wrapper,
 .gallery-section .filter-group,
 .gallery-section .portfolio-grid {
-    max-width: 1100px; /* Sweeter middle ground: not too wide, not too narrow */
-    width: 90%;        /* Keeps perfect fluid alignment on smaller screens */
-    margin-left: auto; /* Centers all three blocks perfectly on the page background */
-    margin-right: auto;
+    max-width: 1100px !important; /* Forces all elements to share this exact max visual span */
+    width: 90% !important;        /* Synchronizes the fluid gutters on the left and right */
+    margin-left: auto !important;  /* Locks horizontal centering across all screen sizes */
+    margin-right: auto !important;
     box-sizing: border-box;
 }
 
@@ -422,20 +415,28 @@ main.focus-box h3 + p {
 .gallery-section .page-wrapper {
     margin-top: 40px;
     margin-bottom: 20px;
+    padding: 0;
 }
 
 /* 3. Style the filter card container */
 .gallery-section .filter-group {
+    display: flex;                /* Flexes your filter items into a uniform row layout */
+    flex-wrap: wrap;              /* Allows items to stack beautifully on mobile viewports */
+    gap: 15px 20px;
     background-color: #ffffff;
     border-radius: 8px;
-    padding: 25px 20px; /* Clean breathing room around your dropdown selectors */
+    padding: 25px 20px;           /* Clean breathing room around your dropdown selectors */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     margin-bottom: 40px;
 }
 
-/* 4. Ensure the dynamic portfolio grid behaves cleanly */
+/* 4. Ensure the dynamic portfolio grid behaves cleanly & aligns items */
 .gallery-section .portfolio-grid {
+    display: grid;                /* Triggers a modern layout engine */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Automatically columns */
+    gap: 30px;                    /* Creates generous breathing space between artwork cards */
     margin-bottom: 60px;
+    padding: 0;
 }
 
 /* --- Footer Section Styling --- */
