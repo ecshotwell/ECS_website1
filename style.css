@@ -295,7 +295,7 @@ main.focus-box h3 + p {
 }
 
 /* Hover state for better user interaction */
-.blog-link :hover {
+.blog-link:hover {
     color: #1C4E80; /* A slightly darker shade when the user hovers over it */
     text-decoration: underline; /* Adds the underline back on hover for clarity */
 }
