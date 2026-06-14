@@ -65,7 +65,7 @@
     
     /* --- The Seamless Connection Fix --- */
     position: absolute;        /* Pins the bar relative to the hero container */
-    bottom: 0;                 /* Places it perfectly at the very bottom edge */
+    bottom: -1px;                 /* Places it perfectly at the very bottom edge */
     left: 0;                   /* Aligns flawlessly with the left border */
     width: 100%;               /* Spans 100% of the absolute outer border edge */
     margin: 0;                 /* Clears out the old problematic shifting margins */
