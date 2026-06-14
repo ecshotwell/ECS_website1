@@ -116,33 +116,35 @@
 }
 
 /* --- Body & Main Structural Styles --- */
-body {
+
+    body {
     color: #111111;
     position: relative;
-    margin: 0;
+    margin: 0 auto; /* Centers the body layout */
     padding: 0;
-    max-width: 1024px;      /* Safely structuralizes the 1024px limit here */
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1024px;
+    min-height: 100vh; /* Ensures the background covers the full screen height */
 }
 
+/* This creates a full-screen, blurred background behind your content */
 body::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Places the image behind your text content */
-    
-    /* Background image settings */
-    background-image: url('./imgfiles/MainSplash.jpg'); 
+    width: 100vw;
+    height: 100vh;
+    /* Replace with your actual background image path */
+    background-image: url('./imgfiles/MainSplash.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: 0.1; /* Control the transparency here */
+    /* The magic blend: blurs the sharp details and softens the white hot-spots */
+    filter: blur(12px) brightness(93%) contrast(90%); 
+    z-index: -1; /* Pushes it safely behind your text and cards */
+    pointer-events: none; /* Prevents it from interfering with clicks */
 }
+
 /* --- 1. Main Carousel Container --- */
 .carousel-container, .image-section {
     max-width: 800px;  
