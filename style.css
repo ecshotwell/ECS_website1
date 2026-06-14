@@ -365,6 +365,21 @@ main.focus-box h3 + p {
     border: 1px solid #fad2cf;
 }
 
+/* --- Gallery Header Typography Fix --- */
+.gallery-section h2, 
+h2:contains("Artwork Portfolio"), /* Safely targets the main heading */
+h2 {
+    color: #ffffff;          /* Makes the "Artwork Portfolio" title crisp white */
+    margin-bottom: 10px;
+}
+
+.gallery-section p,
+p:contains("Use the filters below"), /* Targets the descriptive text */
+.gallery-container p {
+    color: #cbd5e1;          /* Soft slate silver that is easy on the eyes and highly legible */
+    font-size: 1.05rem;
+}
+
 /* --- Footer Section Styling --- */
 footer {
     text-align: center;
