@@ -368,9 +368,10 @@ main.focus-box h3 + p {
 /* --- Footer Section Styling --- */
 footer {
     text-align: center;
-    padding: 30px 20px;       
-    color: #555555;           
-    font-size: 0.9rem;        
+    padding: 40px 20px 30px 20px; /* Gives a bit more breathing room below the carousel card */
+    color: #a0a0a0;               /* Soft, legible light silver/grey that pops cleanly on dark backgrounds */
+    font-size: 0.85rem;           /* Keeps the text neat and secondary */
     width: 100%;
     box-sizing: border-box;
+    letter-spacing: 0.5px;        /* Slightly separates the letters for a cleaner, modern look */
 }
