@@ -280,12 +280,19 @@ main.focus-box h3 + p {
 }
 
 /* --- Blog Section Styling --- */
+.blog-content {
+    display: flow-root;       /* FORCES the container to calculate its true height around wide images */
+    clear: both;              /* Pushes past any absolutely positioned layout collisions */
+    width: 100%;
+}
+
 .blog-content p {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #4a4a4a;
     margin-bottom: 20px;
 }
+
 /* Styling the "Full article" links */
 .blog-link {
     color: #4A6B82; /* Replace with your preferred hex code from above */
