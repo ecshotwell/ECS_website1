@@ -273,11 +273,16 @@ main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
 
 /* --- Blog Section Styling --- */
 
+.blog-section {
+    overflow: visible !important;
+    height: auto !important;
+}
+
 .blog-card {
     height: auto !important;
     overflow: visible !important;
     display: block !important;
-} /* <-- ENSURE THIS CLOSING BRACKET IS EXACTLY HERE */
+}
 
 .blog-content {
     display: flow-root;       /* Forces the container to calculate its true height around wide images */
