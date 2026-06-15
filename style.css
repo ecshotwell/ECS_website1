@@ -314,7 +314,9 @@ main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
 .blog-section img, 
 .responsive-blog-img {
     max-width: 100%;
-    height: auto;
+    max-height: 400px;    /* ADD THIS: Clamps the image height so it can't blow out the card */
+    object-fit: cover;    /* ADD THIS: Maintains clean proportions without stretching */
+    width: 100%;          /* ADD THIS: Ensures it scales cleanly across the card width */
     display: block;
     margin: 1.5rem 0; 
 }
