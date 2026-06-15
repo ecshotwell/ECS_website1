@@ -272,16 +272,20 @@ main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
 }
 
 /* --- Blog Section Styling --- */
+/* --- Blog Section Styling --- */
 
-.blog-section {
-    overflow: visible !important;
+.focus-box.blog-card, 
+div.focus-box.blog-card {
+    display: block !important;
     height: auto !important;
+    min-height: 100px !important;
+    overflow: visible !important;
 }
 
-.blog-card {
+.blog-section {
+    display: block !important;
     height: auto !important;
     overflow: visible !important;
-    display: block !important;
 }
 
 .blog-content {
