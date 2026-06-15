@@ -272,15 +272,16 @@ main.focus-box h3 + p {
 }
 
 /* --- Blog Section Styling --- */
+/* --- Blog Section Styling --- */
 
 .blog-card {
     height: auto !important;
     overflow: visible !important;
     display: block !important;
-}
+} /* <-- ENSURE THIS CLOSING BRACKET IS EXACTLY HERE */
 
 .blog-content {
-    display: flow-root;       /* FORCES the container to calculate its true height around wide images */
+    display: flow-root;       /* Forces the container to calculate its true height around wide images */
     clear: both;              /* Pushes past any absolutely positioned layout collisions */
     width: 100%;
 }
