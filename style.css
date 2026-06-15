@@ -118,10 +118,7 @@ body {
     position: relative;
     margin: 0 auto;       /* Centers the entire webpage container */
     padding: 0;
-    
-    /* FIX: Increased from 1024px to match your 1200px layout width */
     max-width: 1200px;    
-    
     width: 95%;           /* Gives a clean safety margin/gutter frame on desktop screens */
     min-height: 100vh;    /* Ensures the background covers the full screen height */
 }
@@ -134,17 +131,12 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* Replace with your actual background image path */
-   /* This leaves the image as is background-image: url('./imgfiles/wavewashed4.jpg');*/
-
-/* This adds an 80% opaque dark slate tint over your image */
     background-image: linear-gradient(rgba(30, 35, 45, 0.8), rgba(30, 35, 45, 0.8)), url('./imgfiles/wavewashed4.jpg');    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* The magic blend: blurs the sharp details and softens the white hot-spots */
     filter: blur(12px) brightness(93%) contrast(90%); 
-    z-index: -1; /* Pushes it safely behind your text and cards */
+    z-index: -1;          /* Pushes it safely behind your text and cards */
     pointer-events: none; /* Prevents it from interfering with clicks */
 }
 
