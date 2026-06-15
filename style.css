@@ -259,19 +259,18 @@ main.focus-box h2 {
     color: var(--dark-gray);
 }
 
-main.focus-box h3 {
-    padding-left: 20px;        /* Indents sub-headers cleanly */
+main.focus-box h3, .focus-box h3 {
+    padding-left: 20px;        /* Indents sub-headers cleanly across all sections */
     margin-top: 35px;          
     margin-bottom: 12px;       
     font-size: 1.4rem;         
     color: var(--dark-gray);
 }
 
-main.focus-box h3 + p {
-    padding-left: 20px;        /* Snaps text perfectly underneath the H3 */
+main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
+    padding-left: 20px;        /* Aligns all block elements perfectly under headers */
 }
 
-/* --- Blog Section Styling --- */
 /* --- Blog Section Styling --- */
 
 .blog-card {
