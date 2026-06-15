@@ -237,7 +237,7 @@ body::before {
     color: #111;
 }
 /* --- Main Content Focus Box --- */
-main.focus-box {
+main.focus-box, .focus-box {
     max-width: 600px;         
     width: 100%;              
     min-height: 200px;        
