@@ -233,7 +233,7 @@ body::before {
 }
 /* --- Main Content Focus Box --- */
 main.focus-box, .focus-box {
-    max-width: 600px;         
+    max-width: 1000px;         
     width: 100%;              
     min-height: 200px;        
     margin: 40px auto;        /* Centers the card layout cleanly */
@@ -283,6 +283,15 @@ div.focus-box.blog-card {
     height: auto !important;
     min-height: 100px !important;
     overflow: visible !important;
+}
+
+/* Force bullet lists to be normal weight and match paragraph text */
+.focus-box ul li, 
+.focus-box ol li {
+    font-weight: normal;
+    color: #444444;     /* Matches your paragraph text color */
+    line-height: 1.6;   /* Gives it comfortable breathing room */
+    margin-bottom: 8px; /* Adds clean spacing between items */
 }
 
 .blog-section {
