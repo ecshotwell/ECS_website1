@@ -24,7 +24,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
             // Success Acknowledgment
             responseBox.style.display = 'block';
             responseBox.className = 'success';
-            responseBox.innerHTML = '<strong>Thank you!</strong> Your message has been sent successfully. Eric will get back to you soon.';
+            responseBox.innerHTML = '<strong>Thank you!</strong> Your message has been sent successfully. Eric Shotwell will get back to you soon.';
             form.reset(); // Clear the form fields
         } else {
             // Error handling

@@ -51,9 +51,23 @@
             <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
         </div>
 
+
+<div class="form-group" style="margin-bottom: 15px;">
+    <label for="inquiry-type" style="font-weight: bold; color: var(--dark-gray); font-size: 0.9rem;">I am interested in:*</label>
+    <select id="inquiry-type" name="inquiry_type" required style="width: 100%; padding: 12px; border: 1px solid #cccccc; border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit; background-color: #ffffff;">
+        <option value="" disabled selected>Select an option...</option>
+        <option value="blacksmithing">Blacksmithing Classes</option>
+        <option value="ceramics">Ceramics Classes</option>
+        <option value="purchase">Purchase a Piece of Art</option>
+        <option value="commission">Custom Artwork Commission</option>
+        <option value="consultation">Artist Consultation</option>
+    </select>
+</div>
+
+
         <div class="form-group">
-            <label for="details">Project Details*</label>
-            <textarea id="details" name="details" rows="4" placeholder="Describe the vision you have in mind..." required></textarea>
+            <label for="details">Your Interest*</label>
+            <textarea id="details" name="details" rows="4" placeholder="Please describe the vision you have in mind..." required></textarea>
         </div>
 
         <button type="submit" id="submitBtn">Send Message</button>
