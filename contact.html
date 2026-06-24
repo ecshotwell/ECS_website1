@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eric Shotwell, Artist Blacksmith</title>
     <link rel="stylesheet" href="style.css">
-     <script src="./navigation.js"></script>
+    <script src="./navigation.js"></script>
 </head>
 <body>
 
 <header class="hero-container">
-  <h1>Eric Shotwell, Artist Blacksmith</h1>
-  <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder">
+    <h1>Eric Shotwell, Artist Blacksmith</h1>
+    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder">
   
- <nav class="navigation-toolbar">
-    <a href="https://ericshotwellusa.com/index.html">Home</a>
-    <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
-    <a href="https://ericshotwellusa.com/vision.html">Perspective</a>
-    <a href="https://ericshotwellusa.com/inspiration.html">Inspiration</a>
-    <a href="https://ericshotwellusa.com/process.html">Process</a>
-    <a href="https://ericshotwellusa.com/contact.html">Contact</a>
-  </nav>
-
+    <nav class="navigation-toolbar">
+        <a href="https://ericshotwellusa.com/index.html">Home</a>
+        <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
+        <a href="https://ericshotwellusa.com/vision.html">Perspective</a>
+        <a href="https://ericshotwellusa.com/inspiration.html">Inspiration</a>
+        <a href="https://ericshotwellusa.com/process.html">Process</a>
+        <a href="https://ericshotwellusa.com/contact.html">Contact</a>
+    </nav>
 </header>
 
 <main class="focus-box">
@@ -35,38 +34,38 @@
     <p>An artist whose work spans both physical mediums and social commentary must demonstrate how the physical process reflects the philosophical mindset.</p>
 </main>
 
- <main class="focus-box">
-  <h2>Contact</h2>
-  <p>Let's discuss your project and see how we can turn your vision into a unique work of art.</p>
+<div class="focus-box">
+    <h2>Contact</h2>
+    <p>Let's discuss your project and see how we can turn your vision into a unique work of art.</p>
   
-  <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="0203d124-62ff-4b4a-a42c-f65c916ab424">
+    <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="0203d124-62ff-4b4a-a42c-f65c916ab424">
   
-    <div class="form-group">
-        <label for="name">Name*</label>
-        <input type="text" id="name" name="name" placeholder="Your Name" required>
-    </div>
+        <div class="form-group">
+            <label for="name">Name*</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+        </div>
 
-    <div class="form-group">
-        <label for="email">Email*</label>
-        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-    </div>
+        <div class="form-group">
+            <label for="email">Email*</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+        </div>
 
-    <div class="form-group">
-        <label for="details">Project Details*</label>
-        <textarea id="details" name="details" rows="4" placeholder="Describe the vision you have in mind..." required></textarea>
-    </div>
+        <div class="form-group">
+            <label for="details">Project Details*</label>
+            <textarea id="details" name="details" rows="4" placeholder="Describe the vision you have in mind..." required></textarea>
+        </div>
 
-    <button type="submit" id="submitBtn">Send Message</button>
-</form>
+        <button type="submit" id="submitBtn">Send Message</button>
+    </form>
 
-<div id="formResponse" style="margin-top: 15px; padding: 15px; border-radius: 4px; display: none;"></div>
+    <div id="formResponse" style="margin-top: 15px; padding: 15px; border-radius: 4px; display: none;"></div>
+</div>
 
-</main>
-
-  <footer>   
-  <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
+<footer>   
+    <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
 </footer>
+
 <script src="contactformsubmit.js"></script>
 </body>
 </html>

@@ -111,7 +111,7 @@ body::before {
 
 /* --- Main Content Focus Box --- */
 main.focus-box, .focus-box {
-    max-width: 1200px;         /* Uniform wide sizing matching the gallery width */
+    max-width: 1200px;         
     width: 90%;              
     min-height: 200px;        
     margin: 40px auto;        
@@ -406,81 +406,29 @@ div.focus-box.blog-card {
     margin-bottom: 60px;
     padding: 0;
 }
-/* --- Responsive Media Queries --- */
-@media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column;
-        text-align: center;
-        width: 90%;              /* Matches the layout frame cleanly */
-        padding: 20px 20px 70px 20px;
-    }
 
-    .navigation-toolbar {
-        flex-wrap: wrap; 
-        justify-content: center;
-        gap: 12px 18px;     
-        height: auto;       
-        padding: 8px 4px;   
-    }
-
-    .navigation-toolbar a {
-        font-size: 0.9rem;  
-    }
-
-    /* UPDATED: Forces text cards to perfectly match the width boundaries of the Hero container */
-    .focus-box, main.focus-box {
-        box-sizing: border-box;  /* Forces padding inside the box so it doesn't break boundaries */
-        width: 90% !important;   /* Exactly matches your .hero-container mobile width */
-        padding: 20px !important;/* Keeps comfortable margins on small screens */
-        margin: 20px auto !important; 
-    }
-
-    .portfolio-grid .card img,
-    .gallery-container .card img,
-    .portfolio-grid img { 
-        height: auto !important;       
-        max-height: 400px !important;  
-        object-fit: contain !important; 
-        background-color: #1a1a1a;     
-        display: block;
-    }
-}
-
-/* --- Footer Section Styling --- */
-footer {
-    text-align: center;
-    padding: 40px 20px 30px 20px; 
-    color: #a0a0a0;               
-    font-size: 0.85rem;           
-    width: 100%;
-    box-sizing: border-box;
-    letter-spacing: 0.5px;        
-}
-    /* --- INTEGRATED LIGHTBOX POP-UP STYLING --- */
-
-/* Ensure the popup backdrop matches your blurred style framework */
+/* --- INTEGRATED LIGHTBOX POP-UP STYLING --- */
 .lightbox-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(30, 35, 45, 0.95); /* Matches your dark background gradient overlay */
-    backdrop-filter: blur(8px);          /* Clean, consistent background blur */
+    background: rgba(30, 35, 45, 0.95); 
+    backdrop-filter: blur(8px);          
     display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-/* Unified popup card container */
 .lightbox-content {
     background: #ffffff;
     max-width: 85%;
     max-height: 90vh; 
     width: auto;
     overflow: hidden; 
-    border-radius: 8px; /* Matches your focus-box corner radius curve */
+    border-radius: 8px; 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -501,7 +449,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #1a1a1a; /* Matches your standard mobile image backdrop color fill */
+    background: #1a1a1a; 
     overflow: hidden;
 }
 
@@ -513,7 +461,6 @@ footer {
     margin: 0 auto; 
 }
 
-/* Lightbox Content Typography - Now safely inherits your clean system fonts */
 .lightbox-details { 
     padding: 25px 30px; 
     background: #ffffff; 
@@ -524,7 +471,7 @@ footer {
     margin-top: 0; 
     font-size: 1.6rem; 
     font-weight: 600;
-    color: #2c3e50; /* Matches your custom structural charcoal accent color */
+    color: #2c3e50; 
     border-bottom: 2px solid #eeeeee; 
     padding-bottom: 8px; 
     margin-bottom: 15px; 
@@ -534,5 +481,55 @@ footer {
     font-size: 1rem; 
     line-height: 1.5;
     margin: 6px 0; 
-    color: #444444; /* Matches your clean body paragraph colors */
+    color: #444444; 
+}
+
+/* --- Footer Section Styling --- */
+footer {
+    text-align: center;
+    padding: 40px 20px 30px 20px; 
+    color: #a0a0a0;               
+    font-size: 0.85rem;           
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 0.5px;        
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        width: 90%;              
+        padding: 20px 20px 70px 20px;
+    }
+
+    .navigation-toolbar {
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 12px 18px;     
+        height: auto;       
+        padding: 8px 4px;   
+    }
+
+    .navigation-toolbar a {
+        font-size: 0.9rem;  
+    }
+
+    .focus-box, main.focus-box {
+        box-sizing: border-box;  
+        width: 90% !important;   
+        padding: 20px !important;
+        margin: 20px auto !important; 
+    }
+
+    .portfolio-grid .card img,
+    .gallery-container .card img,
+    .portfolio-grid img { 
+        height: auto !important;       
+        max-height: 400px !important;  
+        object-fit: contain !important; 
+        background-color: #1a1a1a;     
+        display: block;
+    }
 }

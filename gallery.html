@@ -4,36 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Eric Shotwell, Artist Blacksmith</title>
-    <!-- Link to your existing style sheet -->
     <link rel="stylesheet" href="style.css">
-    <script src="ecsgallery.js"></script>
-    <!-- Include PapaParse to easily read CSV files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-  
-
- <script src="./navigation.js"></script>
+    <script src="./navigation.js"></script>
 </head>
 <body>
 
-   <header class="hero-container">
-  <h1>Eric Shotwell, Artist Blacksmith</h1>
-  <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder">
+<header class="hero-container">
+    <h1>Eric Shotwell, Artist Blacksmith</h1>
+    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder">
 
-  
-<nav class="navigation-toolbar">
-    <a href="https://ericshotwellusa.com/index.html">Home</a>
-    <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
-    <a href="https://ericshotwellusa.com/vision.html">Perspective</a>
-    <a href="https://ericshotwellusa.com/inspiration.html">Inspiration</a>
-    <a href="https://ericshotwellusa.com/process.html">Process</a>
-    <a href="https://ericshotwellusa.com/contact.html">Contact</a>
-  </nav>
+    <nav class="navigation-toolbar">
+        <a href="https://ericshotwellusa.com/index.html">Home</a>
+        <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
+        <a href="https://ericshotwellusa.com/vision.html">Perspective</a>
+        <a href="https://ericshotwellusa.com/inspiration.html">Inspiration</a>
+        <a href="https://ericshotwellusa.com/process.html">Process</a>
+        <a href="https://ericshotwellusa.com/contact.html">Contact</a>
+    </nav>
 </header>
 
-    <main class="gallery-section">
-        
+<main class="gallery-section">
     <div class="filter-group">
-        
         <h2>Artwork Portfolio</h2>
         <p class="filter-intro">The following is a selection of my recent work. You can select a filter to narrow down the displayed items. Click any image to see more details.</p>
 
@@ -64,160 +56,27 @@
     </div>
 </main>
 
-    <!-- --- LIGHTBOX POP-UP STRUCTURAL LAYOUT --- -->
-    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
-        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <div class="lightbox-content" onclick="event.stopPropagation()">
-            <div class="lightbox-body">
-                <div class="lightbox-img-container">
-                    <img id="lightbox-img" src="./imgfiles/ecs-art/" alt="missing image">
-                </div>
-                <div class="lightbox-details">
-                    <h2 id="lightbox-title"></h2>
-                    <p><strong>Medium:</strong> <span id="lightbox-medium"></span></p>
-                    <p><strong>Location:</strong> <span id="lightbox-location"></span></p>
-                    <p><strong>Category:</strong> <span id="lightbox-category"></span></p>
-                    <p><strong>Artist:</strong> <span id="lightbox-artist"></span></p>
-                </div>
+<div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <div class="lightbox-body">
+            <div class="lightbox-img-container">
+                <img id="lightbox-img" src="./imgfiles/ecs-art/" alt="missing image">
+            </div>
+            <div class="lightbox-details">
+                <h2 id="lightbox-title"></h2>
+                <p><strong>Medium:</strong> <span id="lightbox-medium"></span></p>
+                <p><strong>Location:</strong> <span id="lightbox-location"></span></p>
+                <p><strong>Category:</strong> <span id="lightbox-category"></span></p>
+                <p><strong>Artist:</strong> <span id="lightbox-artist"></span></p>
             </div>
         </div>
     </div>
+</div>
 
-    <footer>
-        <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
-    </footer>
+<footer>
+    <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
+</footer>
+
+<script src="gallery.js"></script>
 </body>
-    <script>
-    let masterGalleryData = [];
-
-    // 1. Fetch and Parse CSV File
-    Papa.parse("images.csv", {
-        download: true,
-        header: true,
-        skipEmptyLines: true,
-        complete: function(results) {
-            masterGalleryData = results.data;
-            populateFilterDropdowns(masterGalleryData);
-            displayGallery(masterGalleryData);
-        },
-        error: function(err) {
-            document.getElementById('portfolio-grid').innerHTML = '<p class="no-results">Error loading portfolio data. Please ensure images.csv exists.</p>';
-            console.error(err);
-        }
-    });
-
-    // 2. Dynamically extract unique values for dropdown filters (Matches lowercase CSV headers)
-    function populateFilterDropdowns(data) {
-        const attributes = ['subject', 'medium', 'location', 'category', 'artist'];
-        attributes.forEach(attr => {
-            const selectElement = document.getElementById(`filter-${attr}`);
-            
-            // Extract unique values matching exact lowercase CSV headers safely
-            const uniqueValues = [...new Set(data.map(item => {
-                const val = item[attr];
-                return val ? val.trim() : null;
-            }).filter(Boolean))].sort();
-            
-            // Clear any existing dynamic options except the first "All" option
-            while (selectElement.options.length > 1) {
-                selectElement.remove(1);
-            }
-
-            uniqueValues.forEach(value => {
-                const option = document.createElement('option');
-                option.value = value;
-                option.textContent = value;
-                selectElement.appendChild(option);
-            });
-        });
-    }
-
-    // 3. Render gallery grid cards
-    function displayGallery(items) {
-        const grid = document.getElementById('portfolio-grid');
-        grid.innerHTML = '';
-        
-        if (items.length === 0) {
-            grid.innerHTML = '<div class="no-results">No items match your chosen filter criteria.</div>';
-            return;
-        }
-        
-        items.forEach((item, index) => {
-            // Guard clause to prevent script crash if a row structure is corrupt
-            if (!item.filename) return;
-
-            const card = document.createElement('div');
-            card.className = 'gallery-card';
-            
-            let cleanFilename = item.filename.trim();
-            // Since your CSV explicitly includes "imgfiles/ecs-art/", we just append standard relative prefix "./"
-            let imgPath = cleanFilename.startsWith('imgfiles/') ? `./${cleanFilename}` : `./imgfiles/ecs-art/${cleanFilename}`;
-
-            card.innerHTML = `
-                <img src="${imgPath}" alt="${item.subject || 'Artwork'}" loading="lazy">
-                <div class="gallery-info">
-                    <h3>${item.subject || 'Untitled'}</h3>
-                    <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
-                    <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
-                    <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
-                </div>
-            `;
-            
-            // Pass the verified explicit path straight to the lightbox
-            card.addEventListener('click', () => openLightbox(item, imgPath));
-            grid.appendChild(card);
-        });
-    }
-
-    // 4. Filter gallery calculation (Strict lowercase column matches)
-    function filterGallery() {
-        const subjectFilter = document.getElementById('filter-subject').value;
-        const mediumFilter = document.getElementById('filter-medium').value;
-        const locationFilter = document.getElementById('filter-location').value;
-        const categoryFilter = document.getElementById('filter-category').value;
-        const artistFilter = document.getElementById('filter-artist').value;
-        
-        const filteredResults = masterGalleryData.filter(item => {
-            const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
-            const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
-            const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
-            const matchCategory = (categoryFilter === 'all' || item.category?.trim() === categoryFilter);
-            const matchArtist = (artistFilter === 'all' || item.artist?.trim() === artistFilter);
-            return matchSubject && matchMedium && matchLocation && matchCategory && matchArtist;
-        });
-        displayGallery(filteredResults);
-    }
-
-    // --- LIGHTBOX INTERACTION FUNCTIONS ---
-
-    function openLightbox(item, calculatedPath) {
-        // Uses the direct path generated by the card loop
-        const imgPath = calculatedPath || `./${item.filename.trim()}`;
-        
-        document.getElementById('lightbox-img').src = imgPath;
-        document.getElementById('lightbox-img').alt = item.subject || 'Artwork';
-        document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
-        document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
-        document.getElementById('lightbox-location').textContent = item.location || 'N/A';
-        document.getElementById('lightbox-category').textContent = item.category || 'N/A';
-        document.getElementById('lightbox-artist').textContent = item.artist || 'N/A';
-        
-        document.getElementById('lightbox').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox(event) {
-        if (event && event.stopPropagation) {
-            event.stopPropagation();
-        }
-        document.getElementById('lightbox').style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    window.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            closeLightbox();
-        }
-    });
-</script>
 </html>
