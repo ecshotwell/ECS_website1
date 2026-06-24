@@ -18,7 +18,7 @@
 
     // 2. Dynamically extract unique values for dropdown filters (Matches lowercase CSV headers)
     function populateFilterDropdowns(data) {
-        const attributes = ['subject', 'medium', 'location', 'category', 'artist'];
+        const attributes = ['subject', 'medium', 'location', 'size', 'artist'];
         attributes.forEach(attr => {
             const selectElement = document.getElementById(`filter-${attr}`);
             
@@ -69,7 +69,7 @@
                     <h3>${item.subject || 'Untitled'}</h3>
                     <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
                     <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
-                    <p><strong>Category:</strong> ${item.category || 'N/A'}</p>
+                    <p><strong>Size:</strong> ${item.size || 'N/A'}</p>
                 </div>
             `;
             
@@ -84,16 +84,16 @@
         const subjectFilter = document.getElementById('filter-subject').value;
         const mediumFilter = document.getElementById('filter-medium').value;
         const locationFilter = document.getElementById('filter-location').value;
-        const categoryFilter = document.getElementById('filter-category').value;
+        const sizeFilter = document.getElementById('filter-size').value;
         const artistFilter = document.getElementById('filter-artist').value;
         
         const filteredResults = masterGalleryData.filter(item => {
             const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
             const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
             const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
-            const matchCategory = (categoryFilter === 'all' || item.category?.trim() === categoryFilter);
+            const matchCategory = (sizeFilter === 'all' || item.size?.trim() === sizeFilter);
             const matchArtist = (artistFilter === 'all' || item.artist?.trim() === artistFilter);
-            return matchSubject && matchMedium && matchLocation && matchCategory && matchArtist;
+            return matchSubject && matchMedium && matchLocation && matchSize && matchArtist;
         });
         displayGallery(filteredResults);
     }
@@ -109,7 +109,7 @@
         document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
         document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
         document.getElementById('lightbox-location').textContent = item.location || 'N/A';
-        document.getElementById('lightbox-category').textContent = item.category || 'N/A';
+        document.getElementById('lightbox-size').textContent = item.size || 'N/A';
         document.getElementById('lightbox-artist').textContent = item.artist || 'N/A';
         
         document.getElementById('lightbox').style.display = 'flex';
