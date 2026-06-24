@@ -43,6 +43,17 @@ body::before {
     pointer-events: none; 
 }
 
+/* --- Global Blockquote Styling --- */
+main.focus-box blockquote,
+.focus-box blockquote {
+    margin: 20px 0 20px 20px !important;
+    padding-left: 15px !important;
+    border-left: 3px solid var(--brand-blue, #3498db) !important;
+    font-style: italic !important;
+    color: #555555 !important;
+    line-height: 1.6;
+}
+
 /* --- Hero Header Container --- */
 
 .hero-container img {
