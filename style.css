@@ -406,13 +406,12 @@ div.focus-box.blog-card {
     margin-bottom: 60px;
     padding: 0;
 }
-
 /* --- Responsive Media Queries --- */
 @media (max-width: 768px) {
     .hero-container {
         flex-direction: column;
         text-align: center;
-        width: 95%;              
+        width: 90%;              /* Matches the layout frame cleanly */
         padding: 20px 20px 70px 20px;
     }
 
@@ -428,11 +427,12 @@ div.focus-box.blog-card {
         font-size: 0.9rem;  
     }
 
-    /* Added optimization for mobile content cards */
+    /* UPDATED: Forces text cards to perfectly match the width boundaries of the Hero container */
     .focus-box, main.focus-box {
-        padding: 20px;         
-        width: 95%;            
-        margin: 20px auto;     
+        box-sizing: border-box;  /* Forces padding inside the box so it doesn't break boundaries */
+        width: 90% !important;   /* Exactly matches your .hero-container mobile width */
+        padding: 20px !important;/* Keeps comfortable margins on small screens */
+        margin: 20px auto !important; 
     }
 
     .portfolio-grid .card img,
