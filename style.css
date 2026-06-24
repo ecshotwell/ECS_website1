@@ -2,7 +2,6 @@
 
 /* Global Layout Variables & Reset */
 :root {
-    /* Perfect place to store your brand colors for easy updating! */
     --brand-blue: #3498db;
     --light-blue-bg: rgba(212, 230, 241, 0.75);
     --border-blue: #d4e6f1;
@@ -10,15 +9,48 @@
     --dark-gray: #333333;
 }
 
+/* --- Global Font & Body Styles --- */
+
+/* Unified font stack across text, headers, and interactive form elements */
+body, input, textarea, button, select, label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    color: #111111;
+    position: relative;
+    margin: 0 auto;       
+    padding: 0;
+    max-width: 1200px;    
+    width: 95%;           
+    min-height: 100vh;    
+}
+
+/* Full-screen, blurred background behind content */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(rgba(30, 35, 45, 0.2), rgba(30, 35, 45, 0.9)), url('./imgfiles/redcloud.jpg');    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(12px) brightness(93%) contrast(90%); 
+    z-index: -1;          
+    pointer-events: none; 
+}
+
 /* --- Hero Header Container --- */
 
-/* Constrain the Top Hero Image */
 .hero-container img {
-    max-width: 200px;  /* Constrains the width to a manageable size */
-    width: 100%;       /* Allows it to scale down nicely on mobile screens */
-    height: auto;      /* Maintains the original aspect ratio */
+    max-width: 200px;  
+    width: 100%;       
+    height: auto;      
     object-fit: contain; 
-    border-radius: 4px; /* Slightly softens the image corners inside the box */
+    border-radius: 4px; 
 }
 
 .hero-container {
@@ -33,14 +65,11 @@
     max-width: 1200px;           
     width: 90%;                  
     border-radius: 8px;          
-    
-    /* FIX: Changed vertical offset to 0 and blur to a tight, soft halo so it cannot bleed down past the nav bar */
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.04); 
-    
     position: relative;          
 }
 
-/* --- Top Navigation Bar (Connected to Hero) --- */
+/* --- Top Navigation Bar --- */
 .navigation-toolbar {
     display: flex;
     justify-content: center;   
@@ -53,7 +82,6 @@
     margin: 0;                 
     background-color: #ffffff;  
     height: 45px;              
-    
     border-left: 2px solid var(--border-blue);   
     border-right: 2px solid var(--border-blue);  
     border-bottom: 2px solid var(--border-blue); 
@@ -61,211 +89,32 @@
     border-radius: 0 0 8px 8px;        
     box-sizing: border-box;
     z-index: 5;                
-
-    /* FIX: Moves the bottom anchor shadow here, casting a clean, dark depth shadow under the white toolbar */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
 }
 
-/* Responsive tweak for mobile screens so they stack vertically */
-@media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column;
-        text-align: center;
-        width: 95%;              /* Gives you slightly more breathing room on mobile viewports */
-        padding: 20px 20px 70px 20px;
-    }
-}
-/* --- Navigation Link Text Styling --- */
 .navigation-toolbar a {
-    color: #111111;            /* Crisp, readable black text */
-    text-decoration: none;     /* Removes standard underlines */
+    color: #111111;            
+    text-decoration: none;     
     font-size: 1rem;
     font-weight: 500;
     transition: color 0.2s ease-in-out;
 }
 
-/* Subtle hover effect for interactivity */
 .navigation-toolbar a:hover {
-    color: var(--brand-blue);  /* Transitions text to a clean blue on hover */
+    color: var(--brand-blue);  
 }
 
-/* Optional active state style for the script to hook into */
 .navigation-toolbar a.active {
     color: var(--brand-blue);
     font-weight: 700;
 }
 
-/* Mobile responsive optimization */
-@media (max-width: 768px) {
-    .navigation-toolbar {
-        /* Instead of stacking vertically, keep them in a row but let them wrap if needed */
-        flex-wrap: wrap; 
-        justify-content: center;
-        gap: 12px 18px;     /* Tighter spacing for mobile screens */
-        height: auto;       /* Lets it adapt cleanly */
-        padding: 8px 4px;   /* Shrinks the overall footprint */
-    }
-
-    .navigation-toolbar a {
-        font-size: 0.9rem;  /* Slightly smaller text so everything fits beautifully */
-    }
-}
-
-/* --- Global Font & Body Styles --- */
-
-/* 1. Apply the clean, universal font stack to all elements properly */
-body, input, textarea, button, select {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-/* 2. Clean up your main body layout rules */
-body {
-    color: #111111;
-    position: relative;
-    margin: 0 auto;       
-    padding: 0;
-    max-width: 1200px;    
-    width: 95%;           
-    min-height: 100vh;    
-}
-
 /* --- Main Content Focus Box --- */
-
-/* 3. Make the boxes match the elegant, wide sizing of the portfolio grid */
 main.focus-box, .focus-box {
-    max-width: 1100px;        /* Expanded from 600px to perfectly match the grid layout width */
+    max-width: 1100px;         /* Uniform wide sizing matching the gallery width */
     width: 100%;              
     min-height: 200px;        
     margin: 40px auto;        
-    padding: 35px;            
-    background-color: #ffffff !important; 
-    border: 1px solid #dddddd; 
-    border-radius: 8px;       
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
-    box-sizing: border-box;   
-    display: block;
-}
-
-/* 4. ADD THIS: Fixes the heavy bullet list text to match paragraph styling */
-.focus-box ul li, 
-.focus-box ol li {
-    font-weight: normal;      /* Explicitly removes the accidental bold look */
-    color: #444444;           /* Perfectly matches your narrative text color */
-    line-height: 1.6;         /* Gives the text comfortable breathing room */
-    margin-bottom: 12px;      /* Adds a clean gap between different list points */
-}
-
-/* This creates a full-screen, blurred background behind your content */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: linear-gradient(rgba(30, 35, 45, 0.2), rgba(30, 35, 45, 0.9)), url('./imgfiles/redcloud.jpg');    
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(12px) brightness(93%) contrast(90%); 
-    z-index: -1;          /* Pushes it safely behind your text and cards */
-    pointer-events: none; /* Prevents it from interfering with clicks */
-}
-
-/* --- 1. Main Carousel Container --- */
-.carousel-container, .image-section {
-    max-width: 800px;  
-    width: 90%;        
-    margin: 2rem auto; 
-    padding: 0;        
-    position: relative; 
-    background-color: #ffffff; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    overflow: hidden;   
-    
-    display: flex;
-    flex-direction: column;
-}
-
-/* --- 2. The Slider Track Fix (Prevents missing slides) --- */
-.carousel-slide {
-    display: flex;
-    flex-direction: row; /* Forces all images to sit in a single, continuous horizontal line */
-    width: 100%;
-    margin-bottom: 0; 
-    transition: transform 0.4s ease-in-out; /* Smooth sliding transition if your JS updates transform */
-}
-
-/* --- 3. Image Sizing & Anti-Clipping --- */
-.carousel-slide img {
-    flex: 0 0 100%;        /* Keeps each image exactly equal to the container's width */
-    width: 100%;           
-    
-    /* FIX: Caps the maximum height so vertical images don't stretch too tall */
-    max-height: 550px;     
-    
-    /* FIX: Restores full visibility. No more clipping on the left or right sides */
-    object-fit: contain;   
-    
-    /* Dark charcoal background fills any empty side space for narrow images cleanly */
-    background-color: #1a1a1a; 
-    display: block;
-}
-
-/* --- 4. Centered Connected Caption Box --- */
-.carousel-caption-box {
-    width: 100%;
-    padding: 20px 15px;    
-    background-color: #ffffff;
-    border-top: 1px solid #eeeeee; 
-    box-sizing: border-box;
-    text-align: center;
-}
-
-#captionTitle {
-    font-size: 1.3rem;
-    color: var(--charcoal, #2c3e50); 
-    margin: 0 auto 6px auto;
-    font-weight: 600;
-}
-
-#captionDesc {
-    font-size: 1rem;
-    color: #555555;
-    margin: 0 auto;
-    line-height: 1.4;
-}
-
-/* --- 5. Centered Navigation Arrows --- */
-#prevBtn, #nextBtn {
-    position: absolute;
-    top: 42%; /* Positions buttons over the visual center of the image area */
-    transform: translateY(-50%);
-    background-color: rgba(136, 178, 202, 0.75);
-    color: white;
-    border: none;
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-    font-size: 20px;
-    border-radius: 50%;
-    transition: background-color 0.3s;
-    z-index: 10;
-}
-#prevBtn { left: 15px; }
-#nextBtn { right: 15px; }
-
-#prevBtn:hover, #nextBtn:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #111;
-}
-/* --- Main Content Focus Box --- */
-main.focus-box, .focus-box {
-    max-width: 1000px;         
-    width: 100%;              
-    min-height: 200px;        
-    margin: 40px auto;        /* Centers the card layout cleanly */
     padding: 35px;            
     background-color: #ffffff !important; 
     border: 1px solid #dddddd; 
@@ -292,7 +141,7 @@ main.focus-box h2 {
 }
 
 main.focus-box h3, .focus-box h3 {
-    padding-left: 20px;        /* Indents sub-headers cleanly across all sections */
+    padding-left: 20px;        
     margin-top: 35px;          
     margin-bottom: 12px;       
     font-size: 1.4rem;         
@@ -300,27 +149,103 @@ main.focus-box h3, .focus-box h3 {
 }
 
 main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
-    padding-left: 20px;        /* Aligns all block elements perfectly under headers */
+    padding-left: 20px;        
+}
+
+/* Clear, normal-weight styling for list entries */
+.focus-box ul li, 
+.focus-box ol li {
+    font-weight: normal;
+    color: #444444;     
+    line-height: 1.6;   
+    margin-bottom: 12px; 
+}
+
+/* --- Main Carousel Container --- */
+.carousel-container, .image-section {
+    max-width: 800px;  
+    width: 90%;        
+    margin: 2rem auto; 
+    padding: 0;        
+    position: relative; 
+    background-color: #ffffff; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;   
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-slide {
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    margin-bottom: 0; 
+    transition: transform 0.4s ease-in-out; 
+}
+
+.carousel-slide img {
+    flex: 0 0 100%;        
+    width: 100%;           
+    max-height: 550px;     
+    object-fit: contain;   
+    background-color: #1a1a1a; 
+    display: block;
+}
+
+.carousel-caption-box {
+    width: 100%;
+    padding: 20px 15px;    
+    background-color: #ffffff;
+    border-top: 1px solid #eeeeee; 
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#captionTitle {
+    font-size: 1.3rem;
+    color: var(--charcoal, #2c3e50); 
+    margin: 0 auto 6px auto;
+    font-weight: 600;
+}
+
+#captionDesc {
+    font-size: 1rem;
+    color: #555555;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+#prevBtn, #nextBtn {
+    position: absolute;
+    top: 42%; 
+    transform: translateY(-50%);
+    background-color: rgba(136, 178, 202, 0.75);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+#prevBtn { left: 15px; }
+#nextBtn { right: 15px; }
+
+#prevBtn:hover, #nextBtn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #111;
 }
 
 /* --- Blog Section Styling --- */
-/* --- Blog Section Styling --- */
-
 .focus-box.blog-card, 
 div.focus-box.blog-card {
     display: block !important;
     height: auto !important;
     min-height: 100px !important;
     overflow: visible !important;
-}
-
-/* Force bullet lists to be normal weight and match paragraph text */
-.focus-box ul li, 
-.focus-box ol li {
-    font-weight: normal;
-    color: #444444;     /* Matches your paragraph text color */
-    line-height: 1.6;   /* Gives it comfortable breathing room */
-    margin-bottom: 8px; /* Adds clean spacing between items */
 }
 
 .blog-section {
@@ -330,8 +255,8 @@ div.focus-box.blog-card {
 }
 
 .blog-content {
-    display: flow-root;       /* Forces the container to calculate its true height around wide images */
-    clear: both;              /* Pushes past any absolutely positioned layout collisions */
+    display: flow-root;       
+    clear: both;              
     width: 100%;
 }
 
@@ -342,26 +267,24 @@ div.focus-box.blog-card {
     margin-bottom: 20px;
 }
 
-/* Styling the "Full article" links */
 .blog-link {
-    color: #4A6B82; /* Replace with your preferred hex code from above */
-    text-decoration: none; /* Removes the default underline if desired */
-    font-weight: 500; /* Makes the text slightly sharper and easier to read */
-    transition: color 0.2s ease; /* Smooth color transition on hover */
+    color: #4A6B82; 
+    text-decoration: none; 
+    font-weight: 500; 
+    transition: color 0.2s ease; 
 }
 
-/* Hover state for better user interaction */
 .blog-link:hover {
-    color: #1C4E80; /* A slightly darker shade when the user hovers over it */
-    text-decoration: underline; /* Adds the underline back on hover for clarity */
+    color: #1C4E80; 
+    text-decoration: underline; 
 }
 
 .blog-section img, 
 .responsive-blog-img {
     max-width: 100%;
-    max-height: 400px;    /* ADD THIS: Clamps the image height so it can't blow out the card */
-    object-fit: cover;    /* ADD THIS: Maintains clean proportions without stretching */
-    width: 100%;          /* ADD THIS: Ensures it scales cleanly across the card width */
+    max-height: 400px;    
+    object-fit: cover;    
+    width: 100%;          
     display: block;
     margin: 1.5rem 0; 
 }
@@ -435,9 +358,8 @@ div.focus-box.blog-card {
     color: #c5221f;
     border: 1px solid #fad2cf;
 }
-/* --- Integrated Gallery Header & Filter Card --- */
 
-/* 1. Base Container Framework for Card and Grid */
+/* --- Integrated Gallery Header & Filter Card --- */
 .gallery-section .filter-group,
 .gallery-section .portfolio-grid {
     max-width: 1100px !important; 
@@ -447,39 +369,36 @@ div.focus-box.blog-card {
     box-sizing: border-box;
 }
 
-/* 2. Styled Filter Card Container Layout */
 .gallery-section .filter-group {
     display: flex;                
-    flex-wrap: wrap;              /* Allows full text lines to block, and inputs to scale down smoothly */
+    flex-wrap: wrap;              
     gap: 15px 20px;
     background-color: #ffffff;
     border-radius: 8px;
-    padding: 30px 25px;           /* Gives comfortable whitespace buffer margins around everything */
+    padding: 30px 25px;           
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     margin-top: 40px;             
     margin-bottom: 40px;
 }
 
-/* 3. Typography inside the white integrated filter card */
 .gallery-section .filter-group h2 {
-    color: #111111 !important;    /* Solid crisp black */
-    margin-top: 0;                /* Flushes content evenly against the container frame */
+    color: #111111 !important;    
+    margin-top: 0;                
     margin-bottom: 10px;
     font-size: 1.8rem;
     font-weight: 600;
-    width: 100%;                  /* Forces heading to stretch across its own full line */
+    width: 100%;                  
 }
 
 .gallery-section .filter-group .filter-intro {
-    color: #333333 !important;    /* Highly legible charcoal black */
+    color: #333333 !important;    
     font-size: 1.05rem;
     line-height: 1.5;
     margin-top: 0;
-    margin-bottom: 25px;          /* Generous separation above the dropdown dropdown labels */
-    width: 100%;                  /* Forces text block to wrap down completely cleanly */
+    margin-bottom: 25px;          
+    width: 100%;                  
 }
 
-/* 4. Ensure the dynamic portfolio grid behaves cleanly */
 .gallery-section .portfolio-grid {
     display: grid;                
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
@@ -487,15 +406,42 @@ div.focus-box.blog-card {
     margin-bottom: 60px;
     padding: 0;
 }
-/* --- Mobile Viewport Anti-Clipping Fix --- */
+
+/* --- Responsive Media Queries --- */
 @media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        width: 95%;              
+        padding: 20px 20px 70px 20px;
+    }
+
+    .navigation-toolbar {
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 12px 18px;     
+        height: auto;       
+        padding: 8px 4px;   
+    }
+
+    .navigation-toolbar a {
+        font-size: 0.9rem;  
+    }
+
+    /* Added optimization for mobile content cards */
+    .focus-box, main.focus-box {
+        padding: 20px;         
+        width: 95%;            
+        margin: 20px auto;     
+    }
+
     .portfolio-grid .card img,
     .gallery-container .card img,
-    .portfolio-grid img { /* Targets the images inside your gallery grid cards */
-        height: auto !important;       /* Overrides any rigid pixel heights on mobile */
-        max-height: 400px !important;  /* Keeps tall images from swallowing the whole screen */
-        object-fit: contain !important; /* Forces the entire image to stay visible inside the card boundaries */
-        background-color: #1a1a1a;     /* Fills any side gaps cleanly if the photo is narrow */
+    .portfolio-grid img { 
+        height: auto !important;       
+        max-height: 400px !important;  
+        object-fit: contain !important; 
+        background-color: #1a1a1a;     
         display: block;
     }
 }
@@ -503,10 +449,10 @@ div.focus-box.blog-card {
 /* --- Footer Section Styling --- */
 footer {
     text-align: center;
-    padding: 40px 20px 30px 20px; /* Gives a bit more breathing room below the carousel card */
-    color: #a0a0a0;               /* Soft, legible light silver/grey that pops cleanly on dark backgrounds */
-    font-size: 0.85rem;           /* Keeps the text neat and secondary */
+    padding: 40px 20px 30px 20px; 
+    color: #a0a0a0;               
+    font-size: 0.85rem;           
     width: 100%;
     box-sizing: border-box;
-    letter-spacing: 0.5px;        /* Slightly separates the letters for a cleaner, modern look */
+    letter-spacing: 0.5px;        
 }
