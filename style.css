@@ -111,8 +111,8 @@ body::before {
 
 /* --- Main Content Focus Box --- */
 main.focus-box, .focus-box {
-    max-width: 1100px;         /* Uniform wide sizing matching the gallery width */
-    width: 100%;              
+    max-width: 1200px;         /* Uniform wide sizing matching the gallery width */
+    width: 90%;              
     min-height: 200px;        
     margin: 40px auto;        
     padding: 35px;            
