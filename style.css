@@ -325,6 +325,10 @@ div.focus-box.blog-card {
     transition: all 0.3s ease;
     width: 100%; 
 }
+#submitBtn:focus {
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4); /* Adds a subtle, clean brand-blue glow instead */
+}
 
 #submitBtn:hover {
     background-color: #4a4a4a;
