@@ -456,3 +456,83 @@ footer {
     box-sizing: border-box;
     letter-spacing: 0.5px;        
 }
+    /* --- INTEGRATED LIGHTBOX POP-UP STYLING --- */
+
+/* Ensure the popup backdrop matches your blurred style framework */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(30, 35, 45, 0.95); /* Matches your dark background gradient overlay */
+    backdrop-filter: blur(8px);          /* Clean, consistent background blur */
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Unified popup card container */
+.lightbox-content {
+    background: #ffffff;
+    max-width: 85%;
+    max-height: 90vh; 
+    width: auto;
+    overflow: hidden; 
+    border-radius: 8px; /* Matches your focus-box corner radius curve */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-body {
+    display: flex;
+    flex-direction: column; 
+    max-height: 90vh;
+}
+
+@media (min-width: 768px) {
+    .lightbox-body {
+        flex-direction: row; 
+    }
+}
+
+.lightbox-img-container {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a1a; /* Matches your standard mobile image backdrop color fill */
+    overflow: hidden;
+}
+
+#lightbox-img { 
+    max-width: 100%; 
+    max-height: 65vh; 
+    object-fit: contain; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+/* Lightbox Content Typography - Now safely inherits your clean system fonts */
+.lightbox-details { 
+    padding: 25px 30px; 
+    background: #ffffff; 
+    flex-shrink: 0; 
+}
+
+.lightbox-details h2 { 
+    margin-top: 0; 
+    font-size: 1.6rem; 
+    font-weight: 600;
+    color: #2c3e50; /* Matches your custom structural charcoal accent color */
+    border-bottom: 2px solid #eeeeee; 
+    padding-bottom: 8px; 
+    margin-bottom: 15px; 
+}
+
+.lightbox-details p { 
+    font-size: 1rem; 
+    line-height: 1.5;
+    margin: 6px 0; 
+    color: #444444; /* Matches your clean body paragraph colors */
+}

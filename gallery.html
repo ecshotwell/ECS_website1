@@ -6,108 +6,11 @@
     <title>Portfolio - Eric Shotwell, Artist Blacksmith</title>
     <!-- Link to your existing style sheet -->
     <link rel="stylesheet" href="style.css">
+    <script src="ecsgallery.js"></script>
     <!-- Include PapaParse to easily read CSV files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-    
-<style>
-    /* Portfolio Grid and Layout Styling */
-    .portfolio-section { padding: 20px; max-width: 1200px; margin: 0 auto; }
-    .filter-group { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; background: #f4f4f4; padding: 15px; border-radius: 5px; }
-    .filter-item { display: flex; flex-direction: column; min-width: 150px; }
-    .filter-item label { font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; }
-    .filter-item select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; background: white; }
-    
-    /* Main Gallery Grid Settings */
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
-    .gallery-card { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; cursor: pointer; display: flex; flex-direction: column; }
-    .gallery-card:hover { transform: translateY(-3px); }
-    .gallery-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
-    
-    .gallery-info { padding: 15px; }
-    .gallery-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; }
-    .gallery-info p { margin: 4px 0; font-size: 0.85rem; color: #555; }
-    .gallery-info strong { color: #222; }
-    .no-results { grid-column: 1 / -1; text-align: center; padding: 40px; color: #777; font-style: italic; }
+  
 
-    /* --- LIGHTBOX (POP-UP) STYLING --- */
-    /* Ensure the popup container covers the screen and centers content */
-.lightbox-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
-    display: none; /* Controlled by JS flex toggle */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-/* Restrict the maximum size of the popup window card */
-.lightbox-content {
-    background: #fff;
-    max-width: 85%;
-    max-height: 90vh; /* Keeps the entire popup card within 90% of screen height */
-    width: auto;
-    overflow: hidden; /* Prevents image/text bleed-through */
-    border-radius: 4px;
-}
-
-/* Set up the split or stacked body layout */
-.lightbox-body {
-    display: flex;
-    flex-direction: column; /* Stacks image over text on mobile screens */
-    max-height: 90vh;
-}
-
-/* Desktop layout adjustment: Side-by-side if screens are wide */
-@media (min-width: 768px) {
-    .lightbox-body {
-        flex-direction: row; 
-    }
-}
-
-/* Wrap the image tightly and force it to shrink instead of exploding outward */
-.lightbox-img-container {
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #111; /* Dark backdrop behind the artwork bounds */
-    overflow: hidden;
-}
-
-/* Force the image to scale strictly inside the viewport allotment */
-#lightbox-img { 
-    max-width: 100%; 
-    max-height: 65vh; /* Hard ceiling: guarantees room remains for text/titles */
-    object-fit: contain; 
-    display: block; 
-    margin: 0 auto; 
-}
-
-/* Keep your description panel steady */
-.lightbox-details { 
-    padding: 25px 30px; 
-    background: #fff; 
-    flex-shrink: 0; 
-}
-
-.lightbox-details h2 { 
-    margin-top: 0; 
-    font-size: 1.6rem; 
-    border-bottom: 2px solid #eee; 
-    padding-bottom: 8px; 
-    margin-bottom: 15px; 
-}
-
-.lightbox-details p { 
-    font-size: 1rem; 
-    margin: 6px 0; 
-    color: #444; 
-}
-</style>
  <script src="./navigation.js"></script>
 </head>
 <body>
@@ -120,8 +23,9 @@
 <nav class="navigation-toolbar">
     <a href="https://ericshotwellusa.com/index.html">Home</a>
     <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
-    <a href="https://ericshotwellusa.com/process.html">Process</a>
     <a href="https://ericshotwellusa.com/vision.html">Perspective</a>
+    <a href="https://ericshotwellusa.com/inspiration.html">Inspiration</a>
+    <a href="https://ericshotwellusa.com/process.html">Process</a>
     <a href="https://ericshotwellusa.com/contact.html">Contact</a>
   </nav>
 </header>
