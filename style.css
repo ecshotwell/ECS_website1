@@ -678,17 +678,15 @@ footer {
 }
 
 /* --- FILTER & INSTRUCTIONS CONTROL BOX --- */
-.filter-control-box {
-    max-width: 1200px !important;
-    width: 90% !important;
-    margin: 40px auto 30px auto !important;
-    background-color: #ffffff !important;
-    border: 1px solid #dddddd !important;
-    border-radius: 8px !important;
-    padding: 25px 30px !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important;
-    box-sizing: border-box !important;
+/* Ensure filter instructions render clearly on all screens */
+.filter-control-box .filter-instructions {
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #333333 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    clear: both !important;
 }
 
 /* Instructional Text Styling inside the box */
