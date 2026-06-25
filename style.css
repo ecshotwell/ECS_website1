@@ -133,8 +133,8 @@ body::before {
     display: block;
 }
 
-/* Traditional, hand-crafted serif heading style */
-.focus-box h2, .focus-box h3 {
+/* Main Section Headings (Large & Commanding) */
+.focus-box h2 {
     font-family: 'Merriweather', Georgia, serif;
     font-weight: 700;
     font-size: 1.8rem;
@@ -142,6 +142,18 @@ body::before {
     padding-left: 0;           
     margin-top: 10px;
     margin-bottom: 20px;
+    color: var(--dark-gray);
+}
+
+/* Sub-Headings (Distinctly Smaller Step-Down) */
+.focus-box h3 {
+    font-family: 'Merriweather', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.35rem; /* Scaled down from 1.8rem for a clear hierarchy */
+    letter-spacing: -0.01em;
+    padding-left: 0;           
+    margin-top: 35px;   /* Extra space above to separate it from the previous block */
+    margin-bottom: 12px; /* Tighter space below to hug its matching paragraph */
     color: var(--dark-gray);
 }
 
