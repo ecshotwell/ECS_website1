@@ -495,7 +495,8 @@ body::before {
 /* Target generic structure fallback components to force exact 250px crops */
 .portfolio-grid .gallery-card,
 .gallery-card,
-.portfolio-grid .card {
+.portfolio-grid .card,
+#inspiration-grid .gallery-card {
     display: flex !important;
     flex-direction: column !important;
     overflow: hidden !important;
@@ -511,7 +512,8 @@ body::before {
 
 .portfolio-grid .gallery-card:hover,
 .gallery-card:hover,
-.portfolio-grid .card:hover {
+.portfolio-grid .card:hover,
+#inspiration-grid .gallery-card:hover {
     transform: translateY(-3px) !important;
 }
 
@@ -519,7 +521,8 @@ body::before {
 .portfolio-grid .gallery-card img,
 .gallery-card img,
 .portfolio-grid .card img,
-.portfolio-grid img {
+.portfolio-grid img,
+#inspiration-grid .gallery-card img {
     width: 100% !important;
     height: 250px !important;       
     min-height: 250px !important;
@@ -674,111 +677,72 @@ footer {
     }
 }
 
-/* Filter & Instructions Control Box */
+/* --- FILTER & INSTRUCTIONS CONTROL BOX --- */
 .filter-control-box {
-    max-width: 1100px;
-    width: 90%;
-    margin: 40px auto 20px auto;
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-    padding: 25px 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    box-sizing: border-box;
+    max-width: 1200px !important;
+    width: 90% !important;
+    margin: 40px auto 30px auto !important;
+    background-color: #ffffff !important;
+    border: 1px solid #dddddd !important;
+    border-radius: 8px !important;
+    padding: 25px 30px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important;
+    box-sizing: border-box !important;
+    display: block !important;
 }
 
-/* Instructional Text Styling */
+/* Instructional Text Styling inside the box */
 .filter-instructions {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #555555;
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: 1px solid #eeeeee;
-    padding-bottom: 15px;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    color: #333333 !important; /* High contrast charcoal */
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+    border-bottom: 1px solid #eeeeee !important;
+    padding-bottom: 15px !important;
+    display: block !important;
+    font-family: inherit;
 }
 
-/* Adjust the existing container margin since it's now inside the box */
+/* Filter Tabs Container layout rules */
 .tabs-container {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 0; /* Cleared external margins */
-    flex-wrap: wrap;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin: 0 !important; /* Clean containment inside box */
+    flex-wrap: wrap !important;
 }
 
-/* Filter Tabs Container */
-.tabs-container {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 30px 0;
-    flex-wrap: wrap;
-}
-
-/* Tab Buttons - Legible Default State */
+/* Tab Buttons styling */
 .tab-btn {
-    background-color: #ffffff;
-    color: #2c3e50; /* Clean dark gray slate text */
-    border: 1px solid #bdc3c7;
-    padding: 10px 22px;
-    font-family: 'Merriweather', serif;
-    font-size: 0.95rem;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    background-color: #ffffff !important;
+    color: #2c3e50 !important; 
+    border: 1px solid #bdc3c7 !important;
+    padding: 10px 22px !important;
+    font-family: 'Merriweather', serif !important;
+    font-size: 0.95rem !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
 }
 
-/* Hover & Active States */
+/* Hover & Active States for tabs */
 .tab-btn:hover, 
 .tab-btn.active {
-    background-color: #4A6984; /* Matches your theme accent color */
-    color: #ffffff;            /* Crisp white text when selected */
-    border-color: #4A6984;
+    background-color: #4A6984 !important; 
+    color: #ffffff !important;            
+    border-color: #4A6984 !important;
 }
 
-/* Gallery Grid */
+/* --- INSPIRATION IMAGE GRID SYSTEM --- */
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 10px;
-}
-
-/* Individual Image Card */
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.image-wrapper img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover; /* Ensures uniform square/rectangular crops */
-    display: block;
-    transition: transform 0.4s ease;
-}
-
-/* Elegant Text Overlay on Hover */
-.image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 15px;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover .image-overlay {
-    transform: translateY(0);
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+    gap: 30px !important;
+    max-width: 1200px !important;
+    width: 90% !important;
+    margin: 0 auto 60px auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
 }
