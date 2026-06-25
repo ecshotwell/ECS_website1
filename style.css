@@ -7,6 +7,7 @@
     --border-blue: #d4e6f1;
     --charcoal: #2c3e50;
     --dark-gray: #333333;
+    --accent-blue: #87ceeb; /* Light blue accent used for transitions and borders */
 }
 
 /* --- Global Font & Body Styles --- */
@@ -17,7 +18,7 @@ body, input, textarea, button, select, label {
 }
 
 body {
-    color: #333333; /* CHANGED: Softened from #111111 */
+    color: #333333; 
     position: relative;
     margin: 0 auto;       
     padding: 0;
@@ -41,17 +42,6 @@ body::before {
     filter: blur(12px) brightness(93%) contrast(90%); 
     z-index: -1;          
     pointer-events: none; 
-}
-
-/* --- Global Blockquote Styling --- */
-main.focus-box blockquote,
-.focus-box blockquote {
-    margin: 20px 20px 20px 20px !important;
-    padding-left: 15px !important;
-    border-left: 3px solid var(--brand-blue, #3498db) !important;
-    font-style: italic !important;
-    color: #555555 !important;
-    line-height: 1.6;
 }
 
 /* --- Hero Header Container --- */
@@ -104,7 +94,7 @@ main.focus-box blockquote,
 }
 
 .navigation-toolbar a {
-    color: #333333; /* CHANGED: Softened from #111111 */           
+    color: #333333;            
     text-decoration: none;     
     font-size: 1rem;
     font-weight: 500;
@@ -121,7 +111,7 @@ main.focus-box blockquote,
 }
 
 /* --- Main Content Focus Box --- */
-main.focus-box, .focus-box {
+.focus-box {
     max-width: 1200px;         
     width: 90%;              
     min-height: 200px;        
@@ -135,23 +125,27 @@ main.focus-box, .focus-box {
     display: block;
 }
 
-main.focus-box p, .focus-box p {
+/* Traditional, hand-crafted serif heading style */
+.focus-box h2 {
+    font-family: 'Merriweather', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: -0.02em;
+    padding-left: 0;           
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: var(--dark-gray);
+}
+
+.focus-box p {
     font-family: inherit;      
     padding-left: 0;           
     line-height: 1.6;          
     margin-bottom: 20px;       
-    color: #333333; /* CHANGED: Set consistently across all wrappers */
+    color: #333333; 
 }
 
-main.focus-box h2, .focus-box h2 {
-    padding-left: 0;           
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    color: var(--dark-gray);
-}
-
-main.focus-box h3, .focus-box h3 {
+.focus-box h3 {
     padding-left: 20px;        
     margin-top: 35px;          
     margin-bottom: 12px;       
@@ -159,7 +153,8 @@ main.focus-box h3, .focus-box h3 {
     color: var(--dark-gray);
 }
 
-main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
+.focus-box h3 + p, 
+.focus-box .blog-content {
     padding-left: 20px;        
 }
 
@@ -167,9 +162,52 @@ main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
 .focus-box ul li, 
 .focus-box ol li {
     font-weight: normal;
-    color: #333333; /* CHANGED: Unified color scheme with standard text blocks */    
+    color: #333333;    
     line-height: 1.6;   
     margin-bottom: 12px; 
+}
+
+/* Editorial-inspired blockquote */
+.focus-box blockquote {
+    font-family: 'Merriweather', Georgia, serif;
+    font-style: italic !important;
+    font-weight: 300;
+    margin: 20px 20px 20px 20px !important;
+    padding-left: 15px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    color: #555555 !important;
+    line-height: 1.6;
+}
+
+/* --- Call to Action Studio Buttons --- */
+.cta-button-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333333; 
+    border: 2px solid #333333;
+    border-radius: 4px; 
+    background-color: transparent;
+    transition: all 0.3s ease; 
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    color: #ffffff;
+    background-color: var(--accent-blue); 
+    border-color: var(--accent-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: translateY(-1px);
 }
 
 /* --- Main Carousel Container --- */
@@ -222,7 +260,7 @@ main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
 
 #captionDesc {
     font-size: 1rem;
-    color: #333333; /* CHANGED: Aligned text styling */
+    color: #333333; 
     margin: 0 auto;
     line-height: 1.4;
 }
@@ -251,8 +289,7 @@ main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
 }
 
 /* --- Blog Section Styling --- */
-.focus-box.blog-card, 
-div.focus-box.blog-card {
+.focus-box.blog-card {
     display: block !important;
     height: auto !important;
     min-height: 100px !important;
@@ -274,7 +311,7 @@ div.focus-box.blog-card {
 .blog-content p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #333333; /* CHANGED: Completely unified with primary structure color variables */
+    color: #333333; 
     margin-bottom: 20px;
 }
 
@@ -375,11 +412,13 @@ div.focus-box.blog-card {
 }
 
 .gallery-section .filter-group h2 {
-    color: #333333 !important; /* CHANGED: Softened from #111111 */   
+    font-family: 'Merriweather', Georgia, serif; /* Uniform serif layout across galleries */
+    color: #333333 !important;    
     margin-top: 0;                
     margin-bottom: 10px;
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     width: 100%;                  
 }
 
@@ -496,9 +535,10 @@ div.focus-box.blog-card {
 }
 
 .lightbox-details h2 { 
+    font-family: 'Merriweather', Georgia, serif;
     margin-top: 0; 
     font-size: 1.6rem; 
-    font-weight: 600;
+    font-weight: 700;
     color: #2c3e50; 
     border-bottom: 2px solid #eeeeee; 
     padding-bottom: 8px; 
@@ -509,7 +549,7 @@ div.focus-box.blog-card {
     font-size: 1rem; 
     line-height: 1.5;
     margin: 6px 0; 
-    color: #333333; /* CHANGED: Aligned to soft gray profile mapping rules */
+    color: #333333; 
 }
 
 /* --- Footer Section Styling --- */
@@ -544,7 +584,7 @@ footer {
         font-size: 0.9rem;  
     }
 
-    .focus-box, main.focus-box {
+    .focus-box {
         box-sizing: border-box;  
         width: 90% !important;   
         padding: 20px !important;
