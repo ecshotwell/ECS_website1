@@ -56,18 +56,24 @@ body::before {
 
 .hero-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;   /* Stack elements vertically */
+    justify-content: center;  /* Center content vertically */
+    align-items: center;      /* Center content horizontally */
+    text-align: center;       /* Centers the h1 text alignment */
     gap: 20px;
     background-color: var(--light-blue-bg); 
-    padding: 30px 30px 70px 30px; 
+    padding: 40px 30px 85px 30px; /* Slightly adjusted padding for vertical balance */
     margin: 20px auto 40px auto; 
     max-width: 1200px;           
     width: 90%;                  
     border-radius: 8px;          
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.04); 
     position: relative;          
+}
+.hero-container h1 {
+    margin: 0;
+    font-size: 2.2rem; /* Keeps your headline prominent and framed */
+    color: #2c3e50;    /* Soft charcoal matching your palette variables */
 }
 
 /* --- Top Navigation Bar --- */
