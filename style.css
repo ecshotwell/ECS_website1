@@ -673,6 +673,41 @@ footer {
         display: block;
     }
 }
+
+/* Filter & Instructions Control Box */
+.filter-control-box {
+    max-width: 1100px;
+    width: 90%;
+    margin: 40px auto 20px auto;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+}
+
+/* Instructional Text Styling */
+.filter-instructions {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555555;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 15px;
+}
+
+/* Adjust the existing container margin since it's now inside the box */
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 0; /* Cleared external margins */
+    flex-wrap: wrap;
+}
+
 /* Filter Tabs Container */
 .tabs-container {
     display: flex;
