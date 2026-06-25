@@ -539,8 +539,12 @@ body::before {
     margin: 6px 0 !important;
     font-size: 0.95rem;
 }
-/* --- INTEGRATED LIGHTBOX POP-UP STYLING --- */
-.lightbox-overlay {
+
+/* --- UNIVERSAL LIGHTBOX STYLING (Works for Gallery & Inspiration) --- */
+
+/* The full-screen darkened mask wrapper */
+.lightbox-overlay,
+.lightbox-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -548,12 +552,13 @@ body::before {
     height: 100vh;
     background: rgba(30, 35, 45, 0.95); 
     backdrop-filter: blur(8px);          
-    display: none; 
+    display: none; /* Controlled dynamically by JS */
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
+/* The structural card content window */
 .lightbox-content {
     background: #ffffff;
     max-width: 85%;
@@ -562,29 +567,10 @@ body::before {
     overflow: hidden; 
     border-radius: 8px; 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative; /* Essential for relative positioning anchors */
 }
 
-.lightbox-body {
-    display: flex;
-    flex-direction: column; 
-    max-height: 90vh;
-}
-
-@media (min-width: 768px) {
-    .lightbox-body {
-        flex-direction: row; 
-    }
-}
-
-.lightbox-img-container {
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #1a1a1a; 
-    overflow: hidden;
-}
-
+/* Constrains image proportions safely */
 #lightbox-img { 
     max-width: 100%; 
     max-height: 65vh; 
@@ -593,13 +579,15 @@ body::before {
     margin: 0 auto; 
 }
 
+/* Clear textual presentation fields */
 .lightbox-details { 
     padding: 25px 30px; 
     background: #ffffff; 
     flex-shrink: 0; 
 }
 
-.lightbox-details h2, .lightbox-details h3 { 
+.lightbox-details h2, 
+.lightbox-details h3 { 
     font-family: 'Merriweather', Georgia, serif;
     margin-top: 0; 
     font-size: 1.6rem; 
@@ -617,8 +605,9 @@ body::before {
     color: #333333; 
 }
 
-/* --- LIGHTBOX CLOSE BUTTON --- */
-.lightbox-close {
+/* Universal Exit Actions ('X' button alignment) */
+.lightbox-close,
+.close-btn {
     position: absolute;
     top: 25px;
     right: 35px;
@@ -627,11 +616,12 @@ body::before {
     font-weight: 300;
     cursor: pointer;
     transition: color 0.2s ease;
-    z-index: 1010; /* Keeps it layered on top of everything */
+    z-index: 1010;
 }
 
-.lightbox-close:hover {
-    color: var(--brand-blue); /* Turns your signature blue when hovered */
+.lightbox-close:hover,
+.close-btn:hover {
+    color: var(--brand-blue);
 }
 
 /* --- Footer Section Styling --- */
@@ -683,28 +673,33 @@ footer {
         display: block;
     }
 }
-
-/* Tabs Container */
+/* Filter Tabs Container */
 .tabs-container {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     margin: 30px 0;
     flex-wrap: wrap;
 }
 
+/* Tab Buttons - Legible Default State */
 .tab-btn {
-    background: transparent;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    cursor: pointer;
+    background-color: #ffffff;
+    color: #2c3e50; /* Clean dark gray slate text */
+    border: 1px solid #bdc3c7;
+    padding: 10px 22px;
+    font-family: 'Merriweather', serif;
     font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
-.tab-btn.active, .tab-btn:hover {
-    background-color: #4A6984; /* Matches your slate theme accent */
-    color: white;
+/* Hover & Active States */
+.tab-btn:hover, 
+.tab-btn.active {
+    background-color: #4A6984; /* Matches your theme accent color */
+    color: #ffffff;            /* Crisp white text when selected */
     border-color: #4A6984;
 }
 
