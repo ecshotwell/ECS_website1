@@ -11,7 +11,6 @@ Papa.parse("images.csv", {
         displayGallery(masterGalleryData);
     },
     error: function(err) {
-        // Safe check for the portfolio grid container
         const grid = document.getElementById('portfolio-grid');
         if (grid) {
             grid.innerHTML = '<p class="no-results">Error loading portfolio data. Please ensure images.csv exists.</p>';
@@ -20,22 +19,19 @@ Papa.parse("images.csv", {
     }
 });
 
-// 2. Dynamically extract unique values for dropdown filters (Matches exact HTML select elements)
+// 2. Dynamically extract unique values for dropdown filters
 function populateFilterDropdowns(data) {
+    // Now perfectly matches your CSV column header 'size' and your HTML select id="size"
     const attributes = ['subject', 'medium', 'location', 'size', 'artist'];
     attributes.forEach(attr => {
-        // FIXED: Matched exact ID naming conventions matching your layout (e.g., id="subject")
         const selectElement = document.getElementById(attr);
-        
-        if (!selectElement) return; // Safeguard if select elements haven't loaded yet
+        if (!selectElement) return;
 
-        // Extract unique values matching exact lowercase CSV headers safely
         const uniqueValues = [...new Set(data.map(item => {
             const val = item[attr];
             return val ? val.trim() : null;
         }).filter(Boolean))].sort();
         
-        // Clear any existing dynamic options except the first "All" option
         while (selectElement.options.length > 1) {
             selectElement.remove(1);
         }
@@ -62,7 +58,7 @@ function displayGallery(items) {
     }
     
     items.forEach((item, index) => {
-        if (!item.filename) return; // Guard against corrupt CSV rows
+        if (!item.filename) return;
 
         const card = document.createElement('div');
         card.className = 'gallery-card';
@@ -85,22 +81,20 @@ function displayGallery(items) {
     });
 }
 
-/// 4. Filter gallery calculation
+// 4. Filter gallery calculation
 function filterGallery() {
     const subjectFilter = document.getElementById('subject').value;
     const mediumFilter = document.getElementById('medium').value;
     const locationFilter = document.getElementById('location').value;
-    const sizeFilter = document.getElementById('size').value;
+    const sizeFilter = document.getElementById('size').value; 
     const artistFilter = document.getElementById('artist').value;
     
     const filteredResults = masterGalleryData.filter(item => {
         const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
         const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
         const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
-        
-        // FIXED: Define the matchSize variable properly using sizeFilter
+        // Simplified back to item.size
         const matchSize = (sizeFilter === 'all' || item.size?.trim() === sizeFilter);
-        
         const matchArtist = (artistFilter === 'all' || item.artist?.trim() === artistFilter);
         
         return matchSubject && matchMedium && matchLocation && matchSize && matchArtist;
@@ -121,24 +115,10 @@ function openLightbox(item, calculatedPath) {
     document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
     document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
     document.getElementById('lightbox-location').textContent = item.location || 'N/A';
+    // Simplified back to item.size
     document.getElementById('lightbox-size').textContent = item.size || 'N/A';
     document.getElementById('lightbox-artist').textContent = item.artist || 'N/A';
     
     box.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
-
-function closeLightbox(event) {
-    if (event && event.stopPropagation) {
-        event.stopPropagation();
-    }
-    const box = document.getElementById('lightbox');
-    if (box) box.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-window.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeLightbox();
-    }
-});
