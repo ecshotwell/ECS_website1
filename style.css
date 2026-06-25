@@ -677,33 +677,29 @@ footer {
     }
 }
 
-/* --- FIXED FILTER CONTROL CARD WRAPPER --- */
-.filter-control-box {
-    max-width: 1200px !important;
-    width: 90% !important;
-    margin: 40px auto 30px auto !important;
-    background-color: #ffffff !important; /* Solid white background provides contrast */
-    border: 1px solid #dddddd !important;
-    border-radius: 8px !important;
-    padding: 25px 30px !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important;
+/* --- FILTER & INSTRUCTIONS CONTROL BOX --- */
+/* Ensure filter instructions render clearly on all screens by removing the nested restriction */
+.filter-instructions {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
     box-sizing: border-box !important;
-    display: block !important;
     clear: both !important;
-}
-
-/* Clear, legible typography settings */
-.filter-control-box .filter-instructions {
+    
+    /* Elegant serif typography matching your H2 elements */
     font-family: 'Merriweather', Georgia, serif !important;
-    font-size: 0.95rem !important;
+    font-size: 1rem !important;
     line-height: 1.6 !important;
-    color: #2c3e50 !important; /* High contrast dark charcoal text */
-    margin-top: 0 !important;
-    margin-bottom: 20px !important;
     text-align: center !important;
-    border-bottom: 1px solid #eeeeee !important;
+    margin-top: 20px !important;
+    margin-bottom: 25px !important;
     padding-bottom: 15px !important;
-    display: block !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    
+    /* High contrast color shift to stand out beautifully against the dark background */
+    color: #f5f6f7 !important; 
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
 }
 
 /* Filter Tabs Container layout rules */
@@ -739,11 +735,4 @@ footer {
 /* --- INSPIRATION IMAGE GRID SYSTEM --- */
 .gallery-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
-    gap: 30px !important;
-    max-width: 1200px !important;
-    width: 90% !important;
-    margin: 0 auto 60px auto !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-}
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !
