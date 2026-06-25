@@ -174,13 +174,21 @@ body::before {
     padding-left: 20px;        
 }
 
+/* Dynamic handling for bulleted/numbered lists within focus containers */
+.focus-box ul,
+.focus-box ol {
+    padding-left: 20px;        /* Uniform alignment column matching custom paragraphs */
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
 /* Clear, normal-weight styling for list entries */
 .focus-box ul li, 
 .focus-box ol li {
     font-weight: normal;
     color: #333333;    
-    line-height: 1.6;   
-    margin-bottom: 12px; 
+    line-height: 1.7;          /* Opened slightly to improve rhythmic readability */
+    margin-bottom: 14px;       /* Consistent visual breathing room between entries */
 }
 
 /* Editorial-inspired blockquote with your signature light blue accent */
