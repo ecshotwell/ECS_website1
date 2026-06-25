@@ -612,6 +612,23 @@ body::before {
     color: #333333; 
 }
 
+/* --- LIGHTBOX CLOSE BUTTON --- */
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 1010;
+}
+
+.lightbox-close:hover {
+    color: var(--brand-blue); /* Highlights in your signature blue on hover */
+}
+
 /* --- Footer Section Styling --- */
 footer {
     text-align: center;

@@ -21,7 +21,6 @@ Papa.parse("images.csv", {
 
 // 2. Dynamically extract unique values for dropdown filters
 function populateFilterDropdowns(data) {
-    // Now perfectly matches your CSV column header 'size' and your HTML select id="size"
     const attributes = ['subject', 'medium', 'location', 'size', 'artist'];
     attributes.forEach(attr => {
         const selectElement = document.getElementById(attr);
@@ -93,7 +92,6 @@ function filterGallery() {
         const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
         const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
         const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
-        // Simplified back to item.size
         const matchSize = (sizeFilter === 'all' || item.size?.trim() === sizeFilter);
         const matchArtist = (artistFilter === 'all' || item.artist?.trim() === artistFilter);
         
@@ -115,10 +113,33 @@ function openLightbox(item, calculatedPath) {
     document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
     document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
     document.getElementById('lightbox-location').textContent = item.location || 'N/A';
-    // Simplified back to item.size
     document.getElementById('lightbox-size').textContent = item.size || 'N/A';
     document.getElementById('lightbox-artist').textContent = item.artist || 'N/A';
     
     box.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
+
+// Trigger 1: Handles background mask overlay clicks
+function closeLightbox(event) {
+    // Only close if the user clicked the dark wrapper overlay itself, not the content card
+    if (event.target === document.getElementById('lightbox')) {
+        forceCloseLightbox();
+    }
+}
+
+// Trigger 2: Closes window instantly (Fires from Close 'X' button & background)
+function forceCloseLightbox() {
+    const box = document.getElementById('lightbox');
+    if (!box) return;
+    
+    box.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restores page scrolling smoothly
+}
+
+// Trigger 3: Desktop accessibility shortcut (Escape key close-out)
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        forceCloseLightbox();
+    }
+});
