@@ -17,7 +17,7 @@ body, input, textarea, button, select, label {
 }
 
 body {
-    color: #111111;
+    color: #333333; /* CHANGED: Softened from #111111 */
     position: relative;
     margin: 0 auto;       
     padding: 0;
@@ -104,7 +104,7 @@ main.focus-box blockquote,
 }
 
 .navigation-toolbar a {
-    color: #111111;            
+    color: #333333; /* CHANGED: Softened from #111111 */           
     text-decoration: none;     
     font-size: 1rem;
     font-weight: 500;
@@ -135,15 +135,15 @@ main.focus-box, .focus-box {
     display: block;
 }
 
-main.focus-box p {
+main.focus-box p, .focus-box p {
     font-family: inherit;      
     padding-left: 0;           
     line-height: 1.6;          
     margin-bottom: 20px;       
-    color: #111111;
+    color: #333333; /* CHANGED: Set consistently across all wrappers */
 }
 
-main.focus-box h2 {
+main.focus-box h2, .focus-box h2 {
     padding-left: 0;           
     margin-top: 10px;
     margin-bottom: 20px;
@@ -167,7 +167,7 @@ main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
 .focus-box ul li, 
 .focus-box ol li {
     font-weight: normal;
-    color: #111111;     
+    color: #333333; /* CHANGED: Unified color scheme with standard text blocks */    
     line-height: 1.6;   
     margin-bottom: 12px; 
 }
@@ -222,7 +222,7 @@ main.focus-box h3 + p, .focus-box h3 + p, .focus-box .blog-content {
 
 #captionDesc {
     font-size: 1rem;
-    color: #555555;
+    color: #333333; /* CHANGED: Aligned text styling */
     margin: 0 auto;
     line-height: 1.4;
 }
@@ -274,7 +274,7 @@ div.focus-box.blog-card {
 .blog-content p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #111111;
+    color: #333333; /* CHANGED: Completely unified with primary structure color variables */
     margin-bottom: 20px;
 }
 
@@ -338,7 +338,7 @@ div.focus-box.blog-card {
 }
 #submitBtn:focus {
     outline: none; 
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4); /* Adds a subtle, clean brand-blue glow instead */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4); 
 }
 
 #submitBtn:hover {
@@ -350,28 +350,6 @@ div.focus-box.blog-card {
     background-color: #cccccc;
     border-color: #cccccc;
     cursor: not-allowed;
-}
-
-#formResponse {
-    margin-top: 15px;
-    padding: 15px;
-    border-radius: 4px;
-    font-size: 0.95rem;
-    display: none; 
-}
-
-#formResponse.success {
-    display: block;
-    background-color: #e6f4ea;
-    color: #137333;
-    border: 1px solid #c2e7cb;
-}
-
-#formResponse.error {
-    display: block;
-    background-color: #fce8e6;
-    color: #c5221f;
-    border: 1px solid #fad2cf;
 }
 
 /* --- Integrated Gallery Header & Filter Card --- */
@@ -397,7 +375,7 @@ div.focus-box.blog-card {
 }
 
 .gallery-section .filter-group h2 {
-    color: #111111 !important;    
+    color: #333333 !important; /* CHANGED: Softened from #111111 */   
     margin-top: 0;                
     margin-bottom: 10px;
     font-size: 1.8rem;
@@ -531,7 +509,7 @@ div.focus-box.blog-card {
     font-size: 1rem; 
     line-height: 1.5;
     margin: 6px 0; 
-    color: #444444; 
+    color: #333333; /* CHANGED: Aligned to soft gray profile mapping rules */
 }
 
 /* --- Footer Section Styling --- */
