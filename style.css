@@ -278,10 +278,10 @@ body::before {
 
 #captionDesc {
     font-size: 1rem;
-    color: #555555;       /* Softened from #333333 to look more elegant */
+    line-height: 1.6;          /* Matches the exact line spacing of your top paragraph */
+    color: #333333;            /* Matches the exact dark gray color of your top paragraph */
     margin: 0 auto;
-    line-height: 1.6;     /* Opened up from 1.4 to match your body text */
-    font-weight: 300;     /* Slightly lighter weight for a gallery-book aesthetic */
+    font-weight: normal;       /* Ensures it doesn't accidentally inherit a weird weight */
 }
 
 #prevBtn, #nextBtn {
