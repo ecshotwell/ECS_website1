@@ -682,21 +682,22 @@ footer {
     font-family: 'Merriweather', Georgia, serif !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
-    text-align: left !important; /* Aligns naturally with your article text */
+    text-align: left !important;
     display: block !important;
     clear: both !important;
     
-    /* Adds clean white space separating it from the paragraph above */
-    margin-top: 35px !important; 
+    /* Elegant breathing room right below the introductory paragraph */
+    margin-top: 30px !important;
     margin-bottom: 0 !important;
-    padding-left: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
     
-    /* Strips container overrides */
+    /* Completely strips the conflicting inner container lines, background, and shadows */
     background: none !important;
     border: none !important;
     box-shadow: none !important;
     
-    /* Matches your paragraph charcoal text color cleanly */
+    /* Sharp, legible charcoal text color matching the section style */
     color: #333333 !important; 
     text-shadow: none !important;
 }
