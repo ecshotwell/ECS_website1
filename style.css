@@ -426,10 +426,11 @@ body::before {
     box-sizing: border-box;
 }
 
+/* Updated for inline, wrapped, and balanced layout */
 .gallery-section .filter-group {
     display: flex;                
     flex-wrap: wrap;              
-    gap: 15px 20px;
+    gap: 15px 25px;               /* Clean distribution gap */
     background-color: #ffffff;
     border-radius: 8px;
     padding: 30px 25px;           
@@ -439,7 +440,7 @@ body::before {
 }
 
 .gallery-section .filter-group h2 {
-    font-family: 'Merriweather', Georgia, serif; /* Uniform serif layout across galleries */
+    font-family: 'Merriweather', Georgia, serif; 
     color: #333333 !important;    
     margin-top: 0;                
     margin-bottom: 10px;
@@ -458,6 +459,25 @@ body::before {
     width: 100%;                  
 }
 
+/* Polishes the alignment of each individual selector option */
+.gallery-section .filter-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333333;
+}
+
+.gallery-section .filter-group select {
+    padding: 6px 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
 .gallery-section .portfolio-grid {
     display: grid;                
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
@@ -467,8 +487,10 @@ body::before {
 }
 
 /* --- Dynamic JavaScript Gallery Card Controls --- */
+/* Target generic structure fallback components to force exact 250px crops */
 .portfolio-grid .gallery-card,
-.gallery-card {
+.gallery-card,
+.portfolio-grid .card {
     display: flex !important;
     flex-direction: column !important;
     overflow: hidden !important;
@@ -483,24 +505,35 @@ body::before {
 }
 
 .portfolio-grid .gallery-card:hover,
-.gallery-card:hover {
+.gallery-card:hover,
+.portfolio-grid .card:hover {
     transform: translateY(-3px) !important;
 }
 
+/* This forces all image cards (like Grapevine Trellis) to match height exactly */
 .portfolio-grid .gallery-card img,
-.gallery-card img {
+.gallery-card img,
+.portfolio-grid .card img,
+.portfolio-grid img {
     width: 100% !important;
     height: 250px !important;       
+    min-height: 250px !important;
+    max-height: 250px !important;
     object-fit: cover !important;   
     display: block !important;
 }
 
 .portfolio-grid .gallery-info,
 .gallery-info {
-    padding: 15px !important;
+    padding: 20px 15px !important;  /* Added a drop of padding to match page margins */
     background: #ffffff !important;
 }
 
+/* Subtle padding definition for card metadata text */
+.portfolio-grid .gallery-info p {
+    margin: 6px 0 !important;
+    font-size: 0.95rem;
+}
 /* --- INTEGRATED LIGHTBOX POP-UP STYLING --- */
 .lightbox-overlay {
     position: fixed;
