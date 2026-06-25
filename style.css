@@ -134,7 +134,7 @@ body::before {
 }
 
 /* Traditional, hand-crafted serif heading style */
-.focus-box h2 {
+.focus-box h2, .focus-box h3 {
     font-family: 'Merriweather', Georgia, serif;
     font-weight: 700;
     font-size: 1.8rem;
@@ -155,9 +155,10 @@ body::before {
 
 .focus-box h3 {
     padding-left: 20px;        
-    margin-top: 35px;          
-    margin-bottom: 12px;       
-    font-size: 1.4rem;         
+    margin-top: 30px;          
+    margin-bottom: 10px;       
+    font-size: 1.35rem;         
+    font-weight: 700;
     color: var(--dark-gray);
 }
 
@@ -542,7 +543,7 @@ body::before {
     flex-shrink: 0; 
 }
 
-.lightbox-details h2 { 
+.lightbox-details h2, .lightbox-details h3 { 
     font-family: 'Merriweather', Georgia, serif;
     margin-top: 0; 
     font-size: 1.6rem; 
