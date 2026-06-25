@@ -677,29 +677,20 @@ footer {
     }
 }
 
-/* --- FILTER & INSTRUCTIONS CONTROL BOX --- */
-/* Ensure filter instructions render clearly on all screens by removing the nested restriction */
+/* Instructional Text Styling inside the box */
 .filter-instructions {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    clear: both !important;
-    
-    /* Elegant serif typography matching your H2 elements */
     font-family: 'Merriweather', Georgia, serif !important;
     font-size: 1rem !important;
     line-height: 1.6 !important;
-    text-align: center !important;
     margin-top: 20px !important;
     margin-bottom: 25px !important;
-    padding-bottom: 15px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    text-align: center !important;
+    padding-bottom: 0 !important;
+    display: block !important;
     
-    /* High contrast color shift to stand out beautifully against the dark background */
+    /* Pristine off-white high contrast readability against background image */
     color: #f5f6f7 !important; 
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7) !important;
 }
 
 /* Filter Tabs Container layout rules */
@@ -707,7 +698,7 @@ footer {
     display: flex !important;
     justify-content: center !important;
     gap: 12px !important;
-    margin: 0 !important; /* Clean containment inside box */
+    margin: 0 !important; 
     flex-wrap: wrap !important;
 }
 
@@ -735,4 +726,11 @@ footer {
 /* --- INSPIRATION IMAGE GRID SYSTEM --- */
 .gallery-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+    gap: 30px !important;
+    max-width: 1200px !important;
+    width: 90% !important;
+    margin: 30px auto 60px auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
