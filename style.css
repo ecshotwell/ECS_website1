@@ -682,15 +682,15 @@ footer {
     font-family: 'Merriweather', Georgia, serif !important;
     font-size: 1rem !important;
     line-height: 1.6 !important;
-    margin-top: 20px !important;
-    margin-bottom: 25px !important;
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
     text-align: center !important;
     padding-bottom: 0 !important;
     display: block !important;
     
-    /* Pristine off-white high contrast readability against background image */
-    color: #f5f6f7 !important; 
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7) !important;
+    /* Matches your main content headings perfectly */
+    color: #2c3e50 !important; 
+    text-shadow: none !important;
 }
 
 /* Filter Tabs Container layout rules */
