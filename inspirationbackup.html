@@ -10,7 +10,6 @@
     
     <link rel="stylesheet" href="style.css">
     <script src="./navigation.js"></script>
-    <script src="./tripimages.js"></script>
 </head>
 
 
@@ -34,32 +33,29 @@
         <h2>Inspiration from Eastern Europe</h2>
         <p>Let's begin by exploring the rich artistic heritage of Eastern Europe.  Much of my work is influenced by European architecture. Blacksmiths and stone masons have created a legacy of intricate designs and innovative techniques that define the region's artistic tradition.  Here are a few examples of the work along the Danube river basin that inspires me:</p>
       </main>
+<div class="carousel-container">
+  <button id="prevBtn">&lt;</button>
+  <button id="nextBtn">&gt;</button>
 
-<div id="gallery-tabs" class="tabs-container">
-    <button class="tab-btn active" onclick="filterMedium('all')">Show All</button>
-    <button class="tab-btn" onclick="filterMedium('Blacksmithing')">Ironwork</button>
-    <button class="tab-btn" onclick="filterMedium('Pottery')">Ancient Pottery</button>
-    <button class="tab-btn" onclick="filterMedium('Sculpture')">Sculpture & Masonry</button>
-    <button class="tab-btn" onclick="filterMedium('Other')">Other Inspiration</button>
+  <div class="carousel-slide">
+    <img src="./imgfiles/eu-iron/danube3.jpg" alt="Iron Fence" data-title="Church Fence" data-desc="Half height fence on rock wall.">
+    <img src="./imgfiles/eu-iron/danube5.jpg" alt="Iron and Wood Door" data-title="Early 20th Century Door" data-desc="Residential door with ironwork and wood panels.">
+    <img src="./imgfiles/eu-iron/danube1b.jpg" alt="Window Grill" data-title="Art Nouveau Window Grill" data-desc="Art Nouveau Ironwork, Early 20th Century.">
+    <img src="./imgfiles/eu-iron/danube4.jpg" alt="Iron Breezeway Fence" data-title="Iron Breezeway Fence" data-desc="Low fence with ornate ironwork.">
+    <img src="./imgfiles/eu-iron/bud_iron1.jpg" alt="Church Window Grill" data-title="Church Window Grill" data-desc="Iron Window Grill in stone window surround.">
+    <img src="./imgfiles/eu-iron/bud_iron2.jpg" alt="Art Nouveau Transom" data-title="Art Nouveau Transom" data-desc="Transom decorative ironwork.">
+  </div>
+
+  <div class="carousel-caption-box">
+    <h3 id="captionTitle"></h3>
+    <p id="captionDesc"></p>
+  </div>
 </div>
 
-<div id="inspiration-grid" class="gallery-grid">
-    </div>
 
 <footer>
     <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
-
-    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox(event)">
-    <span class="close-btn" onclick="forceCloseLightbox()">&times;</span>
-    <div class="lightbox-content">
-        <img id="lightbox-img" src="./images/" alt="missing image">
-        <div class="lightbox-details">
-            <h3 id="lightbox-title"></h3>
-            <p><strong>Medium:</strong> <span id="lightbox-medium"></span></p>
-            <p><strong>Location:</strong> <span id="lightbox-location"></span></p>
-        </div>
-    </div>
-</div>
 </footer>
+<script src="carousel1.js"></script>
 </body>
 </html>
