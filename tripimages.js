@@ -11,7 +11,6 @@ Papa.parse("tripimages.csv", {
     skipEmptyLines: true,
     complete: function(results) {
         masterTripData = results.data;
-        populateFilterDropdowns(masterTripData);
         displayGallery(masterTripData);
     },
     error: function(err) {
@@ -23,33 +22,7 @@ Papa.parse("tripimages.csv", {
     }
 });
 
-// 2. Dynamically extract unique values for travel dropdown filters
-function populateFilterDropdowns(data) {
-    // Only map headers relevant to your travel log
-    const attributes = ['subject', 'medium', 'location'];
-    attributes.forEach(attr => {
-        const selectElement = document.getElementById(attr);
-        if (!selectElement) return;
-
-        const uniqueValues = [...new Set(data.map(item => {
-            const val = item[attr];
-            return val ? val.trim() : null;
-        }).filter(Boolean))].sort();
-        
-        while (selectElement.options.length > 1) {
-            selectElement.remove(1);
-        }
-
-        uniqueValues.forEach(value => {
-            const option = document.createElement('option');
-            option.value = value;
-            option.textContent = value;
-            selectElement.appendChild(option);
-        });
-    });
-}
-
-// 3. Render inspiration grid cards (optimized for 100 images with lazy loading)
+// 2. Render inspiration grid cards (optimized for 100 images with lazy loading)
 function displayGallery(items) {
     const grid = document.getElementById('inspiration-grid');
     if (!grid) return;
@@ -68,7 +41,6 @@ function displayGallery(items) {
         card.className = 'gallery-card';
         
         let cleanFilename = item.filename.trim();
-        // Updated to use your local travel images folder structure
         let imgPath = `./images/${cleanFilename}`;
 
         card.innerHTML = `
@@ -85,19 +57,24 @@ function displayGallery(items) {
     });
 }
 
-// 4. Filter logic tailored strictly to travel contexts
-function filterGallery() {
-    const subjectFilter = document.getElementById('subject').value;
-    const mediumFilter = document.getElementById('medium').value;
-    const locationFilter = document.getElementById('location').value;
+// 3. Tab Filtering Engine
+function filterMedium(category, evt) {
+    // Swap active class styling on the buttons safely using the passed event
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
     
-    const filteredResults = masterTripData.filter(item => {
-        const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
-        const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
-        const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
-        
-        return matchSubject && matchMedium && matchLocation;
+    if (evt && evt.target) {
+        evt.target.classList.add('active');
+    }
+
+    const items = masterTripData;
+    const target = category.toLowerCase();
+    
+    const filteredResults = items.filter(item => {
+        if (target === 'all') return true;
+        return item.medium?.trim().toLowerCase() === target;
     });
+    
     displayGallery(filteredResults);
 }
 
@@ -114,12 +91,6 @@ function openLightbox(item, calculatedPath) {
     document.getElementById('lightbox-title').textContent = item.subject || 'Untitled Study';
     document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
     document.getElementById('lightbox-location').textContent = item.location || 'N/A';
-    
-    // Safely hide or reset elements not used in the travel CSV schema
-    const sizeEl = document.getElementById('lightbox-size');
-    const artistEl = document.getElementById('lightbox-artist');
-    if (sizeEl) sizeEl.textContent = 'N/A';
-    if (artistEl) artistEl.textContent = 'N/A';
     
     box.style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -144,23 +115,3 @@ document.addEventListener('keydown', (e) => {
         forceCloseLightbox();
     }
 });
-// Add this to the very bottom of tripimages.js if keeping your tab HTML structure:
-function filterMedium(category) {
-    // 1. Swap active class styling on the buttons
-    const buttons = document.querySelectorAll('.tab-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    if (event && event.target) {
-        event.target.classList.add('active');
-    }
-
-    // 2. Filter the cards directly based on the "medium" column
-    const items = masterTripData;
-    const target = category.toLowerCase();
-    
-    const filteredResults = items.filter(item => {
-        if (target === 'all') return true;
-        return item.medium?.trim().toLowerCase() === target;
-    });
-    
-    displayGallery(filteredResults);
-}
