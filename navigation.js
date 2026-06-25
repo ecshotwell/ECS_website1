@@ -16,21 +16,29 @@ const NavigationManager = {
 
     // 3. Highlight the active page link beautifully
     setActivePage() {
-        // Get just the current page filename (e.g., "inspiration.html") or default to index.html
-        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        // Get the current path, remove trailing slashes, and grab the clean filename
+        let currentPath = window.location.pathname.replace(/\/$/, "").split("/").pop();
+        
+        // If the path is empty, root, or doesn't have an extension, default to index.html
+        if (!currentPath || currentPath === "ericshotwellusa.com") {
+            currentPath = "index.html";
+        }
+        
         const links = this.getLinks();
 
         links.forEach(link => {
-            // Safely grab the filename from the link's href attribute
             const linkHref = link.getAttribute('href');
             if (!linkHref) return;
             
-            const linkPath = linkHref.split("/").pop();
+            let linkPath = linkHref.split("/").pop();
 
-            // Match exact filenames to avoid full domain comparison issues
-            if (linkPath === currentPath) {
+            // Match both direct filenames (inspiration.html) and extensionless paths (inspiration)
+            const isMatch = (linkPath === currentPath) || 
+                            (linkPath.replace(".html", "") === currentPath.replace(".html", ""));
+
+            if (isMatch) {
                 link.classList.add('active');
-                link.setAttribute('aria-current', 'page'); // Good for accessibility
+                link.setAttribute('aria-current', 'page');
             } else {
                 link.classList.remove('active');
                 link.removeAttribute('aria-current');
