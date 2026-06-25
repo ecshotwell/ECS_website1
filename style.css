@@ -622,11 +622,11 @@ body::before {
     font-weight: 300;
     cursor: pointer;
     transition: color 0.2s ease;
-    z-index: 1010;
+    z-index: 1010; /* Keeps it layered on top of everything */
 }
 
 .lightbox-close:hover {
-    color: var(--brand-blue); /* Highlights in your signature blue on hover */
+    color: var(--brand-blue); /* Turns your signature blue when hovered */
 }
 
 /* --- Footer Section Styling --- */
