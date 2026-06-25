@@ -687,7 +687,7 @@ footer {
     clear: both !important;
     
     /* Elegant breathing room right below the introductory paragraph */
-    margin-top: 30px !important;
+    margin-top: 35px !important;
     margin-bottom: 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
@@ -696,10 +696,10 @@ footer {
     background: none !important;
     border: none !important;
     box-shadow: none !important;
-    
-    /* Sharp, legible charcoal text color matching the section style */
-    color: #333333 !important; 
     text-shadow: none !important;
+    
+    /* Forces the exact soft charcoal color of your main paragraphs instead of pure black */
+    color: var(--dark-gray) !important; 
 }
 
 /* Filter Tabs Container layout rules */
