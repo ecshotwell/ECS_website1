@@ -11,7 +11,8 @@ Papa.parse("tripimages.csv", {
     skipEmptyLines: true,
     complete: function(results) {
         masterTripData = results.data;
-        displayGallery(masterTripData);
+        // On initial load, only show one preview image for each medium
+        displayFeaturedPreviews();
     },
     error: function(err) {
         const grid = document.getElementById('inspiration-grid');
@@ -21,6 +22,25 @@ Papa.parse("tripimages.csv", {
         console.error(err);
     }
 });
+
+// Helper function to extract and show the first image of each unique medium on load
+function displayFeaturedPreviews() {
+    const featuredItems = [];
+    const seenMediums = new Set();
+
+    masterTripData.forEach(item => {
+        if (!item.medium || !item.filename) return;
+        const cleanMedium = item.medium.trim().toLowerCase();
+        
+        // If this category hasn't saved a preview image yet, grab this item
+        if (!seenMediums.has(cleanMedium)) {
+            seenMediums.add(cleanMedium);
+            featuredItems.push(item);
+        }
+    });
+
+    displayGallery(featuredItems);
+}
 
 // 2. Render inspiration grid cards (optimized for 100 images with lazy loading)
 function displayGallery(items) {
@@ -70,6 +90,7 @@ function filterMedium(category, evt) {
     const items = masterTripData;
     const target = category.toLowerCase();
     
+    // If 'all', show everything. Otherwise, filter out all images matching this medium text
     const filteredResults = items.filter(item => {
         if (target === 'all') return true;
         return item.medium?.trim().toLowerCase() === target;

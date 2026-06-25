@@ -37,11 +37,11 @@
       </main>
 
 <div id="gallery-tabs" class="tabs-container">
-    <button class="tab-btn active" onclick="filterMedium('all')">Show All</button>
-    <button class="tab-btn" onclick="filterMedium('Blacksmithing')">Ironwork</button>
-    <button class="tab-btn" onclick="filterMedium('Pottery')">Ancient Pottery</button>
-    <button class="tab-btn" onclick="filterMedium('Sculpture')">Sculpture</button>
-    <button class="tab-btn" onclick="filterMedium('Other')">Other Inspiration</button>
+    <button class="tab-btn active" onclick="filterMedium('Blacksmithing', event)">Ironwork</button>
+    <button class="tab-btn" onclick="filterMedium('Pottery', event)">Ancient Pottery</button>
+    <button class="tab-btn" onclick="filterMedium('Sculpture', event)">Sculpture & Masonry</button>
+    <button class="tab-btn" onclick="filterMedium('Other', event)">Other Inspiration</button>
+    <button class="tab-btn" onclick="filterMedium('all', event)">Show All</button>
 </div>
 
 <div id="inspiration-grid" class="gallery-grid">
