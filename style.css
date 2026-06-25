@@ -244,35 +244,40 @@ body::before {
     background-color: #ffffff; 
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    overflow: hidden;   
+    overflow: hidden !important;   
     display: flex;
     flex-direction: column;
+    height: auto !important;
 }
 
 .carousel-slide {
-    display: flex;
-    flex-direction: row; 
-    width: 100%;
+    display: flex !important;
+    flex-direction: row !important; 
+    width: 100% !important;
+    height: 500px !important; /* Establishes a uniform architectural viewing window */
     margin-bottom: 0; 
     transition: transform 0.4s ease-in-out; 
 }
 
 .carousel-slide img {
-    flex: 0 0 100%;        
-    width: 100%;           
-    max-height: 550px;     
-    object-fit: contain;   
+    flex: 0 0 100% !important;        
+    width: 100% !important;           
+    height: 100% !important;
+    max-height: 500px !important;     
+    object-fit: cover !important; /* Crops details beautifully across viewport limits */  
     background-color: #1a1a1a; 
-    display: block;
+    display: block !important;
 }
 
 .carousel-caption-box {
     width: 100%;
     padding: 20px 15px;    
-    background-color: #ffffff;
-    border-top: 1px solid #eeeeee; 
+    background-color: #ffffff !important;
+    border-top: 1px solid #eeeeee !important; 
     box-sizing: border-box;
     text-align: center;
+    position: relative !important;
+    z-index: 20 !important;
 }
 /* Ensure carousel caption titles pull your signature serif font */
 .carousel-caption-box h3,
