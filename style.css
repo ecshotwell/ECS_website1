@@ -164,6 +164,11 @@ body::before {
     margin-bottom: 25px;       
     color: #333333; 
 }
+/* Tighten the gap if an h3 is the very first subheading in a container */
+.focus-box h3:first-of-type {
+    margin-top: 15px;
+}
+
 /* Indent paragraphs that immediately follow a sub-heading */
 .focus-box h3 + p {
     padding-left: 20px;        
@@ -261,12 +266,14 @@ body::before {
     box-sizing: border-box;
     text-align: center;
 }
-
+/* Ensure carousel caption titles pull your signature serif font */
+.carousel-caption-box h3,
 #captionTitle {
-    font-size: 1.3rem;
-    color: var(--charcoal, #2c3e50); 
-    margin: 0 auto 6px auto;
-    font-weight: 600;
+    font-family: 'Merriweather', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--charcoal);
+    margin-bottom: 6px;
 }
 
 #captionDesc {
