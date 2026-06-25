@@ -85,9 +85,8 @@ function displayGallery(items) {
     });
 }
 
-// 4. Filter gallery calculation
+/// 4. Filter gallery calculation
 function filterGallery() {
-    // FIXED: Adjusted queries to target correct element IDs
     const subjectFilter = document.getElementById('subject').value;
     const mediumFilter = document.getElementById('medium').value;
     const locationFilter = document.getElementById('location').value;
@@ -98,8 +97,10 @@ function filterGallery() {
         const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
         const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
         const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
-        // FIXED: Correctly declared and compared the size criteria variables
+        
+        // FIXED: Define the matchSize variable properly using sizeFilter
         const matchSize = (sizeFilter === 'all' || item.size?.trim() === sizeFilter);
+        
         const matchArtist = (artistFilter === 'all' || item.artist?.trim() === artistFilter);
         
         return matchSubject && matchMedium && matchLocation && matchSize && matchArtist;
