@@ -79,7 +79,19 @@ function displayGallery(items) {
 
 // 3. Tab Filtering Engine
 function filterMedium(category, evt) {
-    // Swap active class styling on the buttons safely using the passed event
+    const target = category.toLowerCase();
+    
+    // Check if the clicked button is already active
+    if (evt && evt.target && evt.target.classList.contains('active')) {
+        // Toggle behavior: If clicking an active category button, collapse it and reset to initial previews
+        if (target !== 'all') {
+            evt.target.classList.remove('active');
+            displayFeaturedPreviews();
+            return;
+        }
+    }
+
+    // Swap active class styling safely across all buttons
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
     
@@ -88,12 +100,14 @@ function filterMedium(category, evt) {
     }
 
     const items = masterTripData;
-    const target = category.toLowerCase();
     
-    // If 'all', show everything. Otherwise, filter out all images matching this medium text
+    // Looser matching strategy to ensure clean string matching between UI targets and dataset strings
     const filteredResults = items.filter(item => {
         if (target === 'all') return true;
-        return item.medium?.trim().toLowerCase() === target;
+        if (!item.medium) return false;
+        
+        const dbMedium = item.medium.trim().toLowerCase();
+        return dbMedium.includes(target) || target.includes(dbMedium);
     });
     
     displayGallery(filteredResults);

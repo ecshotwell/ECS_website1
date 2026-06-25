@@ -691,16 +691,16 @@ footer {
 
 /* Instructional Text Styling inside the box */
 .filter-instructions {
+    font-family: 'Merriweather', Georgia, serif !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
-    color: #333333 !important; /* High contrast charcoal */
+    color: #333333 !important; 
     margin-top: 0 !important;
     margin-bottom: 20px !important;
     text-align: center !important;
     border-bottom: 1px solid #eeeeee !important;
     padding-bottom: 15px !important;
     display: block !important;
-    font-family: inherit;
 }
 
 /* Filter Tabs Container layout rules */
