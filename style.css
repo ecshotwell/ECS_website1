@@ -722,6 +722,23 @@ footer {
     color: var(--dark-gray) !important; 
 }
 
+/* --- NO RESULTS FALLBACK ALERTS --- */
+.no-results {
+    font-family: 'Merriweather', Georgia, serif !important;
+    font-size: 1.1rem !important;
+    color: var(--charcoal) !important;
+    background-color: #ffffff !important;
+    border: 1px solid var(--border-blue) !important;
+    padding: 25px 35px !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    max-width: 600px !important;
+    margin: 40px auto !important;
+    width: 90% !important;
+    box-sizing: border-box !important;
+    clear: both !important;
+}
 
 /* ==========================================================================
    --- RESPONSIVE MEDIA QUERIES ---
