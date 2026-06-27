@@ -19,17 +19,40 @@ Papa.parse("images.csv", {
     }
 });
 
-// 2. Curated Baseline State: Show exactly 1 representative image per unique discipline
+// 2. Curated Baseline State: Show exactly 1 representative image per unique discipline, sorted by priority
 function displayInitialState() {
+    // Define the custom order priority
+    const orderMap = {
+        'blacksmithing': 1,
+        'ironwork': 1,
+        'ceramics': 2,
+        'pottery': 2,
+        'sculpture': 3,
+        'other': 4
+    };
+
     const uniqueMediums = new Set();
     const curatedItems = [];
 
+    // 2.1 Gather one representative item per unique medium
     masterGalleryData.forEach(item => {
-        const medium = item.medium ? item.medium.trim() : '';
+        const medium = item.medium ? item.medium.trim().toLowerCase() : '';
         if (medium && !uniqueMediums.has(medium)) {
             uniqueMediums.add(medium);
             curatedItems.push(item);
         }
+    });
+
+    // 2.2 Sort the curated list based on your defined orderMap
+    curatedItems.sort((a, b) => {
+        const medA = a.medium.trim().toLowerCase();
+        const medB = b.medium.trim().toLowerCase();
+        
+        // Get priority, default to 99 if not found
+        const priorityA = orderMap[medA] || 99;
+        const priorityB = orderMap[medB] || 99;
+        
+        return priorityA - priorityB;
     });
 
     displayGallery(curatedItems);
@@ -70,9 +93,9 @@ function displayGallery(items) {
     });
 }
 
-// 4. Tab Filtration Engine with Interactive Toggle States (Fixed Name Mismatch)
+// 4. Tab Filtration Engine with Interactive Toggle States
 function filterMedium(category, event) {
-    // Force a clean reference to the button element regardless of inline execution context
+    // 4.1 Force a clean reference to the button element
     const clickedButton = (event && event.currentTarget) ? event.currentTarget : this;
     
     if (!clickedButton || typeof clickedButton.classList === 'undefined') {
@@ -81,14 +104,14 @@ function filterMedium(category, event) {
 
     const isAlreadyActive = clickedButton.classList.contains('active');
 
-    // 1. If clicking ANY active button, deselect it and revert to the baseline curated view
+    // 4.2 If clicking ANY active button, deselect it and revert to the baseline curated view
     if (isAlreadyActive) {
         clickedButton.classList.remove('active');
         displayInitialState(); 
         return;
     }
 
-    // 2. Standard Tab Maintenance: Clear old active assignments globally
+    // 4.3 Standard Tab Maintenance: Clear old active assignments globally
     const buttons = document.querySelectorAll('.tab-btn, #gallery-tabs .tab-btn');
     buttons.forEach(btn => {
         if (btn && btn.classList) {
@@ -96,20 +119,20 @@ function filterMedium(category, event) {
         }
     });
 
-    // 3. Highlight the newly targeted button option
+    // 4.4 Highlight the newly targeted button option
     clickedButton.classList.add('active');
 
-    // 4. Sanitize and lower-case the incoming target parameter
+    // 4.5 Sanitize and lower-case the incoming target parameter
     const target = category ? category.trim().toLowerCase() : '';
 
-    // 5. Display entire collection or filter cleanly by data category fields
+    // 4.6 Display entire collection or filter cleanly by data category fields
     if (target === 'all' || target === '') {
         displayGallery(masterGalleryData);
     } else {
         const filteredResults = masterGalleryData.filter(item => {
             const med = item.medium ? item.medium.replace(/\s+/g, ' ').trim().toLowerCase() : '';
             
-            // Map alternative variations safely (e.g., matching "Ironwork" or "Blacksmithing")
+            // Map alternative variations safely
             if (target === 'blacksmithing' || target === 'ironwork') {
                 return med === 'blacksmithing' || med === 'ironwork' || med === 'steel';
             }
@@ -121,8 +144,8 @@ function filterMedium(category, event) {
         displayGallery(filteredResults);
     }
 }
-// --- LIGHTBOX INTERACTION FUNCTIONS ---
 
+// 5. Lightbox Interaction Functions
 function openLightbox(item, calculatedPath) {
     const imgPath = calculatedPath || `./${item.filename.trim()}`;
     
@@ -139,23 +162,23 @@ function openLightbox(item, calculatedPath) {
     document.body.style.overflow = 'hidden';
 }
 
-// Handles background mask overlay clicks
+// 5.1 Handles background mask overlay clicks
 function closeLightbox(event) {
     if (event.target === document.getElementById('lightbox')) {
         forceCloseLightbox();
     }
 }
 
-// Closes window instantly (Fires from Close 'X' button & background)
+// 5.2 Closes window instantly (Fires from Close 'X' button & background)
 function forceCloseLightbox() {
     const box = document.getElementById('lightbox');
     if (!box) return;
     
     box.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Restores page scrolling smoothly
+    document.body.style.overflow = 'auto'; 
 }
 
-// Desktop accessibility shortcut (Escape key close-out)
+// 5.3 Desktop accessibility shortcut (Escape key close-out)
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         forceCloseLightbox();
