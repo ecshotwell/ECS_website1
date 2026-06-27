@@ -23,26 +23,47 @@ Papa.parse("tripimages.csv", {
     }
 });
 
-// Helper function to extract and show the first image of each unique medium on load
+// 2. Curated Baseline State: Show exactly 1 representative image per unique discipline, sorted by priority
 function displayFeaturedPreviews() {
-    const featuredItems = [];
-    const seenMediums = new Set();
+    // Define the custom order priority to match Gallery page
+    const orderMap = {
+        'blacksmithing': 1,
+        'ironwork': 1,
+        'ceramics': 2,
+        'pottery': 2,
+        'sculpture': 3,
+        'other': 4
+    };
 
+    const seenMediums = new Set();
+    const featuredItems = [];
+
+    // 2.1 Gather one representative item per unique medium
     masterTripData.forEach(item => {
         if (!item.medium || !item.filename) return;
         const cleanMedium = item.medium.trim().toLowerCase();
         
-        // If this category hasn't saved a preview image yet, grab this item
         if (!seenMediums.has(cleanMedium)) {
             seenMediums.add(cleanMedium);
             featuredItems.push(item);
         }
     });
 
+    // 2.2 Sort the curated list based on your defined orderMap
+    featuredItems.sort((a, b) => {
+        const medA = a.medium.trim().toLowerCase();
+        const medB = b.medium.trim().toLowerCase();
+        
+        const priorityA = orderMap[medA] || 99;
+        const priorityB = orderMap[medB] || 99;
+        
+        return priorityA - priorityB;
+    });
+
     displayGallery(featuredItems);
 }
 
-// 2. Render inspiration grid cards (optimized for 100 images with lazy loading)
+// 3. Render gallery grid cards
 function displayGallery(items) {
     const grid = document.getElementById('inspiration-grid');
     if (!grid) return;
@@ -77,13 +98,12 @@ function displayGallery(items) {
     });
 }
 
-// 3. Tab Filtering Engine
+// 4. Tab Filtering Engine
 function filterMedium(category, evt) {
     const target = category.toLowerCase();
     
-    // Check if the clicked button is already active
+    // 4.1 Check if the clicked button is already active
     if (evt && evt.target && evt.target.classList.contains('active')) {
-        // Toggle behavior: If clicking an active category button, collapse it and reset to initial previews
         if (target !== 'all') {
             evt.target.classList.remove('active');
             displayFeaturedPreviews();
@@ -91,7 +111,7 @@ function filterMedium(category, evt) {
         }
     }
 
-    // Swap active class styling safely across all buttons
+    // 4.2 Swap active class styling safely
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
     
@@ -101,7 +121,7 @@ function filterMedium(category, evt) {
 
     const items = masterTripData;
     
-    // Looser matching strategy to ensure clean string matching between UI targets and dataset strings
+    // 4.3 Filtering logic
     const filteredResults = items.filter(item => {
         if (target === 'all') return true;
         if (!item.medium) return false;
@@ -113,8 +133,7 @@ function filterMedium(category, evt) {
     displayGallery(filteredResults);
 }
 
-// --- LIGHTBOX INTERACTION FUNCTIONS ---
-
+// 5. Lightbox Interaction Functions
 function openLightbox(item, calculatedPath) {
     const imgPath = calculatedPath || `./images/${item.filename.trim()}`;
     
@@ -131,12 +150,14 @@ function openLightbox(item, calculatedPath) {
     document.body.style.overflow = 'hidden';
 }
 
+// 5.1 Handles background mask overlay clicks
 function closeLightbox(event) {
     if (event.target === document.getElementById('lightbox')) {
         forceCloseLightbox();
     }
 }
 
+// 5.2 Closes window instantly
 function forceCloseLightbox() {
     const box = document.getElementById('lightbox');
     if (!box) return;
@@ -145,6 +166,7 @@ function forceCloseLightbox() {
     document.body.style.overflow = 'auto';
 }
 
+// 5.3 Desktop accessibility shortcut
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         forceCloseLightbox();
