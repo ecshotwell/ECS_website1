@@ -22,6 +22,7 @@ body {
     position: relative;
     margin: 0 auto;       
     padding: 0;
+    padding-top: 45px; /* Added to reserve space for the fixed navigation bar */
     max-width: 1200px;    
     width: 95%;           
     min-height: 100vh;    
@@ -84,21 +85,19 @@ body::before {
     justify-content: center;   
     align-items: center;
     gap: 30px;                 
-    position: absolute;        
-    bottom: -1px;              
+    position: fixed;        /* Pins the bar to the top of the viewport */
+    top: 0;                 /* Pins to the very top */
     left: 0;                   
     width: 100%;               
     margin: 0;                 
     background-color: #ffffff;  
     height: 45px;              
-    border-left: 2px solid var(--border-blue);   
-    border-right: 2px solid var(--border-blue);  
-    border-bottom: 2px solid var(--border-blue); 
+    border-bottom: 2px solid var(--border-blue); /* Retained bottom border */
     border-top: none;                 
-    border-radius: 0 0 8px 8px;        
+    border-radius: 0;          /* Reset radius */
     box-sizing: border-box;
-    z-index: 5;                
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+    z-index: 1000;             /* Ensures it sits above other content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .navigation-toolbar a {
