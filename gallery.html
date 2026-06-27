@@ -42,7 +42,7 @@
 </main>
 
 <!-- Central Control Group (Matches Inspiration Design Logic) -->
-<div class="gallery-section">
+<section class="gallery-section">
     <div class="filter-group">
         
         <!-- Standardized Tab Row for Mediums -->
@@ -53,26 +53,13 @@
             <button class="tab-btn" onclick="filterMediumTab('Other Mediums', event)">Other Mediums</button>
             <button class="tab-btn active" onclick="filterMediumTab('all', event)">Show All</button>
         </div>
-
-        <!-- Remaining Filter Sub-Controls Positioned Side-by-Side -->
-        <div class="filter-controls-row">
-            <div class="filter-item">
-                <label for="subject">Subject</label>
-                <select id="subject" onchange="filterGallery()"><option value="all">All Subjects</option></select>
-            </div>
-            <div class="filter-item">
-                <label for="artist">Artist</label>
-                <select id="artist" onchange="filterGallery()"><option value="all">All Artists</option></select>
-            </div>
-        </div>
-
     </div>
 
     <!-- Dynamic Portfolio Grid Container -->
     <div id="portfolio-grid" class="portfolio-grid">
         <p>Loading gallery items...</p>
     </div>
-</div>
+</section>
 
 <!-- Lightbox Overlay Modal -->
 <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
