@@ -8,6 +8,30 @@
     --dark-gray: #333333;
 }
 
+/* Compact Header Styling */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.header-text {
+    flex: 1;
+}
+
+.header-image {
+    max-width: 150px; /* Adjust size to fit your aesthetic */
+    margin-left: 20px;
+}
+
+/* Cleanup existing titles */
+.header-text h1, .header-text h2 {
+    margin: 0;
+    padding: 0;
+}
+
 /* Hero Section Layout */
 .hero-container {
     background-color: #eef4f8; /* Muted tone using your brand's blue palette */
