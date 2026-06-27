@@ -70,33 +70,49 @@ function displayGallery(items) {
     });
 }
 
-// 4. Tab Filtration Engine with Interactive Toggle States
-function filterMediumTab(category, event) {
-    const clickedButton = event.currentTarget;
+// 4. Tab Filtration Engine with Interactive Toggle States (Fixed Name Mismatch)
+function filterMedium(category, event) {
+    // Force a clean reference to the button element regardless of inline execution context
+    const clickedButton = (event && event.currentTarget) ? event.currentTarget : this;
+    
+    if (!clickedButton || typeof clickedButton.classList === 'undefined') {
+        return;
+    }
+
     const isAlreadyActive = clickedButton.classList.contains('active');
 
     // 1. If clicking ANY active button, deselect it and revert to the baseline curated view
     if (isAlreadyActive) {
         clickedButton.classList.remove('active');
-        displayInitialState(); // Reverts instantly back to one thumbnail per discipline
+        displayInitialState(); 
         return;
     }
 
-    // 2. Standard Tab Maintenance: Clear old active assignments inside #gallery-tabs
-    const buttons = document.querySelectorAll('#gallery-tabs .tab-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
+    // 2. Standard Tab Maintenance: Clear old active assignments globally
+    const buttons = document.querySelectorAll('.tab-btn, #gallery-tabs .tab-btn');
+    buttons.forEach(btn => {
+        if (btn && btn.classList) {
+            btn.classList.remove('active');
+        }
+    });
 
     // 3. Highlight the newly targeted button option
     clickedButton.classList.add('active');
 
-    // 4. Display entire collection or filter cleanly by data category array fields
-    if (category === 'all') {
+    // 4. Sanitize and lower-case the incoming target parameter
+    const target = category ? category.trim().toLowerCase() : '';
+
+    // 5. Display entire collection or filter cleanly by data category fields
+    if (target === 'all' || target === '') {
         displayGallery(masterGalleryData);
     } else {
-        // Map alternative naming variations safely if needed (e.g. Pottery to Ceramics matching)
-        const target = category.toLowerCase();
         const filteredResults = masterGalleryData.filter(item => {
-            const med = item.medium ? item.medium.trim().toLowerCase() : '';
+            const med = item.medium ? item.medium.replace(/\s+/g, ' ').trim().toLowerCase() : '';
+            
+            // Map alternative variations safely (e.g., matching "Ironwork" or "Blacksmithing")
+            if (target === 'blacksmithing' || target === 'ironwork') {
+                return med === 'blacksmithing' || med === 'ironwork' || med === 'steel';
+            }
             if (target === 'pottery' || target === 'ceramics') {
                 return med === 'pottery' || med === 'ceramics';
             }
@@ -105,7 +121,6 @@ function filterMediumTab(category, event) {
         displayGallery(filteredResults);
     }
 }
-
 // --- LIGHTBOX INTERACTION FUNCTIONS ---
 
 function openLightbox(item, calculatedPath) {
