@@ -468,6 +468,8 @@ body::before {
     border: none !important;      
     width: 100% !important;
     max-width: 1100px !important; 
+    margin-top: 40px !important;        /* ADDED: Global fallback top separation */
+    margin-bottom: 60px !important;     /* ADDED: Global fallback gap to stop touching items */
     margin-left: auto !important;  
     margin-right: auto !important;
     box-sizing: border-box;
