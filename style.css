@@ -80,30 +80,31 @@ body::before {
     color: #2c3e50;    
 }
 
-/* --- Top Navigation Bar --- */
 .navigation-toolbar {
     display: flex;
     justify-content: center;   
     align-items: center;
     gap: 30px;                 
-    position: fixed;        /* Detaches from hero container to stick globally */
+    position: fixed;        
     top: 0;                 
-    left: 0;                /* Pins to the very left edge of viewport */
-    width: 100vw;           /* Spans across full viewport window width */
+    left: 0;                
+    width: 100%;            /* Changed from 100vw to 100% to prevent horizontal scroll/clipping */
     margin: 0;                 
     background-color: #ffffff !important;  
-    height: 45px;              
-    border-bottom: 3px solid var(--border-blue); 
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); 
-    border-top: none;                 
-    border-left: none;
-    border-right: none;
-    border-radius: 0;       
+    height: 50px;           /* Slightly taller to give it more presence */
+    
+    /* UPPER BOUNDARY - Forces separation from Chrome */
+    border-top: 4px solid #4a6984 !important; /* A solid, dark slate blue line right at the very top edge */
+    
+    /* LOWER BOUNDARY */
+    border-bottom: 2px solid #dddddd !important; 
+    
+    /* EXTREMELY VISIBLE SHADOW */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important; 
+    
     box-sizing: border-box;
-    z-index: 1000;          
-    border-top: 1px solid rgba(0, 0, 0, 0.08); /* Soft line at the very top edge */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);  /* Slightly stronger downward shadow */
-}   
+    z-index: 10000;         /* Ensures it stays on top of everything */
+}
 
 .navigation-toolbar a {
     color: #333333;            
