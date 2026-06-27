@@ -754,3 +754,10 @@ footer {
     color: #ffffff !important;            
     border-color: var(--charcoal) !important;
 }
+
+.section-divider {
+    margin: 3rem 0;
+    border: 0;
+    border-top: 2px solid var(--border-color, #ccc);
+    opacity: 0.85;
+}
