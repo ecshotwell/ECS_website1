@@ -7,8 +7,8 @@ Papa.parse("images.csv", {
     skipEmptyLines: true,
     complete: function(results) {
         masterGalleryData = results.data;
-        populateFilterDropdowns(masterGalleryData);
-        displayGallery(masterGalleryData);
+        // Load the curated baseline view when the page first boots up
+        displayInitialState();
     },
     error: function(err) {
         const grid = document.getElementById('portfolio-grid');
@@ -19,29 +19,20 @@ Papa.parse("images.csv", {
     }
 });
 
-// 2. Dynamically extract unique values for dropdown filters
-function populateFilterDropdowns(data) {
-    const attributes = ['subject', 'medium', 'location', 'size', 'artist'];
-    attributes.forEach(attr => {
-        const selectElement = document.getElementById(attr);
-        if (!selectElement) return;
+// 2. Curated Baseline State: Show exactly 1 representative image per unique discipline
+function displayInitialState() {
+    const uniqueMediums = new Set();
+    const curatedItems = [];
 
-        const uniqueValues = [...new Set(data.map(item => {
-            const val = item[attr];
-            return val ? val.trim() : null;
-        }).filter(Boolean))].sort();
-        
-        while (selectElement.options.length > 1) {
-            selectElement.remove(1);
+    masterGalleryData.forEach(item => {
+        const medium = item.medium ? item.medium.trim() : '';
+        if (medium && !uniqueMediums.has(medium)) {
+            uniqueMediums.add(medium);
+            curatedItems.push(item);
         }
-
-        uniqueValues.forEach(value => {
-            const option = document.createElement('option');
-            option.value = value;
-            option.textContent = value;
-            selectElement.appendChild(option);
-        });
     });
+
+    displayGallery(curatedItems);
 }
 
 // 3. Render gallery grid cards
@@ -56,7 +47,7 @@ function displayGallery(items) {
         return;
     }
     
-    items.forEach((item, index) => {
+    items.forEach((item) => {
         if (!item.filename) return;
 
         const card = document.createElement('div');
@@ -68,10 +59,9 @@ function displayGallery(items) {
         card.innerHTML = `
             <img src="${imgPath}" alt="${item.subject || 'Artwork'}" loading="lazy">
             <div class="gallery-info">
-                <h3>${item.subject || 'Untitled'}</h3>
-                <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
-                <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
-                <p><strong>Size:</strong> ${item.size || 'N/A'}</p>
+                <h2>${item.subject || 'Untitled'}</h2>
+                <div class="meta-line"><span class="meta-label">Medium:</span> ${item.medium || 'N/A'}</div>
+                <div class="meta-line"><span class="meta-label">Artist:</span> ${item.artist || 'N/A'}</div>
             </div>
         `;
         
@@ -80,24 +70,39 @@ function displayGallery(items) {
     });
 }
 
-// 4. Filter gallery calculation
-function filterGallery() {
-    const subjectFilter = document.getElementById('subject').value;
-    const mediumFilter = document.getElementById('medium').value;
-    const locationFilter = document.getElementById('location').value;
-    const sizeFilter = document.getElementById('size').value; 
-    const artistFilter = document.getElementById('artist').value;
+// 4. Tab Filtration Engine with Interactive Toggle States
+function filterMediumTab(category, event) {
+    const clickedButton = event.currentTarget;
     
-    const filteredResults = masterGalleryData.filter(item => {
-        const matchSubject = (subjectFilter === 'all' || item.subject?.trim() === subjectFilter);
-        const matchMedium = (mediumFilter === 'all' || item.medium?.trim() === mediumFilter);
-        const matchLocation = (locationFilter === 'all' || item.location?.trim() === locationFilter);
-        const matchSize = (sizeFilter === 'all' || item.size?.trim() === sizeFilter);
-        const matchArtist = (artistFilter === 'all' || item.artist?.trim() === artistFilter);
-        
-        return matchSubject && matchMedium && matchLocation && matchSize && matchArtist;
-    });
-    displayGallery(filteredResults);
+    // Check if clicking "Show All" when it is already active
+    if (category === 'all' && clickedButton.classList.contains('active')) {
+        clickedButton.classList.remove('active');
+        displayInitialState(); // Reverts instantly back to one thumbnail per discipline
+        return;
+    }
+
+    // Standard Tab Maintenance: Clear old active assignments inside #gallery-tabs
+    const buttons = document.querySelectorAll('#gallery-tabs .tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // Highlight the newly targeted button option
+    clickedButton.classList.add('active');
+
+    // Display entire collection or filter cleanly by data category array fields
+    if (category === 'all') {
+        displayGallery(masterGalleryData);
+    } else {
+        // Map alternative naming variations safely if needed (e.g. Pottery to Ceramics matching)
+        const target = category.toLowerCase();
+        const filteredResults = masterGalleryData.filter(item => {
+            const med = item.medium ? item.medium.trim().toLowerCase() : '';
+            if (target === 'pottery' || target === 'ceramics') {
+                return med === 'pottery' || med === 'ceramics';
+            }
+            return med === target;
+        });
+        displayGallery(filteredResults);
+    }
 }
 
 // --- LIGHTBOX INTERACTION FUNCTIONS ---
@@ -112,23 +117,20 @@ function openLightbox(item, calculatedPath) {
     document.getElementById('lightbox-img').alt = item.subject || 'Artwork';
     document.getElementById('lightbox-title').textContent = item.subject || 'Untitled';
     document.getElementById('lightbox-medium').textContent = item.medium || 'N/A';
-    document.getElementById('lightbox-location').textContent = item.location || 'N/A';
-    document.getElementById('lightbox-size').textContent = item.size || 'N/A';
     document.getElementById('lightbox-artist').textContent = item.artist || 'N/A';
     
     box.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
-// Trigger 1: Handles background mask overlay clicks
+// Handles background mask overlay clicks
 function closeLightbox(event) {
-    // Only close if the user clicked the dark wrapper overlay itself, not the content card
     if (event.target === document.getElementById('lightbox')) {
         forceCloseLightbox();
     }
 }
 
-// Trigger 2: Closes window instantly (Fires from Close 'X' button & background)
+// Closes window instantly (Fires from Close 'X' button & background)
 function forceCloseLightbox() {
     const box = document.getElementById('lightbox');
     if (!box) return;
@@ -137,7 +139,7 @@ function forceCloseLightbox() {
     document.body.style.overflow = 'auto'; // Restores page scrolling smoothly
 }
 
-// Trigger 3: Desktop accessibility shortcut (Escape key close-out)
+// Desktop accessibility shortcut (Escape key close-out)
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         forceCloseLightbox();
