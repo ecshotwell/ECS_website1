@@ -16,11 +16,11 @@ const NavigationManager = {
 
     // 3. Highlight the active page link beautifully
     setActivePage() {
-        // Get the current path, remove trailing slashes, and grab the clean filename
-        let currentPath = window.location.pathname.replace(/\/$/, "").split("/").pop();
+        // Grab the clean filename from the end of the path, ignoring slashes or backslashes
+        let currentPath = window.location.pathname.split(/[/\\]/).pop();
         
-        // If the path is empty, root, or doesn't have an extension, default to index.html
-        if (!currentPath || currentPath === "ericshotwellusa.com") {
+        // If the path is empty or a root index, default to index.html
+        if (!currentPath || currentPath === "ericshotwellusa.com" || currentPath === "") {
             currentPath = "index.html";
         }
         
@@ -30,9 +30,9 @@ const NavigationManager = {
             const linkHref = link.getAttribute('href');
             if (!linkHref) return;
             
-            let linkPath = linkHref.split("/").pop();
+            let linkPath = linkHref.split('/').pop();
 
-            // Match both direct filenames (inspiration.html) and extensionless paths (inspiration)
+            // Match both direct filenames (about.html) and extensionless paths (about)
             const isMatch = (linkPath === currentPath) || 
                             (linkPath.replace(".html", "") === currentPath.replace(".html", ""));
 
