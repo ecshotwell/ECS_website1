@@ -31,31 +31,48 @@
     <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder" loading="lazy">
 </header>
 
-<!-- Gallery Filter and View Section -->
-<main class="gallery-section">
-    <div class="filter-group">
-        <h2>Artwork Portfolio</h2>
-        <p class="filter-intro">Welcome to a collection of my recent work. You can use the drop-down filters below to narrow down the displayed items by subject or medium. Click on any individual image to view more details about the piece.</p>
+<!-- Main Narrative & Philosophy Block -->
+<main class="focus-box">
+    <h2>Artwork Portfolio</h2>
+    <p>Welcome to a collection of my recent work. You can use the buttons and drop-down filters below to narrow down the displayed items by medium, subject, or artist. Click on any individual image to view more details about the piece.</p>
+    
+    <hr class="section-divider">
+    
+    <p class="filter-instructions"><strong>Note:</strong> Select a medium tab to instantly filter the layout, and use the side-by-side dropdown menus to drill down further into specific categories.</p>
+</main>
 
-        <div class="filter-item">
-            <label for="subject">Subject</label>
-            <select id="subject" onchange="filterGallery()"><option value="all">All Subjects</option></select>
+<!-- Central Control Group (Matches Inspiration Design Logic) -->
+<div class="gallery-section">
+    <div class="filter-group">
+        
+        <!-- Standardized Tab Row for Mediums -->
+        <div id="gallery-tabs" class="tabs-container" style="margin-bottom: 25px !important; justify-content: flex-start !important; width: 100%;">
+            <button class="tab-btn active" onclick="filterMediumTab('all', event)">Show All</button>
+            <button class="tab-btn" onclick="filterMediumTab('Ironwork', event)">Ironwork</button>
+            <button class="tab-btn" onclick="filterMediumTab('Pottery', event)">Pottery</button>
+            <button class="tab-btn" onclick="filterMediumTab('Sculpture', event)">Sculpture</button>
+            <button class="tab-btn" onclick="filterMediumTab('Other Mediums', event)">Other Mediums</button>
         </div>
-        <div class="filter-item">
-            <label for="medium">Medium</label>
-            <select id="medium" onchange="filterGallery()"><option value="all">All Media</option></select>
+
+        <!-- Remaining Filter Sub-Controls Positioned Side-by-Side -->
+        <div class="filter-controls-row">
+            <div class="filter-item">
+                <label for="subject">Subject</label>
+                <select id="subject" onchange="filterGallery()"><option value="all">All Subjects</option></select>
+            </div>
+            <div class="filter-item">
+                <label for="artist">Artist</label>
+                <select id="artist" onchange="filterGallery()"><option value="all">All Artists</option></select>
+            </div>
         </div>
-        <div class="filter-item">
-            <label for="artist">Artist</label>
-            <select id="artist" onchange="filterGallery()"><option value="all">All Artists</option></select>
-        </div>
+
     </div>
 
     <!-- Dynamic Portfolio Grid Container -->
     <div id="portfolio-grid" class="portfolio-grid">
         <p>Loading gallery items...</p>
     </div>
-</main>
+</div>
 
 <!-- Lightbox Overlay Modal -->
 <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
@@ -69,8 +86,6 @@
             <div class="lightbox-details">
                 <h2 id="lightbox-title"></h2>
                 <p><strong>Medium:</strong> <span id="lightbox-medium"></span></p>
-                <!--<p><strong>Location:</strong> <span id="lightbox-location"></span></p>-->
-                <!--<p><strong>Size:</strong> <span id="lightbox-size"></span></p>-->
                 <p><strong>Artist:</strong> <span id="lightbox-artist"></span></p>
             </div>
         </div>
