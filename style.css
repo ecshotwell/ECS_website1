@@ -205,12 +205,12 @@ body::before {
 .focus-box blockquote {
     font-family: 'Merriweather', Georgia, serif;
     font-style: italic !important;
-    font-weight: 300;
+    font-weight: 400;                     /* Changed from 300 to 400 for a thicker font stroke */
     margin: 30px 20px 20px 20px !important;
     padding-left: 15px !important;
     border-left: 3px solid var(--accent-blue) !important; 
-    color: #555555 !important;
-    line-height: 1.6;
+    color: var(--dark-gray) !important;   /* Changed from #555555 to match your body text color */
+    line-height: 1.65;
 }
 
 /* --- Call to Action Studio Buttons --- */
