@@ -380,6 +380,8 @@ body::before {
     font-weight: bold;
     color: var(--charcoal); 
     font-size: 0.9rem;
+    display: block;          /* Forces labels onto their own line above the fields */
+    margin-bottom: 8px;      /* Adds breathing room between the label and the input box */
 }
 
 .contact-form input,
@@ -392,6 +394,7 @@ body::before {
     box-sizing: border-box; 
     font-family: inherit;
     color: var(--dark-gray);
+    margin-bottom: 20px;     /* Added: Keeps fields cleanly separated from the next label */
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -399,7 +402,7 @@ body::before {
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--brand-blue); 
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15); /* Soft focus ring using your brand blue */
 }
 
 #submitBtn {
@@ -413,6 +416,7 @@ body::before {
     cursor: pointer;
     transition: all 0.3s ease;
     width: 100%; 
+    margin-top: 10px;        /* Added: Pushes the button away from the final text area */
 }
 
 #submitBtn:focus {
