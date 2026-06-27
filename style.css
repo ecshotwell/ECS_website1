@@ -447,7 +447,10 @@ body::before {
     cursor: not-allowed;
 }
 
-/* --- Centered Background Gallery Filters --- */
+/* ==========================================================================
+   --- CENTERED BACKGROUND GALLERY FILTERS & CARDS ---
+   ========================================================================== */
+
 .gallery-section .filter-group,
 .gallery-section .portfolio-grid {
     max-width: 1100px !important; 
@@ -462,19 +465,18 @@ body::before {
     flex-direction: row !important;       
     flex-wrap: wrap !important;
     align-items: center !important;          
-    justify-content: center !important;   /* Centers the buttons exactly like the Inspiration page */
+    justify-content: center !important;   /* Center justified directly on the background */
     gap: 12px !important;               
-    background-color: transparent !important; 
-    padding: 20px 0 !important;           
-    box-shadow: none !important;  
-    margin: 40px auto !important;         /* Perfectly balanced centered auto-margins */
-    border: none !important;      
+    background-color: transparent !important; /* Removes the white container box */
+    padding: 0 !important;                /* Strips excessive layout block padding */
+    box-shadow: none !important;          /* Removes old container shadows */
+    margin: 40px auto !important;         /* Balanced spacing below navigation */
+    border: none !important;              /* Removes old container borders */
     width: 100% !important;
 }
 
-/* --- Gallery & Inspiration Card Structural Optimization --- */
-.gallery-section .portfolio-grid,
-.gallery-grid {
+/* --- Gallery Grid Layout Optimization --- */
+.gallery-section .portfolio-grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important; 
     gap: 30px !important;                    
@@ -482,26 +484,8 @@ body::before {
     padding: 0 !important;
 }
 
-.gallery-section .portfolio-grid {
-    max-width: 1100px !important;
-    width: 90% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    box-sizing: border-box;
-}
-
-.gallery-grid {
-    max-width: 1200px !important;
-    width: 90% !important;
-    margin: 30px auto 60px auto !important;
-    box-sizing: border-box !important;
-}
-
-/* Unified structural wrapper for portfolio items */
-.portfolio-grid .gallery-card,
-.portfolio-grid .card,
-.gallery-card,
-#inspiration-grid .gallery-card {
+/* Structural wrapper for portfolio items */
+.portfolio-grid .gallery-card {
     display: flex !important;
     flex-direction: column !important;
     overflow: hidden !important;
@@ -515,20 +499,13 @@ body::before {
     box-sizing: border-box !important;
 }
 
-.portfolio-grid .gallery-card:hover,
-.portfolio-grid .card:hover,
-.gallery-card:hover,
-#inspiration-grid .gallery-card:hover {
+.portfolio-grid .gallery-card:hover {
     transform: translateY(-3px) !important;
     border-color: var(--brand-blue) !important;
 }
 
-/* Standardized image container size rule to prevent mosaic height mismatches */
-.portfolio-grid .gallery-card img,
-.portfolio-grid .card img,
-.portfolio-grid img,
-.gallery-card img,
-#inspiration-grid .gallery-card img {
+/* Fixed size constraints to prevent image sizing mismatches */
+.portfolio-grid .gallery-card img {
     width: 100% !important;
     height: 250px !important;       
     min-height: 250px !important;
@@ -537,25 +514,57 @@ body::before {
     display: block !important;
 }
 
-.portfolio-grid .gallery-info,
-.gallery-info {
+.portfolio-grid .gallery-info {
     padding: 20px 15px !important;  
     background: #ffffff !important;
 }
 
-/* Clean formatting rules for Medium, Size, and Artist lines inside cards */
-.portfolio-grid .gallery-info .meta-line,
-.gallery-info .meta-line {
+/* --- Metadata Typography Rules --- */
+.portfolio-grid .gallery-info .meta-line {
     margin: 6px 0 !important;
     font-size: 0.95rem;
     color: var(--dark-gray);
     line-height: 1.4;
 }
 
-.portfolio-grid .gallery-info .meta-label,
-.gallery-info .meta-label {
+.portfolio-grid .gallery-info .meta-label {
     font-weight: 600;
     color: var(--charcoal);
+}
+
+/* --- Gallery Navigation Tabs --- */
+.tabs-container {
+    display: flex !important;
+    justify-content: center !important;   /* Centers inner button cluster */
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 0 auto !important; 
+    flex-wrap: wrap !important;
+    width: 100% !important;
+}
+
+.tab-btn {
+    background-color: #ffffff !important;
+    color: var(--charcoal) !important; 
+    border: 1px solid var(--border-blue) !important;
+    padding: 6px 18px !important;        /* Tightened layout padding matching Inspiration page tabs */
+    font-family: 'Merriweather', Georgia, serif !important; 
+    font-size: 0.95rem !important;
+    font-weight: 700 !important; 
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    line-height: 1.4 !important;          
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease !important; 
+}
+
+.tab-btn:hover, 
+.tab-btn.active {
+    background-color: var(--charcoal) !important; 
+    color: #ffffff !important;            
+    border-color: var(--charcoal) !important;
 }
 
 /* --- UNIVERSAL LIGHTBOX STYLING --- */

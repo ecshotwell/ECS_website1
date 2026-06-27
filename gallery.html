@@ -34,19 +34,14 @@
 <!-- Main Narrative & Philosophy Block -->
 <main class="focus-box">
     <h2>Artwork Portfolio</h2>
-    <p>Welcome to a collection of my recent work. You can use the buttons and drop-down filters below to narrow down the displayed items by medium, subject, or artist. Click on any individual image to view more details about the piece.</p>
-    
-    <hr class="section-divider">
-    
-    <p class="filter-instructions"><strong>Note:</strong> To browse, select any medium below to expand the list and view all images in that category, or click "Show All" to view the entire collection. Click on any individual card to enlarge the image.</p>
+    <p>Welcome to a collection of my recent work. Select a medium below to sort the collection, or click on an individual item card to enlarge the image and view detailed specifications.</p>
 </main>
 
 <!-- Central Control Group (Matches Inspiration Design Logic) -->
 <section class="gallery-section">
     <div class="filter-group">
-        
-        <!-- Standardized Tab Row for Mediums -->
-        <div id="gallery-tabs" class="tabs-container" style="margin-bottom: 25px !important; justify-content: flex-start !important; width: 100%;">
+        <!-- Clean, Centered Tab Row for Mediums (No restrictive inline styling overrides) -->
+        <div id="gallery-tabs" class="tabs-container">
             <button class="tab-btn" onclick="filterMediumTab('Ironwork', event)">Ironwork</button>
             <button class="tab-btn" onclick="filterMediumTab('Pottery', event)">Ceramics</button>
             <button class="tab-btn" onclick="filterMediumTab('Sculpture', event)">Sculpture</button>
