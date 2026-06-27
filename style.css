@@ -144,8 +144,11 @@ body::before {
     display: block;
 }
 
-/* Main Section Headings */
-.focus-box h2 {
+/* Main Section Headings & Gallery Card Titles */
+.focus-box h2,
+.gallery-section .filter-group h2,
+.portfolio-grid .gallery-card h2,
+.gallery-card h2 {
     font-family: 'Merriweather', Georgia, serif;
     font-weight: 700;
     font-size: 1.8rem;
@@ -154,6 +157,14 @@ body::before {
     margin-top: 10px;
     margin-bottom: 20px;
     color: var(--charcoal);
+}
+
+/* Specific scale polish for inline grid card headers to look integrated */
+.portfolio-grid .gallery-card h2,
+.gallery-card h2 {
+    font-size: 1.25rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
 }
 
 /* Sub-Headings */
@@ -457,26 +468,6 @@ body::before {
     margin-top: 40px;             
     margin-bottom: 40px;
     border: 1px solid var(--border-blue);
-}
-
-.gallery-section .filter-group h2 {
-    font-family: 'Merriweather', Georgia, serif; 
-    color: var(--charcoal) !important;    
-    margin-top: 0;                
-    margin-bottom: 10px;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    width: 100%;                  
-}
-
-.gallery-section .filter-group .filter-intro {
-    color: var(--dark-gray) !important;    
-    font-size: 1.05rem;
-    line-height: 1.5;
-    margin-top: 0;
-    margin-bottom: 25px;          
-    width: 100%;                  
 }
 
 .gallery-section .filter-group label {
