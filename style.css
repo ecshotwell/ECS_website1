@@ -45,15 +45,15 @@ body::before {
     pointer-events: none; 
 }
 
-/* --- Streamlined Hero Header Container --- */
+/* --- Updated Hero Container using your exact variables --- */
 .hero-container {
     display: flex;
-    flex-direction: row;      /* Side-by-side layout on desktop */
-    justify-content: space-between; /* Pushes text to one side, image to the other */
-    align-items: center;      /* Vertically centers both elements */
+    flex-direction: row;      
+    justify-content: space-between; 
+    align-items: center;      
     gap: 40px;
-    background-color: var(--light-blue-bg); 
-    padding: 30px 40px;       /* Significantly reduced top/bottom padding */
+    background-color: var(--light-blue-bg); /* Uses your 75% transparent blue */
+    padding: 30px 40px;       
     margin: 20px auto 30px auto; 
     max-width: 1200px;           
     width: 90%;                  
@@ -61,25 +61,28 @@ body::before {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); 
     position: relative;          
     box-sizing: border-box;
+    
+    /* Subtle border using your theme variables */
+    border: 1px solid var(--border-blue); 
 }
 
 .hero-container h1 {
     margin: 0;
     font-size: 2.2rem; 
-    color: #2c3e50;    
-    text-align: left;         /* Left-aligned for cleaner editorial look */
-    flex: 1;                  /* Allows text to take up remaining space smoothly */
+    color: var(--charcoal);    /* Switched to your brand charcoal */
+    text-align: left;         
+    flex: 1;                  
 }
 
 .hero-container img {
-    max-width: 180px;         /* Slightly scaled down to keep it compact */
+    max-width: 180px;         
     width: 100%;       
     height: auto;      
     object-fit: contain; 
     border: 4px solid #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 6px; 
-    flex-shrink: 0;           /* Prevents the image from squishing */
+    flex-shrink: 0;           
 }
 
 .navigation-toolbar {
