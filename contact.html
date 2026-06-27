@@ -9,38 +9,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-    <script src="./navigation.js"></script>
+    <script src="./navigation.js" defer></script>
 </head>
 <body>
 
-<!-- 1. Move the navigation bar out to the very top level of the body -->
+<!-- Global Navigation Toolbar -->
 <nav class="navigation-toolbar">
-    <a href="https://ericshotwellusa.com/index.html" class="active">Home</a>
+    <a href="https://ericshotwellusa.com/index.html">Home</a>
     <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
     <a href="https://ericshotwellusa.com/perspective.html">Perspective</a>
     <a href="https://ericshotwellusa.com/inspiration.html">Inspiration</a>
     <a href="https://ericshotwellusa.com/process.html">Process</a>
     <a href="https://ericshotwellusa.com/about.html">About</a>
-    <a href="https://ericshotwellusa.com/contact.html">Contact</a>
+    <a href="https://ericshotwellusa.com/contact.html" class="active">Contact</a>
 </nav>
 
-<!-- 2. Keep your hero header clean underneath it -->
+<!-- Hero Header Section -->
 <header class="hero-container">
     <h1>Eric Shotwell, Artist Blacksmith</h1>
-    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder">
+    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder" loading="lazy">
 </header>
 
+<!-- Main Narrative & Philosophy -->
 <main class="focus-box">
+    
     <h2>Common Interests</h2>
-    <h3>What is important to you?</h3>
-    <p>Collecting and commissioning art is a significant investment. Your time and emotional investment are a long-term commitment to your goals and vision. Whether you are choosing a piece for your home or stepping up to the anvil to learn, you are dedicating yourself to a deeper appreciation of intentional craftsmanship.</p>
-    <h3>When you invest in art, you are choosing to partner with an artist.</h3>
-    <p>An artist whose work spans both physical mediums and societal commentary must demonstrate how the physical process reflects the philosophical mindset. This partnership thrives on shared social responsibility, using the intense energy of the forge and the steady rhythm of the wheel to spark meaningful interpersonal discussions.</p>
+    <p>For me, making art is all about exploring the world. I love finding unique shapes in our local landscapes. Then, I use my hands to turn those ideas into real art. I want my physical work to show these values. I use the hot fire of the forge and the steady rhythm of the pottery wheel. These tools help start friendly conversations and bring neighbors closer together.</p>
+
+    <hr class="section-divider">
+
+    <h3>Partnering with an Artist</h3>
+    <p>When you buy a piece of art, you choose to partner with the artist. This partnership works best when we share a sense of community. It also requires a commitment to hard work. Making art is a wonderful way to bring creative ideas to life. It gives you something real to experience every single day.</p>
+
+    <hr class="section-divider">
+
+    <h3>What is Important to You?</h3>
+    <p>Choosing to collect art is a big decision. It takes much time and thought to bring a vision to life. You might want a beautiful sculpture for your home. Or, you might want to step up to the anvil to learn a traditional craft yourself. Either way, you are choosing to appreciate hard work and dedication.</p>
+
 </main>
 
+<!-- Contact Form Block -->
 <div class="focus-box">
     <h2>Contact</h2>
-    <p>How can I help you? Please fill out the form below and I will get back to you as soon as possible.</p>
+    <p>How can I help you? Please fill out the form below. I will get back to you as soon as possible.</p>
   
     <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="0203d124-62ff-4b4a-a42c-f65c916ab424">
@@ -55,19 +66,17 @@
             <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
         </div>
 
-
-<div class="form-group" style="margin-bottom: 15px;">
-    <label for="inquiry-type" style="font-weight: bold; color: var(--dark-gray); font-size: 0.9rem;">I am interested in:*</label>
-    <select id="inquiry-type" name="inquiry_type" required style="width: 100%; padding: 12px; border: 1px solid #cccccc; border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit; background-color: #ffffff;">
-        <option value="" disabled selected>Select an option...</option>
-        <option value="blacksmithing">Blacksmithing Classes</option>
-        <option value="ceramics">Ceramics Classes</option>
-        <option value="purchase">Purchase a Piece of Art</option>
-        <option value="commission">Custom Artwork Commission</option>
-        <option value="consultation">Artist Consultation</option>
-    </select>
-</div>
-
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="inquiry-type" style="font-weight: bold; color: var(--dark-gray); font-size: 0.9rem;">I am interested in:*</label>
+            <select id="inquiry-type" name="inquiry_type" required style="width: 100%; padding: 12px; border: 1px solid #cccccc; border-radius: 4px; font-size: 1rem; box-sizing: border-box; font-family: inherit; background-color: #ffffff;">
+                <option value="" disabled selected>Select an option...</option>
+                <option value="blacksmithing">Blacksmithing Classes</option>
+                <option value="ceramics">Ceramics Classes</option>
+                <option value="purchase">Purchase a Piece of Art</option>
+                <option value="commission">Custom Artwork Commission</option>
+                <option value="consultation">Artist Consultation</option>
+            </select>
+        </div>
 
         <div class="form-group">
             <label for="details">Your Interest*</label>
@@ -80,6 +89,7 @@
     <div id="formResponse" style="margin-top: 15px; padding: 15px; border-radius: 4px; display: none;"></div>
 </div>
 
+<!-- Global Footer -->
 <footer>   
     <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
 </footer>
