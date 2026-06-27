@@ -92,14 +92,17 @@ body::before {
     margin: 0;                 
     background-color: #ffffff !important;  
     height: 45px;              
-    border-bottom: 2px solid var(--border-blue); 
+    
+    /* Elegant visual separation from the white browser bar */
+    border-bottom: 3px solid var(--border-blue); 
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); 
+    
     border-top: none;                 
     border-left: none;
     border-right: none;
-    border-radius: 0;       /* Flattened edges look much cleaner for a full viewport header */
+    border-radius: 0;       
     box-sizing: border-box;
     z-index: 1000;          /* Floating hierarchy to sit safely over focus boxes and lightboxes */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navigation-toolbar a {
