@@ -101,7 +101,9 @@ body::before {
     border-radius: 0;       
     box-sizing: border-box;
     z-index: 1000;          
-}
+    border-top: 1px solid rgba(0, 0, 0, 0.08); /* Soft line at the very top edge */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);  /* Slightly stronger downward shadow */
+}   
 
 .navigation-toolbar a {
     color: #333333;            
