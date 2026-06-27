@@ -9,37 +9,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-    <script src="./navigation.js"></script>
+    <script src="./navigation.js" defer></script>
 </head>
 <body>
 
-<!-- 1. Move the navigation bar out to the very top level of the body -->
+<!-- Global Navigation Toolbar -->
 <nav class="navigation-toolbar">
-    <a href="https://ericshotwellusa.com/index.html" class="active">Home</a>
+    <a href="https://ericshotwellusa.com/index.html">Home</a>
     <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
     <a href="https://ericshotwellusa.com/perspective.html">Perspective</a>
     <a href="https://ericshotwellusa.com/inspiration.html">Inspiration</a>
     <a href="https://ericshotwellusa.com/process.html">Process</a>
-    <a href="https://ericshotwellusa.com/about.html">About</a>
+    <a href="https://ericshotwellusa.com/about.html" class="active">About</a>
     <a href="https://ericshotwellusa.com/contact.html">Contact</a>
 </nav>
 
-<!-- 2. Keep your hero header clean underneath it -->
+<!-- Hero Header Section -->
 <header class="hero-container">
     <h1>Eric Shotwell, Artist Blacksmith</h1>
-    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder">
+    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder" loading="lazy">
 </header>
 
+<!-- Main Narrative & Philosophy -->
 <main class="focus-box">
     <h2>About the Artist</h2>
     <p>Hi, I'm Eric Shotwell. I'm a professional American artist blacksmith, ceramicist, and stone sculptor. As an artist instructor, I have had the privilege of teaching and mentoring many aspiring artists. My creative path started in the heavy, unyielding worlds of steel and stone, deeply inspired by the rich legacy of European and American blacksmiths and stone masons. Over the years, my practice grew to include fine ceramics, from the iron-rich depth of traditional Tenmoku glazes and the wild, unpredictable surfaces of wood-fired kilns, to the intense physical challenge of large Korean Moon jars.</p>
 
     <p>For me, the studio isn't just a place to manufacture objects; it's a living space for exploration, learning, and genuine human connection. Alongside my physical craftsmanship, I use writing to share my feelings about the creative process, exploring themes of life transitions, mentorship, and community resilience. Based in Central Indiana, I spend my time creating, teaching, and exploring natural treasures hidden in our local landscapes.</p>
     
-    <h3>Artist Statement</h3>
-<blockquote>
-    "My creative practice is a continuous act of exploration and discovery—a framework for navigating both the raw beauty of the natural world and the complex social structures we live in."
-</blockquote>
+    <hr class="section-divider" style="margin: 2.5rem 0; border: 0; border-top: 1px solid var(--border-color, #ccc); opacity: 0.3;">
+
+    <h2>Artist Statement</h2>
+    <blockquote>
+        "My creative practice is a continuous act of exploration and discovery—a framework for navigating both the raw beauty of the natural world and the complex social structures we live in."
+    </blockquote>
 
     <p>My three-dimensional work is entirely grounded in texture, grit, and transformation. With elemental materials like steel, stone, and clay, I aim to transform raw nature into unique artistic expressions. I've always been drawn to the deep contradictions of my mediums: the permanent, stubborn weight of forged iron and stone standing right alongside the fragile nature of hand-built clay. Bringing these contrasting worlds together lets me build visual metaphors for human vulnerability and inner strength.</p>
 
@@ -48,9 +51,10 @@
     <p>Together, these writings capture the personal, compassionate philosophy that drives the physical art and social advocacy featured throughout this portfolio. My <a href="https://ericshotwellusa.com/contact.html" class="blog-link">contact form</a> is available for you to reach out and discuss any of these ideas or explore potential collaborations.</p>
 </main>
 
-
+<!-- Global Footer -->
 <footer>   
     <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
 </footer>
+
 </body>
 </html>
