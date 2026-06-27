@@ -527,10 +527,13 @@ body::before {
     margin-bottom: 60px !important;
 }
 
-/* Inspiration Layout Specific Rhythm (Retains original structural margins) */
-.inspiration-section .filter-group {
+/* --- Fix Spacing for Inspiration Gallery --- */
+.filter-control-box {
     margin-top: 40px !important;
-    margin-bottom: 60px !important; 
+    margin-bottom: 60px !important; /* This creates the gap between buttons and grid */
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 
