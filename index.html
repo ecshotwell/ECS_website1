@@ -10,13 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-    <script src="./navigation.js"></script>
+    <script src="./navigation.js" defer></script>
 </head>
-
 
 <body>
 
-<!-- 1. Move the navigation bar out to the very top level of the body -->
+<!-- Global Navigation Toolbar -->
 <nav class="navigation-toolbar">
     <a href="https://ericshotwellusa.com/index.html" class="active">Home</a>
     <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
@@ -27,18 +26,20 @@
     <a href="https://ericshotwellusa.com/contact.html">Contact</a>
 </nav>
 
-<!-- 2. Keep your hero header clean underneath it -->
+<!-- Streamlined Hero Header Section -->
 <header class="hero-container">
     <h1>Eric Shotwell, Artist Blacksmith</h1>
-    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder">
+    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder" loading="lazy">
 </header>
 
+<!-- Main Introduction Content -->
 <main class="focus-box">
     <h2>Creativity, Vision & Craftsmanship</h2>
     <p>Welcome to the studio. My creative practice is a continuous act of exploration and discovery—a framework for navigating both the raw beauty of the natural world and the complex social structures that define the human experience. Working with elemental materials like steel, stone, and clay, I transform raw nature and rigorous human craftsmanship into unique, three-dimensional expressions.</p>
 </main>
 
-<div class="focus-box">
+<!-- Studio Mediums Section -->
+<section class="focus-box">
     <h2>The Mediums: Fire, Earth & Stone</h2>
     <p>My work thrives on the inherent contradictions of my mediums: the permanent, stubborn weight of forged iron and stone standing right alongside the fragile, malleable nature of hand-built clay. Bringing these contrasting worlds together lets me build visual metaphors for human vulnerability and inner strength.</p>
     
@@ -47,26 +48,31 @@
         <li><strong>Fine Ceramics:</strong> Tapping into historical, unpredictable processes like iron-rich Tenmoku glazes, wood-fired kilns, and the physical challenge of throwing classic Korean Moon jars.</li>
         <li><strong>Stone Sculpture:</strong> Carver's patience applied to pulling organic rhythms out of raw, unyielding geological foundations.</li>
     </ul>
-</div>
+</section>
 
-<div class="focus-box">
+<!-- Vision & Philosophy Section -->
+<section class="focus-box">
     <h2>Art as Social Advocacy</h2>
     <p>As an artist, I believe my creative output is inseparable from civic responsibility. My work has evolved past just making beautiful things; it serves as a conscious protest against division and a tool for bringing people together. Whether materializing ideas of collective empathy in public bronze sculptures like <em>'Resistance over Tyranny'</em> or finding the quiet, meditative rhythm of a spinning pottery wheel, my art is an invitation to conversation.</p>
     
-    <blockquote style="margin: 20px 20px 20px 20px !important;">
+    <!-- Inline styles removed to allow clean theme-wide blockquote borders to appear -->
+    <!-- Your text will now display with its signature light blue accent line on the left -->
+    <blockquote>
         "Every piece is built with a simple belief: true value—both in a craft and in a community—is only restored through patience, mentorship, and deliberate intent."
     </blockquote>
-</div>
+</section>
 
-<div class="focus-box" style="text-align: center;">
+<!-- Call To Action Block -->
+<section class="focus-box" style="text-align: center;">
     <h2>Step Into the Studio</h2>
     <p>Whether you are looking to commission a custom piece of architectural ironwork, add unique ceramics to your collection, or step up to the anvil or pottery wheel to learn these traditional techniques yourself, let’s collaborate.</p>
     <div class="cta-button-container">
         <a href="https://ericshotwellusa.com/gallery.html" class="cta-button">View My Gallery</a>
         <a href="https://ericshotwellusa.com/contact.html" class="cta-button">Get in Touch</a>
     </div>
-</div>
+</section>
 
+<!-- Global Footer -->
 <footer>   
     <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
 </footer>
