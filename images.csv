@@ -1,24 +1,23 @@
 filename,subject,medium,location,size,artist
-
-imgfiles/ecs-art/potterystand.jpg,Iron Stand with Pottery,Blacksmithing,Indiana,5 ft,Eric Shotwell
-imgfiles/ecs-art/groupproject1.jpg,Trellis with Dogwood Flowers,Blacksmithing,Indiana,5 ft,IBA Group Project
-imgfiles/ecs-art/trellis1.jpg,Grapevine Trellis,Blacksmithing,Indiana,6 ft,Eric Shotwell
-imgfiles/ecs-art/groupcemetary1.jpg,Cemetary Sign,Blacksmithing,Indiana,10 ft,IBA Group Project
-imgfiles/ecs-art/carolrail.jpg,Residential Railing,Blacksmithing,Indiana,3 ft,Eric Shotwell
-imgfiles/ecs-art/dragonfly.jpg,Dragonfly,Blacksmithing,Indiana,18 in,Eric Shotwell
-imgfiles/ecs-art/blacksmithsign1.jpg,Blacksmith Sign Bracket,Blacksmithing,Indiana,30 in,Eric Shotwell
-imgfiles/ecs-art/candleholder5.jpg,Candle Holder,Blacksmithing,Indiana,12 in,Eric Shotwell
-imgfiles/ecs-art/steelflower1.jpg,Forged Flower,Blacksmithing,Indiana,10 in,Eric Shotwell
-imgfiles/ecs-art/resistance2.jpg,Resistance over Tyranny 1,Sculpture,Indiana,20 in,Eric Shotwell
-imgfiles/ecs-art/resistancemold.jpg,Resistance Bronze Mold,Sculpture,Indiana,20 in,Eric Shotwell
-imgfiles/ecs-art/blacksmithcast1.jpg,Blacksmith Casting,Sculpture,Indiana,16 in,Eric Shotwell
-imgfiles/ecs-art/spawnswim1.jpg,Spawn Swim,Sculpture,Indiana,14 in,Eric Shotwell
-imgfiles/ecs-art/wavewashed3.jpg,Wave Washed,Sculpture,Indiana,12 in,Eric Shotwell
-imgfiles/ecs-art/stoneleaf2.jpg,Stone Leaf,Sculpture,Indiana,24 in,Eric Shotwell
-imgfiles/ecs-art/sisterone.jpg,Sister One,Sculpture,Indiana,36 in,Eric Shotwell
-imgfiles/ecs-art/sisterburl.jpg,Burl for Sister Sculptures,Sculpture,Indiana,35 in,Eric Shotwell
-imgfiles/ecs-art/dutchtoolbox1.jpg,Dutch Tool Box,Other,Indiana,24 in,Wheelrights Group Project
-imgfiles/ecs-art/potterygrp3.jpg,Brown Pottery Collection,Ceramics,Indiana,3 to 12 in,Eric Shotwell
-imgfiles/ecs-art/potterygrp5.jpg,Art CenterPottery Collection,Ceramics,Indiana,3 to 12 in,Eric Shotwell
-imgfiles/ecs-art/moonjar.jpg,Korean Style Moon Jar,Ceramics,Indiana,12 in,Eric Shotwell
-imgfiles/ecs-art/happyjug1.jpg,Jolly Face Jug,Ceramics,Indiana,9 in,Eric Shotwell
+potterystand.jpg,Iron Stand with Pottery,Blacksmithing,Indiana,5 ft,Eric Shotwell
+groupproject1.jpg,Trellis with Dogwood Flowers,Blacksmithing,Indiana,5 ft,IBA Group Project
+trellis1.jpg,Grapevine Trellis,Blacksmithing,Indiana,6 ft,Eric Shotwell
+groupcemetary1.jpg,Cemetary Sign,Blacksmithing,Indiana,10 ft,IBA Group Project
+carolrail.jpg,Residential Railing,Blacksmithing,Indiana,3 ft,Eric Shotwell
+dragonfly.jpg,Dragonfly,Blacksmithing,Indiana,18 in,Eric Shotwell
+blacksmithsign1.jpg,Blacksmith Sign Bracket,Blacksmithing,Indiana,30 in,Eric Shotwell
+candleholder5.jpg,Candle Holder,Blacksmithing,Indiana,12 in,Eric Shotwell
+steelflower1.jpg,Forged Flower,Blacksmithing,Indiana,10 in,Eric Shotwell
+resistance2.jpg,Resistance over Tyranny 1,Sculpture,Indiana,20 in,Eric Shotwell
+resistancemold.jpg,Resistance Bronze Mold,Sculpture,Indiana,20 in,Eric Shotwell
+blacksmithcast1.jpg,Blacksmith Casting,Sculpture,Indiana,16 in,Eric Shotwell
+spawnswim1.jpg,Spawn Swim,Sculpture,Indiana,14 in,Eric Shotwell
+wavewashed3.jpg,Wave Washed,Sculpture,Indiana,12 in,Eric Shotwell
+stoneleaf2.jpg,Stone Leaf,Sculpture,Indiana,24 in,Eric Shotwell
+sisterone.jpg,Sister One,Sculpture,Indiana,36 in,Eric Shotwell
+sisterburl.jpg,Burl for Sister Sculptures,Sculpture,Indiana,35 in,Eric Shotwell
+dutchtoolbox1.jpg,Dutch Tool Box,Other,Indiana,24 in,Wheelrights Group Project
+potterygrp3.jpg,Brown Pottery Collection,Ceramics,Indiana,3 to 12 in,Eric Shotwell
+potterygrp5.jpg,Art CenterPottery Collection,Ceramics,Indiana,3 to 12 in,Eric Shotwell
+moonjar.jpg,Korean Style Moon Jar,Ceramics,Indiana,12 in,Eric Shotwell
+happyjug1.jpg,Jolly Face Jug,Ceramics,Indiana,9 in,Eric Shotwell

@@ -65,13 +65,13 @@ function displayFeaturedPreviews() {
 
 // 3. Render gallery grid cards
 function displayGallery(items) {
-    const grid = document.getElementById('inspiration-grid');
+    const grid = document.getElementById('portfolio-grid'); // Ensure this matches your HTML ID
     if (!grid) return;
     
     grid.innerHTML = '';
     
     if (items.length === 0) {
-        grid.innerHTML = '<div class="no-results">No pieces match your chosen travel criteria.</div>';
+        grid.innerHTML = '<div class="no-results">No items match your chosen filter criteria.</div>';
         return;
     }
     
@@ -81,15 +81,16 @@ function displayGallery(items) {
         const card = document.createElement('div');
         card.className = 'gallery-card';
         
+        // Simplified pathing: now points directly to your new folder
         let cleanFilename = item.filename.trim();
-        let imgPath = `./images/${cleanFilename}`;
+        let imgPath = `./imgfiles/ecsart/${cleanFilename}`;
 
         card.innerHTML = `
-            <img src="${imgPath}" alt="${item.subject || 'Inspiration Study'}" loading="lazy">
+            <img src="${imgPath}" alt="${item.subject || 'Artwork'}" loading="lazy">
             <div class="gallery-info">
-                <h3>${item.subject || 'Untitled Study'}</h3>
-                <p><strong>Medium:</strong> ${item.medium || 'N/A'}</p>
-                <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
+                <h2>${item.subject || 'Untitled'}</h2>
+                <div class="meta-line"><span class="meta-label">Medium:</span> ${item.medium || 'N/A'}</div>
+                <div class="meta-line"><span class="meta-label">Artist:</span> ${item.artist || 'N/A'}</div>
             </div>
         `;
         
