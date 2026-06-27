@@ -447,10 +447,7 @@ body::before {
     cursor: not-allowed;
 }
 
-/* ==========================================================================
-   --- CENTERED BACKGROUND GALLERY FILTERS & CARDS ---
-   ========================================================================== */
-
+/* --- Centered Background Gallery Filters --- */
 .gallery-section .filter-group,
 .gallery-section .portfolio-grid {
     max-width: 1100px !important; 
@@ -465,14 +462,27 @@ body::before {
     flex-direction: row !important;       
     flex-wrap: wrap !important;
     align-items: center !important;          
-    justify-content: center !important;   /* Center justified directly on the background */
+    justify-content: center !important;   
     gap: 12px !important;               
-    background-color: transparent !important; /* Removes the white container box */
-    padding: 0 !important;                /* Strips excessive layout block padding */
-    box-shadow: none !important;          /* Removes old container shadows */
-    margin: 40px auto !important;         /* Balanced spacing below navigation */
-    border: none !important;              /* Removes old container borders */
+    background-color: transparent !important; 
+    padding: 0 !important;                
+    box-shadow: none !important;  
+    border: none !important;      
     width: 100% !important;
+    
+    /* Perfect 40px Spacing Control */
+    margin-top: 40px !important;    /* Pushes exactly 40px below the text container */
+    margin-bottom: 40px !important; /* Pushes exactly 40px above the thumbnail grid */
+}
+
+/* --- Gallery Grid Spacing Rule --- */
+.gallery-section .portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important; 
+    gap: 30px !important;                    
+    margin-top: 0 !important;       /* Prevents the grid from adding extra space */
+    margin-bottom: 60px !important;
+    padding: 0 !important;
 }
 
 /* --- Gallery Grid Layout Optimization --- */
