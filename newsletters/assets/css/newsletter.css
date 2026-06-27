@@ -8,6 +8,62 @@
     --dark-gray: #333333;
 }
 
+/* Hero Section Layout */
+.hero-container {
+    background-color: #eef4f8; /* Muted tone using your brand's blue palette */
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    text-align: left; /* Overrides the default center rule for main page titles */
+    margin: 0 0 5px 0;
+    font-size: 2.4rem;
+}
+
+.hero-text p.subtitle {
+    font-family: 'Merriweather', Georgia, serif;
+    font-style: italic;
+    color: #555555;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.hero-image-wrapper {
+    flex: 0 0 200px;
+}
+
+.hero-image-wrapper img {
+    margin: 0; /* Clears default vertical margins */
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustment for mobile viewports */
+@media (max-width: 600px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 20px;
+    }
+    .hero-text h1 {
+        text-align: center;
+    }
+    .hero-image-wrapper {
+        flex: 0 0 150px;
+        width: 150px;
+    }
+}
+
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.65;
