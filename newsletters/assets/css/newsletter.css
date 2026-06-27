@@ -8,6 +8,53 @@
     --dark-gray: #333333;
 }
 
+/* New Side-by-Side Column Layout */
+.side-by-side-layout {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin: 20px 0;
+}
+
+/* Image Column: Occupies roughly 50% width space minus margins */
+.side-by-side-layout .media-column {
+    flex: 0 0 45%;
+}
+
+/* Ensure the image stretches properly inside its parent container */
+.side-by-side-layout .media-column img {
+    width: 100%;
+    margin: 0; /* Reset global vertical margins inside layout */
+}
+
+/* Content Column: Automatically takes up the remaining half */
+.side-by-side-layout .content-column {
+    flex: 1;
+}
+
+/* Spacing cleanup for paragraphs inside the column layout */
+.side-by-side-layout .content-column p {
+    margin: 0 0 15px 0;
+}
+
+.side-by-side-layout .content-column p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive collapse for mobile screens */
+@media (max-width: 600px) {
+    .side-by-side-layout {
+        flex-direction: column;
+    }
+    .side-by-side-layout .media-column {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+    .side-by-side-layout .media-column img {
+        margin-bottom: 15px;
+    }
+}
+
 /* Compact Header Styling */
 .header-container {
     display: flex;
