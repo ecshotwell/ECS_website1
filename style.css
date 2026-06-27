@@ -146,8 +146,9 @@ body::before {
 
 /* Main Section Headings & Gallery Card Titles */
 .focus-box h2,
-.gallery-section .filter-group h2,
+.filter-group h2,
 .portfolio-grid .gallery-card h2,
+.gallery-grid .gallery-card h2,
 .gallery-card h2 {
     font-family: 'Merriweather', Georgia, serif;
     font-weight: 700;
@@ -161,6 +162,7 @@ body::before {
 
 /* Specific scale polish for inline grid card headers to look integrated */
 .portfolio-grid .gallery-card h2,
+.gallery-grid .gallery-card h2,
 .gallery-card h2 {
     font-size: 1.25rem !important;
     margin-top: 0 !important;
@@ -447,105 +449,34 @@ body::before {
     cursor: not-allowed;
 }
 
-/* --- Centered Background Gallery Filters --- */
-.gallery-section .filter-group,
-.gallery-section .portfolio-grid {
-    max-width: 1100px !important; 
-    width: 90% !important;        
-    margin-left: auto !important;  
-    margin-right: auto !important;
-    box-sizing: border-box;
-}
 
-.gallery-section .filter-group {
+/* ==========================================================================
+   --- UNIFIED FILTER BUTTONS & GLOBAL NAVIGATION ---
+   ========================================================================== */
+
+/* Outer wrapper framing filter buttons on any page layout */
+.filter-group {
     display: flex !important;                
     flex-direction: row !important;       
     flex-wrap: wrap !important;
     align-items: center !important;          
-    justify-content: center !important;   
+    justify-content: center !important;   /* Shared: Centers navigation blocks on the page background */
     gap: 12px !important;               
     background-color: transparent !important; 
     padding: 0 !important;                
     box-shadow: none !important;  
     border: none !important;      
     width: 100% !important;
-    
-    /* Perfect 40px Spacing Control */
-    margin-top: 40px !important;    /* Pushes exactly 40px below the text container */
-    margin-bottom: 40px !important; /* Pushes exactly 40px above the thumbnail grid */
+    max-width: 1100px !important; 
+    margin-left: auto !important;  
+    margin-right: auto !important;
+    box-sizing: border-box;
 }
 
-/* --- Gallery Grid Spacing Rule --- */
-.gallery-section .portfolio-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important; 
-    gap: 30px !important;                    
-    margin-top: 0 !important;       /* Prevents the grid from adding extra space */
-    margin-bottom: 60px !important;
-    padding: 0 !important;
-}
-
-/* --- Gallery Grid Layout Optimization --- */
-.gallery-section .portfolio-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important; 
-    gap: 30px !important;                    
-    margin-bottom: 60px !important;
-    padding: 0 !important;
-}
-
-/* Structural wrapper for portfolio items */
-.portfolio-grid .gallery-card {
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
-    border-radius: 8px !important; 
-    border: 1px solid var(--border-blue) !important;
-    background: #ffffff !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
-    transition: transform 0.2s ease-in-out !important;
-    cursor: pointer !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-}
-
-.portfolio-grid .gallery-card:hover {
-    transform: translateY(-3px) !important;
-    border-color: var(--brand-blue) !important;
-}
-
-/* Fixed size constraints to prevent image sizing mismatches */
-.portfolio-grid .gallery-card img {
-    width: 100% !important;
-    height: 250px !important;       
-    min-height: 250px !important;
-    max-height: 250px !important;
-    object-fit: cover !important;   
-    display: block !important;
-}
-
-.portfolio-grid .gallery-info {
-    padding: 20px 15px !important;  
-    background: #ffffff !important;
-}
-
-/* --- Metadata Typography Rules --- */
-.portfolio-grid .gallery-info .meta-line {
-    margin: 6px 0 !important;
-    font-size: 0.95rem;
-    color: var(--dark-gray);
-    line-height: 1.4;
-}
-
-.portfolio-grid .gallery-info .meta-label {
-    font-weight: 600;
-    color: var(--charcoal);
-}
-
-/* --- Gallery Navigation Tabs --- */
+/* Inner block wrapper ensuring consistent button clusters */
 .tabs-container {
     display: flex !important;
-    justify-content: center !important;   /* Centers inner button cluster */
+    justify-content: center !important;   /* Shared: Forces centered button cluster adjustments */
     align-items: center !important;
     gap: 12px !important;
     margin: 0 auto !important; 
@@ -553,11 +484,12 @@ body::before {
     width: 100% !important;
 }
 
+/* Shared typography and balanced layout metrics for ALL section tabs */
 .tab-btn {
     background-color: #ffffff !important;
     color: var(--charcoal) !important; 
     border: 1px solid var(--border-blue) !important;
-    padding: 6px 18px !important;        /* Tightened layout padding matching Inspiration page tabs */
+    padding: 6px 18px !important;        /* Balanced layout spacing applied dynamically across pages */
     font-family: 'Merriweather', Georgia, serif !important; 
     font-size: 0.95rem !important;
     font-weight: 700 !important; 
@@ -577,7 +509,100 @@ body::before {
     border-color: var(--charcoal) !important;
 }
 
-/* --- UNIVERSAL LIGHTBOX STYLING --- */
+
+/* ==========================================================================
+   --- STRUCTURAL PAGE SPACING CONTROLS (ISOLATED) ---
+   ========================================================================== */
+
+/* Gallery Layout Specific Rhythm (Tight 40px Flow Strategy) */
+.gallery-section .filter-group {
+    margin-top: 40px !important;    
+    margin-bottom: 40px !important; 
+}
+
+.gallery-section .portfolio-grid {
+    margin-top: 0 !important;       
+    margin-bottom: 60px !important;
+}
+
+/* Inspiration Layout Specific Rhythm (Retains original structural margins) */
+.inspiration-section .filter-group {
+    margin-top: 40px !important;
+    margin-bottom: 50px !important; 
+}
+
+
+/* ==========================================================================
+   --- PORTFOLIO CARDS & LIGHTBOX DESIGN ---
+   ========================================================================== */
+
+/* Main responsive grid container used by portfolios and inspiration logs */
+.portfolio-grid,
+.gallery-grid {
+    max-width: 1100px !important; 
+    width: 90% !important;        
+    margin-left: auto !important;  
+    margin-right: auto !important;
+    box-sizing: border-box;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important; 
+    gap: 30px !important;                    
+    padding: 0 !important;
+}
+
+/* Structural wrapper for individual portfolio entries */
+.portfolio-grid .gallery-card,
+.gallery-grid .gallery-card {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    border-radius: 8px !important; 
+    border: 1px solid var(--border-blue) !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
+    transition: transform 0.2s ease-in-out !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.portfolio-grid .gallery-card:hover,
+.gallery-grid .gallery-card:hover {
+    transform: translateY(-3px) !important;
+    border-color: var(--brand-blue) !important;
+}
+
+/* Hard constraints keeping image aspect frames crisp and consistent */
+.portfolio-grid .gallery-card img,
+.gallery-grid .gallery-card img {
+    width: 100% !important;
+    height: 250px !important;       
+    min-height: 250px !important;
+    max-height: 250px !important;
+    object-fit: cover !important;   
+    display: block !important;
+}
+
+.portfolio-grid .gallery-info,
+.gallery-grid .gallery-info {
+    padding: 20px 15px !important;  
+    background: #ffffff !important;
+}
+
+/* Card Specific Metadata Layouts */
+.gallery-info .meta-line {
+    margin: 6px 0 !important;
+    font-size: 0.95rem;
+    color: var(--dark-gray);
+    line-height: 1.4;
+}
+
+.gallery-info .meta-label {
+    font-weight: 600;
+    color: var(--charcoal);
+}
+
+/* --- UNIVERSAL LIGHTBOX DESIGN MODALS --- */
 .lightbox-overlay,
 .lightbox-modal {
     position: fixed;
@@ -655,7 +680,11 @@ body::before {
     color: var(--brand-blue);
 }
 
-/* --- Footer Section Styling --- */
+
+/* ==========================================================================
+   --- LAYOUT UTILITIES & SYSTEM FOOTERS ---
+   ========================================================================== */
+
 footer {
     text-align: center;
     padding: 40px 20px 30px 20px; 
@@ -666,10 +695,39 @@ footer {
     letter-spacing: 0.5px;        
 }
 
-/* --- Responsive Media Queries --- */
+.section-divider {
+    margin: 3rem 0;
+    border: 0;
+    border-top: 2px solid var(--border-color, #ccc);
+    opacity: 0.85;
+}
+
+.filter-instructions {
+    font-family: 'Merriweather', Georgia, serif !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    text-align: left !important;
+    display: block !important;
+    clear: both !important;
+    margin-top: 35px !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    color: var(--dark-gray) !important; 
+}
+
+
+/* ==========================================================================
+   --- RESPONSIVE MEDIA QUERIES ---
+   ========================================================================== */
+
 @media (max-width: 768px) {
     body {
-        padding-top: 80px; /* Accounts for stacked navigation elements on mobile views */
+        padding-top: 80px; 
     }
 
     .hero-container {
@@ -710,65 +768,12 @@ footer {
 
     .portfolio-grid .card img,
     .gallery-container .card img,
-    .portfolio-grid img { 
+    .portfolio-grid img,
+    .gallery-grid img { 
         height: auto !important;       
         max-height: 400px !important;  
         object-fit: contain !important; 
         background-color: #1a1a1a;     
         display: block;
     }
-}
-
-/* Gallery Component Extensions */
-.filter-instructions {
-    font-family: 'Merriweather', Georgia, serif !important;
-    font-size: 0.95rem !important;
-    line-height: 1.6 !important;
-    text-align: left !important;
-    display: block !important;
-    clear: both !important;
-    margin-top: 35px !important;
-    margin-bottom: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    color: var(--dark-gray) !important; 
-}
-
-.tabs-container {
-    display: flex !important;
-    justify-content: center !important; /* Center dynamic button placement */
-    gap: 12px !important;
-    margin: 0 auto !important; 
-    flex-wrap: wrap !important;
-}
-
-.tab-btn {
-    background-color: #ffffff !important;
-    color: var(--charcoal) !important; 
-    border: 1px solid var(--border-blue) !important;
-    padding: 10px 22px !important;
-    font-family: 'Merriweather', Georgia, serif !important; 
-    font-size: 0.95rem !important;
-    font-weight: 700 !important; 
-    cursor: pointer !important;
-    border-radius: 4px !important;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease !important; 
-}
-
-.tab-btn:hover, 
-.tab-btn.active {
-    background-color: var(--charcoal) !important; 
-    color: #ffffff !important;            
-    border-color: var(--charcoal) !important;
-}
-
-.section-divider {
-    margin: 3rem 0;
-    border: 0;
-    border-top: 2px solid var(--border-color, #ccc);
-    opacity: 0.85;
 }
