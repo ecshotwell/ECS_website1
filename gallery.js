@@ -1,3 +1,7 @@
+/* gallery.js
+   Engine for the Artwork Portfolio Gallery
+*/
+
 let masterGalleryData = [];
 
 // 1. Fetch and Parse CSV File
@@ -76,8 +80,9 @@ function displayGallery(items) {
         const card = document.createElement('div');
         card.className = 'gallery-card';
         
+        // Simplified pathing: points directly to your new folder
         let cleanFilename = item.filename.trim();
-        let imgPath = cleanFilename.startsWith('imgfiles/') ? `./${cleanFilename}` : `./imgfiles/ecs-art/${cleanFilename}`;
+        let imgPath = `./imgfiles/ecsart/${cleanFilename}`;
 
         card.innerHTML = `
             <img src="${imgPath}" alt="${item.subject || 'Artwork'}" loading="lazy">
@@ -147,7 +152,8 @@ function filterMedium(category, event) {
 
 // 5. Lightbox Interaction Functions
 function openLightbox(item, calculatedPath) {
-    const imgPath = calculatedPath || `./${item.filename.trim()}`;
+    // Force usage of the new folder path
+    const imgPath = calculatedPath || `./imgfiles/ecsart/${item.filename.trim()}`;
     
     const box = document.getElementById('lightbox');
     if (!box) return;
