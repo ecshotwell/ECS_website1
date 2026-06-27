@@ -73,22 +73,23 @@ function displayGallery(items) {
 // 4. Tab Filtration Engine with Interactive Toggle States
 function filterMediumTab(category, event) {
     const clickedButton = event.currentTarget;
-    
-    // Check if clicking "Show All" when it is already active
-    if (category === 'all' && clickedButton.classList.contains('active')) {
+    const isAlreadyActive = clickedButton.classList.contains('active');
+
+    // 1. If clicking ANY active button, deselect it and revert to the baseline curated view
+    if (isAlreadyActive) {
         clickedButton.classList.remove('active');
         displayInitialState(); // Reverts instantly back to one thumbnail per discipline
         return;
     }
 
-    // Standard Tab Maintenance: Clear old active assignments inside #gallery-tabs
+    // 2. Standard Tab Maintenance: Clear old active assignments inside #gallery-tabs
     const buttons = document.querySelectorAll('#gallery-tabs .tab-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
 
-    // Highlight the newly targeted button option
+    // 3. Highlight the newly targeted button option
     clickedButton.classList.add('active');
 
-    // Display entire collection or filter cleanly by data category array fields
+    // 4. Display entire collection or filter cleanly by data category array fields
     if (category === 'all') {
         displayGallery(masterGalleryData);
     } else {
