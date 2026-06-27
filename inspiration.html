@@ -9,39 +9,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-    <script src="./navigation.js"></script>
+    <script src="./navigation.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-  
 </head>
-
-
 <body>
 
-<!-- 1. Move the navigation bar out to the very top level of the body -->
+<!-- Global Navigation Toolbar -->
 <nav class="navigation-toolbar">
-    <a href="https://ericshotwellusa.com/index.html" class="active">Home</a>
+    <a href="https://ericshotwellusa.com/index.html">Home</a>
     <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
     <a href="https://ericshotwellusa.com/perspective.html">Perspective</a>
-    <a href="https://ericshotwellusa.com/inspiration.html">Inspiration</a>
+    <a href="https://ericshotwellusa.com/inspiration.html" class="active">Inspiration</a>
     <a href="https://ericshotwellusa.com/process.html">Process</a>
     <a href="https://ericshotwellusa.com/about.html">About</a>
     <a href="https://ericshotwellusa.com/contact.html">Contact</a>
 </nav>
 
-<!-- 2. Keep your hero header clean underneath it -->
+<!-- Hero Header Section -->
 <header class="hero-container">
     <h1>Eric Shotwell, Artist Blacksmith</h1>
-    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder">
+    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder" loading="lazy">
 </header>
 
+<!-- Main Narrative & Philosophy -->
 <main class="focus-box">
     <h2>Inspiration from European Art and Culture</h2>
     
-    <p>Much of my work is inspired by the old buildings, ironwork, and stonemasonry I’ve seen across Europe. For hundreds of years, traditional blacksmiths and stone carvers have passed down amazing techniques and beautiful, detailed designs. Here are a few examples of the historic pieces that inspire me out in the studio:</p>
+    <p>Much of my work is inspired by the historic architecture, traditional ironwork, and stone masonry I have observed throughout Europe. For centuries, traditional blacksmiths and stone carvers have passed down exceptional techniques and beautiful, intricate designs. Here are a few examples of the historic pieces that continue to inspire me out in the studio.</p>
     
     <p class="filter-instructions"><strong>Note:</strong> To browse, select any medium below to expand the list and view all images in that category, or click "Show All" to view the entire collection. Click on any individual card to enlarge the image.</p>
 </main>
 
+<!-- Filter Control Block -->
 <div class="filter-control-box">
     <div id="gallery-tabs" class="tabs-container">
         <button class="tab-btn" onclick="filterMedium('Blacksmithing', event)">Ironwork</button>
@@ -52,24 +51,26 @@
     </div>
 </div>
 
-<div id="inspiration-grid" class="gallery-grid">
-    </div>
+<!-- Dynamic Gallery Grid Container -->
+<div id="inspiration-grid" class="gallery-grid"></div>
 
+<!-- Global Footer & Lightbox Modal -->
 <footer>
     <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
 
     <div id="lightbox" class="lightbox-modal" onclick="closeLightbox(event)">
-    <span class="close-btn" onclick="forceCloseLightbox()">&times;</span>
-    <div class="lightbox-content">
-        <img id="lightbox-img" alt="">
-        <div class="lightbox-details">
-            <h3 id="lightbox-title"></h3>
-            <p><strong>Medium:</strong> <span id="lightbox-medium"></span></p>
-            <p><strong>Location:</strong> <span id="lightbox-location"></span></p>
+        <span class="close-btn" onclick="forceCloseLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" alt="">
+            <div class="lightbox-details">
+                <h3 id="lightbox-title"></h3>
+                <p><strong>Medium:</strong> <span id="lightbox-medium"></span></p>
+                <p><strong>Location:</strong> <span id="lightbox-location"></span></p>
+            </div>
         </div>
     </div>
-</div>
 </footer>
+
 <script src="/tripimages.js"></script>
 </body>
 </html>

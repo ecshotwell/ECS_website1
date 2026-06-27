@@ -9,15 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-    <script src="./navigation.js"></script>
+    <script src="./navigation.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-  </head>
+</head>
 <body>
 
-<!-- 1. Move the navigation bar out to the very top level of the body -->
+<!-- Global Navigation Toolbar -->
 <nav class="navigation-toolbar">
-    <a href="https://ericshotwellusa.com/index.html" class="active">Home</a>
-    <a href="https://ericshotwellusa.com/gallery.html">Gallery</a>
+    <a href="https://ericshotwellusa.com/index.html">Home</a>
+    <a href="https://ericshotwellusa.com/gallery.html" class="active">Gallery</a>
     <a href="https://ericshotwellusa.com/perspective.html">Perspective</a>
     <a href="https://ericshotwellusa.com/inspiration.html">Inspiration</a>
     <a href="https://ericshotwellusa.com/process.html">Process</a>
@@ -25,44 +25,47 @@
     <a href="https://ericshotwellusa.com/contact.html">Contact</a>
 </nav>
 
-<!-- 2. Keep your hero header clean underneath it -->
+<!-- Hero Header Section -->
 <header class="hero-container">
     <h1>Eric Shotwell, Artist Blacksmith</h1>
-    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder">
+    <img src="./imgfiles/candle.jpg" alt="Forged Candle Holder" loading="lazy">
 </header>
 
+<!-- Gallery Filter and View Section -->
 <main class="gallery-section">
     <div class="filter-group">
         <h2>Artwork Portfolio</h2>
-        <p class="filter-intro">The following is a selection of my recent work. You can select a filter to narrow down the displayed items. Click any image to see more details.</p>
+        <p class="filter-intro">Welcome to a collection of my recent work. You can use the drop-down filters below to narrow down the displayed items by subject, medium, or size. Click on any individual image to view more details about the piece.</p>
 
         <div class="filter-item">
-            <label for="filter-subject">Subject</label>
+            <label for="subject">Subject</label>
             <select id="subject" onchange="filterGallery()"><option value="all">All Subjects</option></select>
         </div>
         <div class="filter-item">
-            <label for="filter-medium">Medium</label>
+            <label for="medium">Medium</label>
             <select id="medium" onchange="filterGallery()"><option value="all">All Media</option></select>
         </div>
         <div class="filter-item">
-            <label for="filter-location">Location</label>
+            <label for="location">Location</label>
             <select id="location" onchange="filterGallery()"><option value="all">All Locations</option></select>
         </div>
         <div class="filter-item">
-            <label for="filter-category">Size</label>
+            <label for="size">Size</label>
             <select id="size" onchange="filterGallery()"><option value="all">All Sizes</option></select>
         </div>
         <div class="filter-item">
-            <label for="filter-artist">Artist</label>
+            <label for="artist">Artist</label>
             <select id="artist" onchange="filterGallery()"><option value="all">All Artists</option></select>
         </div>
     </div>
 
+    <!-- Dynamic Portfolio Grid Container -->
     <div id="portfolio-grid" class="portfolio-grid">
         <p>Loading gallery items...</p>
     </div>
 </main>
 
+<!-- Lightbox Overlay Modal -->
 <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
     <span class="lightbox-close" onclick="forceCloseLightbox()">&times;</span>
     
@@ -75,18 +78,19 @@
                 <h2 id="lightbox-title"></h2>
                 <p><strong>Medium:</strong> <span id="lightbox-medium"></span></p>
                 <p><strong>Location:</strong> <span id="lightbox-location"></span></p>
-                <p><strong>/Size:</strong> <span id="lightbox-size"></span></p>
+                <p><strong>Size:</strong> <span id="lightbox-size"></span></p>
                 <p><strong>Artist:</strong> <span id="lightbox-artist"></span></p>
             </div>
         </div>
     </div>
 </div>
 
-
+<!-- Integrated Connection Footer Box -->
 <div class="focus-box" style="text-align: center;">
     <p>My <a href="https://ericshotwellusa.com/contact.html" class="blog-link">contact form</a> is available for you to reach out and discuss any of these ideas or explore potential collaborations.</p>
 </div>
 
+<!-- Global Footer -->
 <footer>
     <p class="copyright">© 2026 Eric Shotwell. All rights reserved.</p>
 </footer>
