@@ -459,8 +459,9 @@ body::before {
 
 .gallery-section .filter-group {
     display: flex;                
-    flex-wrap: wrap;              
-    gap: 15px 25px;               
+    flex-direction: column;       /* Stacks tab rows cleanly above secondary dropdown rows */
+    align-items: flex-start;
+    gap: 20px;               
     background-color: #ffffff;
     border-radius: 8px;
     padding: 30px 25px;           
@@ -470,23 +471,42 @@ body::before {
     border: 1px solid var(--border-blue);
 }
 
+/* Unified container wrapper that keeps secondary filters beautifully side-by-side */
+.gallery-section .filter-controls-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 25px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.gallery-section .filter-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin: 0 !important;
+}
+
 .gallery-section .filter-group label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--charcoal);
+    white-space: nowrap;          /* Prevents structural text labeling from breaking awkwardly */
 }
 
 .gallery-section .filter-group select {
-    padding: 6px 10px;
+    padding: 8px 14px;
     border: 1px solid var(--border-blue);
     border-radius: 4px;
     background-color: #ffffff;
     font-family: inherit;
     font-size: 0.9rem;
     color: var(--dark-gray);
+    min-width: 160px;             /* Standardized control field width rule */
+    cursor: pointer;
 }
 
 /* --- Gallery & Inspiration Card Structural Optimization --- */
