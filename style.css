@@ -517,7 +517,7 @@ body::before {
 /* Gallery Layout Specific Rhythm (Tight 40px Flow Strategy) */
 .gallery-section .filter-group {
     margin-top: 40px !important;    
-    margin-bottom: 40px !important; 
+    margin-bottom: 60px !important; 
 }
 
 .gallery-section .portfolio-grid {
@@ -528,7 +528,7 @@ body::before {
 /* Inspiration Layout Specific Rhythm (Retains original structural margins) */
 .inspiration-section .filter-group {
     margin-top: 40px !important;
-    margin-bottom: 50px !important; 
+    margin-bottom: 60px !important; 
 }
 
 
